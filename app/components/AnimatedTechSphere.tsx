@@ -42,15 +42,19 @@ export default function AnimatedTechSphere() {
     { icon: <SiMongodb size={18} />, color: "#47A248", ring: 2, angle: 240 },
   ], []);
 
-  const getOrbitRotation = (duration: number, delay: number = 0) => ({
-    animate: { rotate: 360 },
-    transition: {
-      duration,
-      repeat: Infinity,
-      ease: "linear" as const,
-      delay
+  const getOrbitPaths = (rx: number, ry: number, startAngle: number) => {
+    const x = [];
+    const y = [];
+    const steps = 100;
+    for (let i = 0; i <= steps; i++) {
+      // Rotating smoothly (clockwise)
+      const angle = startAngle + (i * (360 / steps));
+      const rad = (angle * Math.PI) / 180;
+      x.push(Math.cos(rad) * rx);
+      y.push(Math.sin(rad) * ry);
     }
-  });
+    return { x, y };
+  };
 
   const [mounted, setMounted] = useState(false);
 
@@ -64,10 +68,9 @@ export default function AnimatedTechSphere() {
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 1 }}
       viewport={{ once: true }}
-      className="relative w-full max-w-[900px] mx-auto flex justify-center mt-6 lg:mt-10 mb-6 lg:mb-10 overflow-hidden"
-      style={{ willChange: "transform, opacity" }}
+      className="relative w-full max-w-[900px] mx-auto flex justify-center mt-6 lg:mt-10 mb-6 lg:mb-10"
     >
-      <svg viewBox="0 100 800 600" className="w-full h-auto max-h-[600px] overflow-visible">
+      <svg viewBox="0 150 800 550" className="w-full h-auto max-h-[600px] sm:max-h-[700px] overflow-visible">
         <defs>
           <radialGradient id="glowPulse" cx="50%" cy="50%" r="50%">
             <stop offset="0%" stopColor="rgba(147, 51, 234, 0.3)" />
@@ -84,7 +87,7 @@ export default function AnimatedTechSphere() {
         </defs>
 
         {/* Orbit Rings Configuration */}
-        <g transform="translate(400, 400)">
+        <g transform="translate(400, 480)">
           {/* Ring 3 - Outer */}
           <ellipse cx="0" cy="0" rx="380" ry="110" fill="none" stroke="rgba(255, 255, 255, 0.15)" strokeWidth="1.5" strokeDasharray="3 5" className="hidden sm:block" />
           <ellipse cx="0" cy="0" rx="340" ry="120" fill="none" stroke="rgba(255, 255, 255, 0.25)" strokeWidth="1.5" strokeDasharray="4 6" className="block sm:hidden" />
@@ -95,6 +98,8 @@ export default function AnimatedTechSphere() {
           
           {/* Ring 1 - Inner */}
           <ellipse cx="0" cy="0" rx="220" ry="60" fill="none" stroke="rgba(255, 255, 255, 0.25)" strokeWidth="1.5" className="hidden sm:block" />
+          
+          {/* Mobile-only Ring - Inner Spread out */}
           <ellipse cx="0" cy="0" rx="180" ry="60" fill="none" stroke="rgba(255, 255, 255, 0.3)" strokeWidth="1.5" className="block sm:hidden" />
           
           {/* Decorative Elements */}
@@ -104,51 +109,10 @@ export default function AnimatedTechSphere() {
           <g transform="translate(300, -80)" className="opacity-30">
             <rect width="8" height="8" fill="white" transform="rotate(45)" />
           </g>
-
-          {/* Orbiting Icons - Grouped for Better Performance */}
-          {mounted && userSkills.map((skill, i) => {
-            const isMobile = mounted && typeof window !== 'undefined' && window.innerWidth < 640;
-            const ringInfo = rings[skill.ring];
-            const rx = isMobile ? (skill.ring === 0 ? 180 : skill.ring === 1 ? 260 : 340) : ringInfo.rx;
-            const ry = isMobile ? (skill.ring === 0 ? 60 : skill.ring === 1 ? 90 : 120) : ringInfo.ry;
-            
-            const nodeSize = isMobile ? 24 : 18;
-            const iconSize = isMobile ? 24 : 18;
-
-            return (
-              <motion.g
-                key={`skill-${i}`}
-                {...getOrbitRotation(ringInfo.duration, (skill.angle / 360) * ringInfo.duration)}
-                style={{ willChange: "transform" }}
-              >
-                {/* Position the icon at the rx distance on the x-axis, then the rotation handles the orbit */}
-                <g transform={`translate(${rx}, 0)`}>
-                  {/* Counter-rotate to keep icons upright */}
-                  <motion.g
-                    animate={{ rotate: -360 }}
-                    transition={{ duration: ringInfo.duration, repeat: Infinity, ease: "linear" }}
-                    style={{ willChange: "transform" }}
-                  >
-                    {/* Elliptical Path Correction - Squeeze Y based on ry/rx ratio */}
-                    <g transform={`scale(1, ${ry/rx})`}>
-                       <circle cx="0" cy="0" r={nodeSize} fill="#140b23" stroke="rgba(168, 85, 247, 0.3)" strokeWidth="1" />
-                       <circle cx="0" cy="0" r={nodeSize} fill={skill.color} opacity="0.1" />
-                       
-                       <foreignObject x={-(iconSize/2 + 2)} y={-(iconSize/2 + 2)} width={iconSize + 4} height={iconSize + 4}>
-                         <div className="w-full h-full flex items-center justify-center" style={{ color: skill.color }}>
-                           {React.cloneElement(skill.icon as React.ReactElement<{ size: number }>, { size: iconSize })}
-                         </div>
-                       </foreignObject>
-                    </g>
-                  </motion.g>
-                </g>
-              </motion.g>
-            );
-          })}
         </g>
 
         {/* Central Orb */}
-        <g transform="translate(400, 380)">
+        <g transform="translate(400, 460)">
           {/* Backdrop purple hue glow */}
           <circle cx="0" cy="-20" r="180" fill="url(#glowPulse)" />
           
@@ -164,7 +128,6 @@ export default function AnimatedTechSphere() {
                 opacity: [0.8, 1, 0.8] 
               }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              style={{ willChange: "r, opacity" }}
             />
           )}
           
@@ -181,7 +144,6 @@ export default function AnimatedTechSphere() {
                 repeat: Infinity, 
                 ease: "easeInOut" 
               }}
-              style={{ willChange: "transform" }}
             >
               <motion.path 
                 d="M -15 -15 L 15 -15 M 15 -15 L -10 15 M -15 15 L 20 15" 
@@ -202,6 +164,49 @@ export default function AnimatedTechSphere() {
               />
             </motion.g>
           </g>
+        </g>
+
+        {/* Orbiting Icons */}
+        <g transform="translate(400, 480)">
+          {mounted && userSkills.map((skill, i) => {
+            // Adaptive orbits for mobile
+            const isMobile = mounted && typeof window !== 'undefined' && window.innerWidth < 640;
+            const ringInfo = rings[skill.ring];
+            
+            // Adjust radius for mobile view - Spread out more
+            const rx = isMobile ? (skill.ring === 0 ? 180 : skill.ring === 1 ? 260 : 340) : ringInfo.rx;
+            const ry = isMobile ? (skill.ring === 0 ? 60 : skill.ring === 1 ? 90 : 120) : ringInfo.ry;
+            
+            const orbit = getOrbitPaths(rx, ry, skill.angle);
+            
+            // Mobile sizes
+            const nodeSize = isMobile ? 24 : 18;
+            const iconSize = isMobile ? 24 : 18;
+            
+            return (
+              <motion.g
+                key={`skill-${i}`}
+                initial={{ x: orbit.x[0], y: orbit.y[0], opacity: 0 }}
+                animate={{ x: orbit.x, y: orbit.y, opacity: 1 }}
+                transition={{
+                  x: { duration: ringInfo.duration, repeat: Infinity, ease: "linear" },
+                  y: { duration: ringInfo.duration, repeat: Infinity, ease: "linear" },
+                  opacity: { duration: 1, delay: i * 0.1 }
+                }}
+              >
+                {/* Node Background */}
+                <circle cx="0" cy="0" r={nodeSize} fill="#140b23" stroke="rgba(168, 85, 247, 0.3)" strokeWidth="1" />
+                <circle cx="0" cy="0" r={nodeSize} fill={skill.color} opacity="0.1" />
+                
+                {/* SVG ForeignObject to render standard React components like react-icons */}
+                <foreignObject x={-(iconSize/2 + 2)} y={-(iconSize/2 + 2)} width={iconSize + 4} height={iconSize + 4}>
+                  <div className="w-full h-full flex items-center justify-center" style={{ color: skill.color }}>
+                    {React.cloneElement(skill.icon as React.ReactElement<{ size: number }>, { size: iconSize })}
+                  </div>
+                </foreignObject>
+              </motion.g>
+            );
+          })}
         </g>
       </svg>
     </motion.div>
