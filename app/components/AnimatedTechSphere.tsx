@@ -90,16 +90,17 @@ export default function AnimatedTechSphere() {
         <g transform="translate(400, 480)">
           {/* Ring 3 - Outer */}
           <ellipse cx="0" cy="0" rx="380" ry="110" fill="none" stroke="rgba(255, 255, 255, 0.15)" strokeWidth="1.5" strokeDasharray="3 5" className="hidden sm:block" />
-          <ellipse cx="0" cy="0" rx="180" ry="60" fill="none" stroke="rgba(255, 255, 255, 0.1)" strokeWidth="1" strokeDasharray="2 3" className="block sm:hidden" />
+          <ellipse cx="0" cy="0" rx="340" ry="120" fill="none" stroke="rgba(255, 255, 255, 0.25)" strokeWidth="1.5" strokeDasharray="4 6" className="block sm:hidden" />
           
           {/* Ring 2 - Middle */}
           <ellipse cx="0" cy="0" rx="300" ry="85" fill="none" stroke="rgba(255, 255, 255, 0.2)" strokeWidth="1" strokeDasharray="2 4" className="hidden sm:block" />
+          <ellipse cx="0" cy="0" rx="260" ry="90" fill="none" stroke="rgba(255, 255, 255, 0.2)" strokeWidth="1.5" strokeDasharray="3 5" className="block sm:hidden" />
           
           {/* Ring 1 - Inner */}
           <ellipse cx="0" cy="0" rx="220" ry="60" fill="none" stroke="rgba(255, 255, 255, 0.25)" strokeWidth="1.5" className="hidden sm:block" />
           
-          {/* Mobile-only Ring - Compact */}
-          <ellipse cx="0" cy="0" rx="130" ry="40" fill="none" stroke="rgba(255, 255, 255, 0.15)" strokeWidth="1" className="block sm:hidden" />
+          {/* Mobile-only Ring - Inner Spread out */}
+          <ellipse cx="0" cy="0" rx="180" ry="60" fill="none" stroke="rgba(255, 255, 255, 0.3)" strokeWidth="1.5" className="block sm:hidden" />
           
           {/* Decorative Elements */}
           <g transform="translate(-300, -50)" className="opacity-40">
@@ -118,19 +119,50 @@ export default function AnimatedTechSphere() {
           {/* Core sphere core */}
           {mounted && (
             <motion.circle 
-              cx="0" cy="-10" r="60" 
+              cx="0" cy="-10" 
+              r={mounted && typeof window !== 'undefined' && window.innerWidth < 640 ? 75 : 60} 
               fill="#4b1e7a" 
               filter="url(#blurGlow)"
-              animate={{ r: [55, 60, 55], opacity: [0.8, 1, 0.8] }}
+              animate={{ 
+                r: mounted && typeof window !== 'undefined' && window.innerWidth < 640 ? [70, 75, 70] : [55, 60, 55], 
+                opacity: [0.8, 1, 0.8] 
+              }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             />
           )}
           
-          <circle cx="0" cy="-10" r="50" fill="rgba(88, 28, 135, 0.95)" stroke="rgba(168, 85, 247, 0.6)" strokeWidth="1.5" />
+          <circle cx="0" cy="-10" r={mounted && typeof window !== 'undefined' && window.innerWidth < 640 ? 65 : 50} fill="rgba(88, 28, 135, 0.95)" stroke="rgba(168, 85, 247, 0.6)" strokeWidth="1.5" />
           
-          {/* Central Logo 'N' symbol from tech sphere */}
-          <g transform="translate(0, -10) scale(1.2)">
-            <path d="M -15 -15 L 15 -15 M 15 -15 L -10 15 M -15 15 L 20 15" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+          <g transform="translate(0, -10)">
+            <motion.g
+              animate={{ 
+                scale: mounted && typeof window !== 'undefined' && window.innerWidth < 640 ? [1.2, 1.4, 1.2] : [1, 1.15, 1],
+                rotate: [0, 5, -5, 0]
+              }}
+              transition={{ 
+                duration: 6, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+            >
+              <motion.path 
+                d="M -15 -15 L 15 -15 M 15 -15 L -10 15 M -15 15 L 20 15" 
+                stroke="white" 
+                strokeWidth="2.5" 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                fill="none" 
+                initial={{ pathLength: 0, opacity: 0.5 }}
+                animate={{ 
+                  pathLength: [0, 1, 1, 0],
+                  opacity: [0.5, 1, 1, 0.5]
+                }}
+                transition={{ 
+                  pathLength: { duration: 3, repeat: Infinity, ease: "easeInOut" },
+                  opacity: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+                }}
+              />
+            </motion.g>
           </g>
         </g>
 
@@ -141,11 +173,15 @@ export default function AnimatedTechSphere() {
             const isMobile = mounted && typeof window !== 'undefined' && window.innerWidth < 640;
             const ringInfo = rings[skill.ring];
             
-            // Adjust radius for mobile view
-            const rx = isMobile ? (skill.ring === 0 ? 130 : skill.ring === 1 ? 180 : 240) : ringInfo.rx;
-            const ry = isMobile ? (skill.ring === 0 ? 40 : skill.ring === 1 ? 60 : 80) : ringInfo.ry;
+            // Adjust radius for mobile view - Spread out more
+            const rx = isMobile ? (skill.ring === 0 ? 180 : skill.ring === 1 ? 260 : 340) : ringInfo.rx;
+            const ry = isMobile ? (skill.ring === 0 ? 60 : skill.ring === 1 ? 90 : 120) : ringInfo.ry;
             
             const orbit = getOrbitPaths(rx, ry, skill.angle);
+            
+            // Mobile sizes
+            const nodeSize = isMobile ? 24 : 18;
+            const iconSize = isMobile ? 24 : 18;
             
             return (
               <motion.g
@@ -159,13 +195,13 @@ export default function AnimatedTechSphere() {
                 }}
               >
                 {/* Node Background */}
-                <circle cx="0" cy="0" r={isMobile ? 14 : 18} fill="#140b23" stroke="rgba(168, 85, 247, 0.3)" strokeWidth="1" />
-                <circle cx="0" cy="0" r={isMobile ? 14 : 18} fill={skill.color} opacity="0.1" />
+                <circle cx="0" cy="0" r={nodeSize} fill="#140b23" stroke="rgba(168, 85, 247, 0.3)" strokeWidth="1" />
+                <circle cx="0" cy="0" r={nodeSize} fill={skill.color} opacity="0.1" />
                 
                 {/* SVG ForeignObject to render standard React components like react-icons */}
-                <foreignObject x="-10" y="-10" width="20" height="20">
+                <foreignObject x={-(iconSize/2 + 2)} y={-(iconSize/2 + 2)} width={iconSize + 4} height={iconSize + 4}>
                   <div className="w-full h-full flex items-center justify-center" style={{ color: skill.color }}>
-                    {React.cloneElement(skill.icon as React.ReactElement<{ size: number }>, { size: isMobile ? 12 : 18 })}
+                    {React.cloneElement(skill.icon as React.ReactElement<{ size: number }>, { size: iconSize })}
                   </div>
                 </foreignObject>
               </motion.g>

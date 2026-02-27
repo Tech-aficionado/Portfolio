@@ -58,20 +58,40 @@ export default function Projects(): React.JSX.Element {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="mb-16 sm:mb-20 lg:mb-32 last:mb-0"
+              viewport={{ once: true, margin: "-50px" }}
+              className="mb-16 sm:mb-20 lg:mb-32 last:mb-0 w-full"
             >
-              <div className={`relative grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center ${
-                isEven ? "lg:grid-flow-dense" : ""
-              }`}>
-                {/* Text Content */}
-                <div className={`${isEven ? "lg:col-start-2" : ""}`}>
+              <div className="relative flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
+                
+                {/* Image Content - Shown first on mobile */}
+                <div className={`w-full order-1 ${isEven ? "lg:col-start-1 lg:row-start-1" : "lg:col-start-2"}`}>
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.9, rotate: isEven ? -2 : 2 }}
+                    whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true }}
+                    className="relative w-full aspect-video rounded-2xl overflow-hidden bg-slate-900/50 p-2 sm:p-2 lg:p-3 shadow-2xl backdrop-blur-sm border border-white/5 hover:border-purple-500/30 transition-colors duration-500"
+                  >
+                    <div className="relative w-full h-full rounded-lg overflow-hidden bg-[#0A0A0A]">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        className="object-contain transition-transform duration-700 hover:scale-105"
+                      />
+                    </div>
+                  </motion.div>
+                </div>
+
+                {/* Text Content - Shown second on mobile */}
+                <div className={`w-full order-2 ${isEven ? "lg:col-start-2" : "lg:col-start-1 lg:row-start-1"}`}>
                   <motion.p 
                     initial={{ opacity: 0, x: isEven ? 20 : -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
                     viewport={{ once: true }}
-                    className="text-purple-400 text-base sm:text-lg lg:text-xl mb-2 font-medium"
+                    className="text-purple-400 text-base sm:text-lg lg:text-xl mb-2 font-medium text-center lg:text-left"
                   >
                     Featured Project
                   </motion.p>
@@ -80,12 +100,12 @@ export default function Projects(): React.JSX.Element {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.4 }}
                     viewport={{ once: true }}
-                    className="text-3xl lg:text-4xl font-bold text-white mb-6"
+                    className="text-3xl lg:text-4xl font-bold text-white mb-6 text-center lg:text-left"
                   >
                     {project.title}
                   </motion.h3>
                   
-                  {/* Description Card - extends over image on LG, full width on Mobile */}
+                  {/* Description Card */}
                   <div className="relative z-10 mb-6 sm:mb-8">
                     <motion.div 
                       initial={{ opacity: 0, scale: 0.95 }}
@@ -109,7 +129,7 @@ export default function Projects(): React.JSX.Element {
                       whileInView={{ opacity: 1 }}
                       transition={{ duration: 0.5, delay: 0.6 }}
                       viewport={{ once: true }}
-                      className="flex gap-4"
+                      className="flex justify-center lg:justify-start gap-4"
                     >
                       <a
                         href={project.link}
@@ -135,27 +155,6 @@ export default function Projects(): React.JSX.Element {
                       </a>
                     </motion.div>
                   )}
-                </div>
-
-                {/* Image Content */}
-                <div className={`${isEven ? "lg:col-start-1 lg:row-start-1" : ""}`}>
-                  <motion.div 
-                    initial={{ opacity: 0, scale: 0.9, rotate: isEven ? -2 : 2 }}
-                    whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: true }}
-                    className="relative w-full aspect-video rounded-2xl overflow-hidden bg-slate-900/50 p-2 sm:p-2 lg:p-3 shadow-2xl backdrop-blur-sm border border-white/5 hover:border-purple-500/30 transition-colors duration-500"
-                  >
-                    <div className="relative w-full h-full rounded-lg overflow-hidden bg-[#0A0A0A]">
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 50vw"
-                        className="object-contain transition-transform duration-700 hover:scale-105"
-                      />
-                    </div>
-                  </motion.div>
                 </div>
               </div>
             </motion.div>
