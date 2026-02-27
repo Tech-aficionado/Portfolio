@@ -1,14 +1,23 @@
+"use client";
+
+import { motion } from "framer-motion";
 import AnimatedTechSphere from "./AnimatedTechSphere";
 
 export default function About(): React.JSX.Element {
   return (
     <section id="about" className="py-20 px-6 relative overflow-hidden">
       <div className="container mx-auto max-w-6xl relative z-10">
-        <div className="text-center mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-6 lg:mb-10"
+        >
           <h2 className="text-2xl md:text-3xl max-w-4xl mx-auto leading-relaxed font-medium">
             My mission is to empower businesses and startups by delivering <span className="text-purple-400 font-semibold">robust, user-centric web solutions</span><br/> <span className="text-lg text-white/70">that drive engagement and growth.</span>
           </h2>
-        </div>
+        </motion.div>
         
         {/* Animated Tech Sphere replacing the static image */}
         <AnimatedTechSphere />
