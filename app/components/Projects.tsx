@@ -21,17 +21,17 @@ const featuredProjects: Project[] = [
   },
   {
     id: 2,
-    title: "Todotify",
-    description: "A comprehensive task management solution allowing users to efficiently organize, track, and manage their daily workflows with a seamless user experience.",
-    link: "https://todotify.ash-labs.tech",
-    image: "/assets/image.png",
-  },
-  {
-    id: 3,
     title: "Quizify",
     description: "An AI-powered quiz generation platform that crafts engaging learning experiences for users on any topic, complete with an interactive UI.",
     link: "https://quizify.ash-labs.tech",
     image: "/assets/image 2.png",
+  },
+  {
+    id: 3,
+    title: "Todotify",
+    description: "A comprehensive task management solution allowing users to efficiently organize, track, and manage their daily workflows with a seamless user experience.",
+    link: "https://todotify.ash-labs.tech",
+    image: "/assets/image.png",
   }
 ];
 
