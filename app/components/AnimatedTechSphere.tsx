@@ -104,7 +104,7 @@ export default function AnimatedTechSphere() {
           
           {/* Decorative Elements */}
           <g transform="translate(-300, -50)" className="opacity-40">
-            <circle r="4" fill="white" />
+            <circle r={4} fill="white" />
           </g>
           <g transform="translate(300, -80)" className="opacity-30">
             <rect width="8" height="8" fill="white" transform="rotate(45)" />
@@ -114,24 +114,31 @@ export default function AnimatedTechSphere() {
         {/* Central Orb */}
         <g transform="translate(400, 460)">
           {/* Backdrop purple hue glow */}
-          <circle cx="0" cy="-20" r="180" fill="url(#glowPulse)" />
+          <circle cx="0" cy="-20" r={180} fill="url(#glowPulse)" />
           
           {/* Core sphere core */}
           {mounted && (
             <motion.circle 
               cx="0" cy="-10" 
-              r={mounted && typeof window !== 'undefined' && window.innerWidth < 640 ? 75 : 60} 
+              r={typeof window !== 'undefined' && window.innerWidth < 640 ? 75 : 60} 
               fill="#4b1e7a" 
               filter="url(#blurGlow)"
               animate={{ 
-                r: mounted && typeof window !== 'undefined' && window.innerWidth < 640 ? [70, 75, 70] : [55, 60, 55], 
+                r: typeof window !== 'undefined' && window.innerWidth < 640 ? [70, 75, 70] : [55, 60, 55], 
                 opacity: [0.8, 1, 0.8] 
               }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             />
           )}
           
-          <circle cx="0" cy="-10" r={mounted && typeof window !== 'undefined' && window.innerWidth < 640 ? 65 : 50} fill="rgba(88, 28, 135, 0.95)" stroke="rgba(168, 85, 247, 0.6)" strokeWidth="1.5" />
+          <circle 
+            cx="0" 
+            cy="-10" 
+            r={mounted ? (typeof window !== 'undefined' && window.innerWidth < 640 ? 65 : 50) : 50} 
+            fill="rgba(88, 28, 135, 0.95)" 
+            stroke="rgba(168, 85, 247, 0.6)" 
+            strokeWidth="1.5" 
+          />
           
           <g transform="translate(0, -10)">
             <motion.g
@@ -195,7 +202,7 @@ export default function AnimatedTechSphere() {
                 }}
               >
                 {/* Node Background */}
-                <circle cx="0" cy="0" r={nodeSize} fill="#140b23" stroke="rgba(168, 85, 247, 0.3)" strokeWidth="1" />
+                <circle cx="0" cy="0" r={nodeSize} fill="#140b23" stroke="rgba(168, 85, 247, 0.3)" strokeWidth="1.5" />
                 <circle cx="0" cy="0" r={nodeSize} fill={skill.color} opacity="0.1" />
                 
                 {/* SVG ForeignObject to render standard React components like react-icons */}
