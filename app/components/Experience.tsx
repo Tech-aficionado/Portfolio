@@ -1,88 +1,96 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
 
-interface ExperienceCard {
+interface ExperienceItem {
   id: number;
-  title: string;
+  role: string;
+  company: string;
+  period: string;
   description: string;
-  icon: string;
+  stack: string[];
 }
 
-const experienceCards: ExperienceCard[] = [
+const experiences: ExperienceItem[] = [
   {
     id: 1,
-    title: "Full Stack Developer - Intern",
-    description: "During my internship at **TedForge Solutions Pvt. Ltd.**, I spearheaded the development of high-performance web applications. I focused on building scalable frontend components with **React & Angular**, while architecting secure and efficient RESTful APIs using **Node.js**. I also optimized database queries in **MySQL and MongoDB**, significantly improving data retrieval speeds and overall system responsiveness.",
-    icon: "/cards/card-1.png",
+    role: "Full Stack Developer — Intern",
+    company: "TedForge Solutions Pvt. Ltd.",
+    period: "Dec 2023 – May 2025",
+    description:
+      "Spearheaded the development of high-performance web applications. Built scalable frontend components with React & Angular, while architecting secure and efficient RESTful APIs using Node.js. Optimized database queries in MySQL and MongoDB, significantly improving data retrieval speeds and overall system responsiveness.",
+    stack: ["React", "Angular", "Node.js", "MySQL", "MongoDB"],
   },
 ];
 
 export default function Experience(): React.JSX.Element {
   return (
-    <section id="experience" className="py-20 px-4 sm:px-6">
+    <section id="experience" className="py-24 sm:py-32 px-4 sm:px-6">
       <div className="container mx-auto max-w-6xl">
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="text-4xl lg:text-5xl font-bold text-white mb-12 text-center"
-        >
-          Work <span className="text-purple-400">Experience</span>
-        </motion.h2>
-        
-        <div className="flex justify-center">
-          {experienceCards.map((card, index) => (
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
+          {/* Section label */}
+          <div className="lg:col-span-4">
             <motion.div
-              key={card.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="group relative bg-[#1E0D3A]/20 backdrop-blur-md rounded-3xl p-8 sm:p-12 border border-white/5 hover:border-purple-500/30 transition-all duration-700 flex flex-col lg:flex-row items-center lg:items-start gap-10 hover:bg-[#1E0D3A]/30 overflow-hidden max-w-4xl"
+              className="lg:sticky lg:top-28"
             >
-              {/* Background Glow Effect on Hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <span className="text-xs uppercase tracking-[0.3em] text-accent">
+                03 / Experience
+              </span>
+              <h2 className="mt-4 font-display text-4xl sm:text-5xl font-medium leading-tight text-ink">
+                Where I&apos;ve
+                <br />
+                <span className="italic">worked</span>
+              </h2>
+            </motion.div>
+          </div>
 
-              <motion.div 
-                whileHover={{ scale: 1.05, rotate: -2 }}
-                className="flex-shrink-0 relative z-10 w-32 h-32 sm:w-40 sm:h-40 lg:w-56 lg:h-56 drop-shadow-[0_0_20px_rgba(168,85,247,0.3)]"
+          {/* Entries */}
+          <div className="lg:col-span-8">
+            {experiences.map((item) => (
+              <motion.article
+                key={item.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+                viewport={{ once: true }}
+                className="group border-t border-line pt-8 first:border-t-0 first:pt-0"
               >
-                <Image
-                  src={card.icon}
-                  alt={card.title}
-                  fill
-                  className="object-contain"
-                />
-              </motion.div>
-              
-              <div className="relative z-10 text-center lg:text-left flex-1">
-                <div className="inline-block px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-sm font-medium mb-4">
-                  Dec 2023 – May 2025
+                <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2">
+                  <h3 className="font-display text-2xl sm:text-3xl font-medium text-ink group-hover:text-accent transition-colors">
+                    {item.role}
+                  </h3>
+                  <span className="text-sm text-muted whitespace-nowrap">
+                    {item.period}
+                  </span>
                 </div>
-                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 group-hover:text-purple-300 transition-colors">
-                  {card.title}
-                </h3>
-                <p className="text-white/80 text-base sm:text-lg leading-relaxed mb-6">
-                  {card.description}
+
+                <p className="mt-1 text-base font-medium text-accent">
+                  {item.company}
                 </p>
-                <div className="flex flex-wrap justify-center lg:justify-start gap-3">
-                  {["React", "Angular", "Node.js", "MySQL", "MongoDB"].map((tech) => (
-                    <span key={tech} className="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-white/50 text-xs font-medium tracking-wider uppercase">
+
+                <p className="mt-5 text-base sm:text-lg leading-relaxed text-muted max-w-2xl">
+                  {item.description}
+                </p>
+
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {item.stack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="rounded-full border border-line bg-paper-2/50 px-3 py-1 text-xs font-medium text-ink/70"
+                    >
                       {tech}
                     </span>
                   ))}
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.article>
+            ))}
+          </div>
         </div>
       </div>
     </section>
   );
 }
-
-

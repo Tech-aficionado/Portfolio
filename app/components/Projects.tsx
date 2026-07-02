@@ -2,167 +2,163 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import TiltCard from "./TiltCard";
 
 interface Project {
   id: number;
   title: string;
+  tag: string;
   description: string;
   image: string;
+  stack: string[];
   link?: string;
 }
 
 const featuredProjects: Project[] = [
   {
     id: 1,
+    title: "GhostRelay",
+    tag: "Privacy · SaaS",
+    description:
+      "A privacy-first email aliasing service running on Cloudflare's edge network. Generate aliases that forward to your real inbox — shielding your identity from spam, breaches, and tracking. Features one-click alias creation, instant disabling, and a real-time privacy dashboard, with sub-50ms delivery across 250+ edge locations.",
+    stack: ["Cloudflare Workers", "D1", "Next.js", "React 19", "Resend"],
+    link: "https://ghostrelay.me",
+    image: "/assets/ghostrelay.png",
+  },
+  {
+    id: 2,
     title: "FiTrack AI",
-    description: "An AI-powered personal fitness assistant. It utilizes neural networks and adaptive machine learning algorithms to analyze performance patterns, dynamically adjust workout intensity, and provide real-time tracking for optimal fitness results.",
+    tag: "AI · Fitness",
+    description:
+      "An AI-powered personal fitness assistant. It utilizes neural networks and adaptive machine learning algorithms to analyze performance patterns, dynamically adjust workout intensity, and provide real-time tracking for optimal fitness results.",
+    stack: ["Next.js", "Python", "Machine Learning"],
     link: "https://fitrack-ai.ash-labs.tech/",
     image: "/assets/image 3.png",
   },
   {
-    id: 2,
+    id: 3,
     title: "Quizify",
-    description: "An AI-powered quiz generation platform that crafts engaging learning experiences for users on any topic, complete with an interactive UI.",
+    tag: "AI · Education",
+    description:
+      "An AI-powered quiz generation platform that crafts engaging learning experiences for users on any topic, complete with an interactive UI.",
+    stack: ["Next.js", "React", "AI"],
     link: "https://quizify.ash-labs.tech",
     image: "/assets/image 2.png",
   },
-  {
-    id: 3,
-    title: "Todotify",
-    description: "A comprehensive task management solution allowing users to efficiently organize, track, and manage their daily workflows with a seamless user experience.",
-    link: "https://todotify.ash-labs.tech",
-    image: "/assets/image.png",
-  }
 ];
 
 export default function Projects(): React.JSX.Element {
   return (
-    <section id="lab" className="py-20 px-4 sm:px-6">
-      <div className="container mx-auto max-w-7xl">
-        <motion.h2 
+    <section id="lab" className="py-24 sm:py-32 px-4 sm:px-6">
+      <div className="container mx-auto max-w-6xl">
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-bold text-white mb-16 text-center"
+          className="mb-16 sm:mb-20 max-w-2xl"
         >
-          Selected <span className="text-purple-400">Works</span>
-        </motion.h2>
+          <span className="text-xs uppercase tracking-[0.3em] text-accent">
+            04 / Lab
+          </span>
+          <h2 className="mt-4 font-display text-4xl sm:text-6xl font-medium leading-tight text-ink">
+            Selected <span className="italic">works</span>
+          </h2>
+        </motion.div>
 
-        {featuredProjects.map((project, index) => {
-          const isEven = index % 2 === 1;
-          
-          return (
-            <motion.div 
-              key={project.id} 
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              viewport={{ once: true, margin: "-50px" }}
-              className="mb-16 sm:mb-20 lg:mb-32 last:mb-0 w-full"
-            >
-              <div className="relative flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
-                
-                {/* Image Content - Shown first on mobile */}
-                <div className={`w-full order-1 ${isEven ? "lg:col-start-1 lg:row-start-1" : "lg:col-start-2"}`}>
-                  <motion.div 
-                    initial={{ opacity: 0, scale: 0.9, rotate: isEven ? -2 : 2 }}
-                    whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: true }}
-                    className="relative w-full aspect-video rounded-2xl overflow-hidden bg-slate-900/50 p-2 sm:p-2 lg:p-3 shadow-2xl backdrop-blur-sm border border-white/5 hover:border-purple-500/30 transition-colors duration-500"
-                  >
-                    <div className="relative w-full h-full rounded-lg overflow-hidden bg-[#0A0A0A]">
+        <div className="space-y-20 sm:space-y-28">
+          {featuredProjects.map((project, index) => {
+            const flip = index % 2 === 1;
+            return (
+              <motion.article
+                key={project.id}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+                viewport={{ once: true, margin: "-60px" }}
+                className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center"
+              >
+                {/* Image */}
+                <div
+                  className={`lg:col-span-7 ${
+                    flip ? "lg:order-2" : "lg:order-1"
+                  }`}
+                  style={{ perspective: 1200 }}
+                >
+                  <TiltCard className="rounded-2xl">
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group block relative w-full aspect-video rounded-2xl overflow-hidden border border-line bg-paper-2 shadow-[0_20px_50px_rgba(23,19,14,0.08)]"
+                    >
                       <Image
                         src={project.image}
                         alt={project.title}
                         fill
-                        sizes="(max-width: 1024px) 100vw, 50vw"
-                        className="object-contain transition-transform duration-700 hover:scale-105"
+                        sizes="(max-width: 1024px) 100vw, 60vw"
+                        className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
                       />
-                    </div>
-                  </motion.div>
+                      <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </a>
+                  </TiltCard>
                 </div>
 
-                {/* Text Content - Shown second on mobile */}
-                <div className={`w-full order-2 ${isEven ? "lg:col-start-2" : "lg:col-start-1 lg:row-start-1"}`}>
-                  <motion.p 
-                    initial={{ opacity: 0, x: isEven ? 20 : -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                    viewport={{ once: true }}
-                    className="text-purple-400 text-base sm:text-lg lg:text-xl mb-2 font-medium text-center lg:text-left"
-                  >
-                    Featured Project
-                  </motion.p>
-                  <motion.h3 
-                    initial={{ opacity: 0, x: isEven ? 20 : -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
-                    viewport={{ once: true }}
-                    className="text-3xl lg:text-4xl font-bold text-white mb-6 text-center lg:text-left"
-                  >
-                    {project.title}
-                  </motion.h3>
-                  
-                  {/* Description Card */}
-                  <div className="relative z-10 mb-6 sm:mb-8">
-                    <motion.div 
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.6, delay: 0.5 }}
-                      viewport={{ once: true }}
-                      className={`bg-gradient-to-br from-[#1E0D3A]/90 to-[#120526]/95 backdrop-blur-xl rounded-2xl p-6 lg:p-8 border border-white/10 shadow-2xl ${
-                        isEven ? "lg:ml-[-15%] lg:mr-0" : "lg:mr-[-15%] lg:ml-0"
-                      }`}
-                    >
-                      <p className="text-white/90 text-sm sm:text-base lg:text-lg leading-relaxed">
-                        {project.description}
-                      </p>
-                    </motion.div>
+                {/* Text */}
+                <div
+                  className={`lg:col-span-5 ${
+                    flip ? "lg:order-1" : "lg:order-2"
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="font-display text-sm text-accent">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="h-px w-8 bg-line" />
+                    <span className="text-xs uppercase tracking-[0.25em] text-muted">
+                      {project.tag}
+                    </span>
                   </div>
-                  
-                  {/* Website link */}
-                  {project.link && (
-                    <motion.div 
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      transition={{ duration: 0.5, delay: 0.6 }}
-                      viewport={{ once: true }}
-                      className="flex justify-center lg:justify-start gap-4"
-                    >
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 hover:border-purple-500/50 transition-all duration-300"
-                        aria-label="Visit project website"
+                  <h3 className="mt-3 font-display text-3xl sm:text-4xl font-medium text-ink">
+                    {project.title}
+                  </h3>
+                  <p className="mt-5 text-base sm:text-lg leading-relaxed text-muted">
+                    {project.description}
+                  </p>
+
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {project.stack.map((tech) => (
+                      <span
+                        key={tech}
+                        className="rounded-full border border-line bg-paper-2/50 px-3 py-1 text-xs font-medium text-ink/70"
                       >
-                        <span className="text-sm font-medium">View Live Site</span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                        >
-                          <line x1="7" y1="17" x2="17" y2="7" />
-                          <polyline points="7 7 17 7 17 17" />
-                        </svg>
-                      </a>
-                    </motion.div>
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group mt-7 inline-flex items-center gap-2 text-sm font-medium text-ink"
+                      aria-label={`Visit ${project.title}`}
+                    >
+                      <span className="border-b border-ink/30 pb-0.5 group-hover:border-accent group-hover:text-accent transition-colors">
+                        View live site
+                      </span>
+                      <span className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
+                        ↗
+                      </span>
+                    </a>
                   )}
                 </div>
-              </div>
-            </motion.div>
-          );
-        })}
+              </motion.article>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
 }
-
-

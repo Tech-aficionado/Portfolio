@@ -1,19 +1,34 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
 import Image from "next/image";
 import { useState, useEffect, useMemo } from "react";
+import CountUp from "./CountUp";
 
 export default function Banner(): React.JSX.Element {
-  const texts = useMemo(() => ["Full Stack Developer", "Software Engineer", "Web Developer"], []);
+  const texts = useMemo(
+    () => ["Full Stack Developer", "Software Engineer", "Web Developer"],
+    []
+  );
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [typingSpeed, setTypingSpeed] = useState(100);
 
+  // Cursor-follow spotlight
+  const spotX = useMotionValue(-400);
+  const spotY = useMotionValue(-400);
+  const spotlight = useMotionTemplate`radial-gradient(500px circle at ${spotX}px ${spotY}px, rgba(255, 78, 26, 0.10), transparent 65%)`;
+
+  function handleMove(e: React.MouseEvent<HTMLElement>) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    spotX.set(e.clientX - rect.left);
+    spotY.set(e.clientY - rect.top);
+  }
+
   useEffect(() => {
     const currentText = texts[currentTextIndex];
-    
+
     if (!isDeleting) {
       if (displayedText.length < currentText.length) {
         const timeout = setTimeout(() => {
@@ -44,142 +59,149 @@ export default function Banner(): React.JSX.Element {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center pt-24 pb-12 sm:pt-28 sm:pb-20 px-4 sm:px-6 relative overflow-hidden"
+      onMouseMove={handleMove}
+      className="relative min-h-screen flex items-center pt-28 pb-16 px-4 sm:px-6"
     >
-      {/* Background glow for the entire section */}
-      <div className="absolute top-1/4 left-0 w-64 h-64 sm:w-96 sm:h-96 bg-purple-900/20 blur-[100px] sm:blur-[150px] rounded-full pointer-events-none"></div>
-      
+      {/* Cursor-follow spotlight */}
+      <motion.div
+        aria-hidden="true"
+        style={{ background: spotlight }}
+        className="pointer-events-none absolute inset-0 z-0 hidden sm:block"
+      />
       <div className="container mx-auto max-w-6xl relative z-10">
-        <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-10 lg:gap-8">
-          
-          {/* Left side - All Text Content */}
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+          {/* Left — text */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="flex-1 space-y-6 sm:space-y-8 text-center lg:text-left w-full"
+            className="lg:col-span-7 text-center lg:text-left"
           >
-            <div>
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs sm:text-sm font-medium mb-4 sm:mb-6 backdrop-blur-sm"
+            <div className="inline-flex items-center gap-2 rounded-full border border-line bg-paper-2/60 px-4 py-1.5 text-xs font-medium text-muted mb-6">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+              </span>
+              Available for new projects
+            </div>
+
+            <h1 className="font-display text-5xl sm:text-7xl lg:text-[5.5rem] font-medium leading-[0.98] tracking-tight text-ink">
+              Crafting
+              <br />
+              digital{" "}
+              <span className="italic text-accent">excellence</span>
+            </h1>
+
+            <p className="mt-6 text-xl sm:text-2xl font-medium text-ink/80">
+              I&apos;m Shivansh, a{" "}
+              <span className="text-accent">{displayedText}</span>
+              <span className="animate-pulse font-light text-muted">|</span>
+            </p>
+
+            <p className="mt-5 max-w-xl mx-auto lg:mx-0 text-base sm:text-lg text-muted leading-relaxed">
+              Skilled in JavaScript, Python, React, Next.js, and Cloud. I build
+              robust, user-centric web solutions that empower businesses and
+              startups to scale dynamically in the digital landscape.
+            </p>
+
+            <div className="mt-9 flex flex-wrap items-center justify-center lg:justify-start gap-4">
+              <a
+                href="#contact"
+                className="group inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm sm:text-base font-medium text-paper hover:bg-accent transition-colors"
               >
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
+                Let&apos;s collaborate
+                <span className="transition-transform group-hover:translate-x-1">
+                  →
                 </span>
-                Hello! I Am Shivansh Goel
-              </motion.div>
-              
-              <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight sm:leading-[1.1] mb-4 sm:mb-6 tracking-tight"
+              </a>
+              <a
+                href="#lab"
+                className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-7 py-3.5 text-sm sm:text-base font-medium text-ink hover:border-ink/50 transition-colors"
               >
-                Crafting Digital <br className="hidden lg:block" />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-500 to-indigo-500 drop-shadow-[0_0_30px_rgba(168,85,247,0.4)]">
-                  Excellence
-                </span>
-              </motion.h1>
-              
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white/90 mb-4 sm:mb-6 h-10 sm:h-12"
-              >
-                I&apos;m a <span className="text-purple-400">{displayedText}</span><span className="animate-pulse font-light text-white/50">|</span>
-              </motion.p>
-              
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-                className="text-base sm:text-lg text-white/70 max-w-xl mx-auto lg:mx-0 leading-relaxed mb-8 sm:mb-10 px-2 sm:px-0"
-              >
-                Skilled in JavaScript, Python, React, Next.js, and Cloud. I build robust, user-centric web solutions that empower businesses and startups to scale dynamically in the digital landscape.
-              </motion.p>
-              
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-                className="flex flex-wrap items-center justify-center lg:justify-start gap-4"
-              >
-                <a 
-                  href="#contact" 
-                  className="px-6 py-3 sm:px-8 sm:py-4 rounded-full bg-purple-600 hover:bg-purple-700 text-white font-medium transition-all shadow-[0_0_20px_rgba(147,51,234,0.4)] hover:shadow-[0_0_30px_rgba(147,51,234,0.6)] hover:-translate-y-1 text-sm sm:text-base"
-                >
-                  Let&apos;s Collaborate
-                </a>
-                <div className="flex items-center gap-3 px-4 py-3 sm:px-6 sm:py-4 rounded-full bg-white/5 border border-white/10 text-white/80 text-xs sm:text-sm backdrop-blur-sm">
-                  <span>📍 Based in India 🇮🇳</span>
-                </div>
-              </motion.div>
+                View work
+              </a>
+            </div>
+
+            <div className="mt-8 flex items-center justify-center lg:justify-start gap-2 text-sm text-muted">
+              <span>📍 Based in India 🇮🇳</span>
             </div>
           </motion.div>
-          
-          {/* Right side - 3D Character Image + Deco Elements */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.8 }}
+
+          {/* Right — portrait */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="flex-1 w-full flex justify-center lg:justify-end relative mt-6 lg:mt-0"
+            className="lg:col-span-5 flex justify-center lg:justify-end"
           >
-            <div className="relative w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] lg:w-[380px] lg:h-[380px]">
-              {/* Massive center glow */}
-              <div className="absolute inset-0 bg-purple-600/30 blur-[80px] sm:blur-[100px] rounded-full mix-blend-screen"></div>
-              
-              {/* The avatar setup - Max size limits applied to keep source image perfectly crisp */}
-              <motion.div 
-                animate={{ y: [0, -15, 0] }}
+            <div className="relative w-[280px] h-[340px] sm:w-[340px] sm:h-[420px]">
+              {/* Accent panel */}
+              <div className="absolute inset-0 rounded-[2rem] bg-accent-soft border border-accent/20 rotate-3" />
+              <div className="absolute inset-0 rounded-[2rem] bg-paper-2 border border-line -rotate-2" />
+
+              {/* Portrait */}
+              <motion.div
+                animate={{ y: [0, -12, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="relative w-full h-full"
+                className="absolute inset-x-0 -top-4 bottom-0"
               >
                 <Image
                   src="/assets/me.png"
-                  alt="Shivansh Goel - Developer"
+                  alt="Shivansh Goel — Full Stack Developer"
                   fill
-                  className="object-contain z-10 relative drop-shadow-[0_0_40px_rgba(168,85,247,0.4)]"
+                  className="object-contain object-bottom"
                   priority
-                  sizes="(max-width: 768px) 280px, 380px"
+                  sizes="(max-width: 768px) 280px, 340px"
                   quality={100}
                 />
               </motion.div>
-              
-              {/* High-Fidelity 3D Glass Floating Elements */}
-              {/* Top Right: React Icon Card */}
-              <motion.div 
-                animate={{ y: [0, -10, 0], rotate: [12, 15, 12] }}
+
+              {/* Floating stat badges */}
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-4 -right-2 lg:top-8 lg:-right-10 w-14 h-14 sm:w-16 sm:h-16 lg:w-[84px] lg:h-[84px] bg-gradient-to-br from-[#2a1b4d] to-[#120822] border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.8),inset_0_1px_2px_rgba(255,255,255,0.2)] rounded-[1.2rem] backdrop-blur-xl flex items-center justify-center z-20"
+                className="absolute -left-4 sm:-left-8 top-10 rounded-2xl bg-paper border border-line shadow-[0_8px_30px_rgba(23,19,14,0.08)] px-4 py-3"
               >
-                <svg viewBox="-3 -3 30 30" className="w-8 h-8 sm:w-10 sm:h-10 lg:w-14 lg:h-14 text-[#61DAFB] drop-shadow-[0_0_12px_rgba(97,218,251,0.6)]" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx={12} cy={12} r={2.5} fill="currentColor" />
-                  <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(30 12 12)" />
-                  <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(90 12 12)" />
-                  <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(150 12 12)" />
-                </svg>
+                <p className="font-display text-2xl font-semibold text-ink leading-none">
+                  <CountUp value={1.5} decimals={1} suffix="+" />
+                </p>
+                <p className="text-[11px] uppercase tracking-wider text-muted mt-1">
+                  Years exp
+                </p>
               </motion.div>
-              
-              {/* Bottom Left: Lightning Icon Card */}
-              <motion.div 
-                animate={{ y: [0, 10, 0], rotate: [-12, -15, -12] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute bottom-4 -left-4 lg:bottom-12 lg:-left-12 w-14 h-14 sm:w-16 sm:h-16 lg:w-[84px] lg:h-[84px] bg-gradient-to-br from-[#2a164d] to-[#0f0421] border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.8),inset_0_1px_2px_rgba(255,255,255,0.2)] rounded-full backdrop-blur-xl flex items-center justify-center z-20"
+
+              <motion.div
+                animate={{ y: [0, 8, 0] }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1,
+                }}
+                className="absolute -right-2 sm:-right-6 bottom-16 rounded-2xl bg-ink text-paper shadow-[0_8px_30px_rgba(23,19,14,0.15)] px-4 py-3"
               >
-                <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-8 sm:h-8 lg:w-11 lg:h-11 text-[#FF9D00] drop-shadow-[0_0_15px_rgba(255,157,0,0.8)]" fill="currentColor">
-                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-                </svg>
+                <p className="font-display text-2xl font-semibold leading-none">
+                  <CountUp value={10} suffix="+" />
+                </p>
+                <p className="text-[11px] uppercase tracking-wider text-paper/60 mt-1">
+                  Projects
+                </p>
               </motion.div>
-              
             </div>
           </motion.div>
-          
         </div>
+      </div>
+
+      {/* Scroll hint */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 text-muted">
+        <span className="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
+        <motion.span
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 1.6, repeat: Infinity }}
+          className="text-lg"
+        >
+          ↓
+        </motion.span>
       </div>
     </section>
   );
