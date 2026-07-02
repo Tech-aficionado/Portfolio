@@ -1,14 +1,26 @@
 @import "tailwindcss";
 
 :root {
-  --background: #110720;
-  --foreground: #ffffff;
+  /* Warm editorial light theme */
+  --paper: #f4f1e9;
+  --paper-2: #ece7db;
+  --ink: #17130e;
+  --muted: #6f675a;
+  --accent: #ff4e1a;
+  --accent-soft: #ffe8de;
+  --line: rgba(23, 19, 14, 0.12);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-poppins), sans-serif;
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-line: var(--line);
+  --font-sans: var(--font-inter), sans-serif;
+  --font-display: var(--font-fraunces), serif;
 }
 
 * {
@@ -19,22 +31,104 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Hide scrollbars while keeping scroll functionality */
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE / old Edge */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none; /* Chrome, Safari, Edge */
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
+@layer base {
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 img {
   max-width: 100%;
   height: auto;
   display: block;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* Subtle paper grain via layered gradients */
+.paper-grain {
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255, 78, 26, 0.04), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(23, 19, 14, 0.03), transparent 45%);
+}
+
+/* Marquee animation for the skills strip */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+}
+
+/* Display heading utility */
+.font-display {
+  font-family: var(--font-fraunces), Georgia, serif;
 }

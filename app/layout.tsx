@@ -1,26 +1,31 @@
 import type { Metadata, Viewport } from "next";
-import { Poppins, Great_Vibes } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next"
+import { Inter, Fraunces } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 
 import "./globals.css";
 
-const poppins = Poppins({
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
+const inter = Inter({
+  weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
-  variable: "--font-poppins",
+  variable: "--font-inter",
   display: "swap",
 });
 
-const signatureFont = Great_Vibes({
-  weight: "400",
+const fraunces = Fraunces({
+  weight: ["400", "500", "600", "700", "900"],
+  style: ["normal", "italic"],
   subsets: ["latin"],
-  variable: "--font-signature",
+  variable: "--font-fraunces",
   display: "swap",
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ash-labs.tech"),
   title: "Shivansh Goel - Full Stack Developer",
   description: "A passionate Full Stack Developer and Software Engineer. Creating meaningful and robust digital solutions.",
+  alternates: {
+    canonical: "/",
+  },
   keywords: [
     "Shivansh Goel",
     "Software Engineer",
@@ -37,7 +42,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://shivanshgoel.com",
+    url: "https://ash-labs.tech",
     title: "Shivansh Goel - Full Stack Developer",
     description: "A passionate Full Stack Developer and Software Engineer. Creating meaningful and robust digital solutions.",
     siteName: "Shivansh Goel Portfolio",
@@ -64,6 +69,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
+  themeColor: "#f4f1e9",
 };
 
 export default function RootLayout({
@@ -73,12 +79,38 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="canonical" href="https://ibiimemon.com" />
-      </head>
       <body
-        className={`${poppins.variable} ${signatureFont.variable} font-sans antialiased`}
+        className={`${inter.variable} ${fraunces.variable} font-sans antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Shivansh Goel",
+              jobTitle: "Full Stack Developer",
+              description:
+                "A passionate Full Stack Developer and Software Engineer creating robust, user-centric digital solutions.",
+              email: "mailto:shivansh.goela12@gmail.com",
+              url: "https://ash-labs.tech",
+              knowsAbout: [
+                "JavaScript",
+                "TypeScript",
+                "React",
+                "Next.js",
+                "Node.js",
+                "Python",
+                "AWS",
+              ],
+              sameAs: [
+                "https://github.com/Tech-aficionado",
+                "https://www.linkedin.com/in/shivansh-goel-5b2309174/",
+                "https://www.instagram.com/shivanxx.__/",
+              ],
+            }),
+          }}
+        />
         {children}
         <Analytics />
       </body>
