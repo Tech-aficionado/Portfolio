@@ -1,7 +1,5 @@
 # Shivansh Goel — Portfolio 🚀
 
-[![Site preview](/public/assets/thumbnail.png)](https://ash-labs.tech)
-
 The personal portfolio of **Shivansh Goel** — a Full Stack Developer and Software Engineer. A fast, accessible, single-page site built with [Next.js](https://nextjs.org/), [TypeScript](https://www.typescriptlang.org/), and [Tailwind CSS](https://tailwindcss.com), featuring a warm editorial design, smooth motion, and production-grade SEO.
 
 🔗 **Live:** [ash-labs.tech](https://ash-labs.tech)
