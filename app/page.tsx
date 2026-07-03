@@ -4,6 +4,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Header from "./components/Header";
 import ScrollProgress from "./components/ScrollProgress";
+import BackToTop from "./components/BackToTop";
 import Banner from "./components/Banner";
 import Experience from "./components/Experience";
 import About from "./components/About";
@@ -41,6 +42,7 @@ export default function Home(): React.JSX.Element {
             <Experience />
             <Projects />
             <Footer />
+            <BackToTop />
           </motion.div>
         )}
       </AnimatePresence>
