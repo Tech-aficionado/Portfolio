@@ -1,106 +1,133 @@
-# Shivansh Goel — Portfolio 🚀
+<div align="center">
 
-The personal portfolio of **Shivansh Goel** — a Full Stack Developer and Software Engineer. A fast, accessible, single-page site built with [Next.js](https://nextjs.org/), [TypeScript](https://www.typescriptlang.org/), and [Tailwind CSS](https://tailwindcss.com), featuring a warm editorial design, smooth motion, and production-grade SEO.
+# ✦ Shivansh Goel — Portfolio
 
-🔗 **Live:** [ash-labs.tech](https://ash-labs.tech)
+**A warm, editorial developer portfolio** — fast, accessible, and packed with delightful detail.
 
-> ℹ️ The preview above shows the previous design and will be refreshed with a new screenshot.
+[![Next.js](https://img.shields.io/badge/Next.js-16-000000?style=flat&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=flat&logo=react&logoColor=black)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-06B6D4?style=flat&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Framer Motion](https://img.shields.io/badge/Framer_Motion-12-0055FF?style=flat&logo=framer&logoColor=white)](https://www.framer.com/motion/)
 
-## ✨ Features
+### [🌐 Live at ash-labs.tech →](https://ash-labs.tech)
 
-- **Editorial light theme** — warm paper palette, bold serif display type, and a vivid coral accent
-- **Cursor-follow spotlight** in the hero for a subtle interactive glow
-- **Animated typing effect** cycling through roles (Full Stack Developer, Software Engineer, Web Developer)
-- **Count-up stats** that animate into view
-- **3D tilt** on project cards that respond to the pointer
-- **Scroll progress bar** and **scroll-spy** navigation that highlights the active section
-- **Responsive mobile menu** with an animated dropdown
-- **Skills marquee** and a structured **Expertise** section
-- **Accessibility built in** — skip-to-content link, keyboard focus states, and `prefers-reduced-motion` support
-- **SEO ready** — metadata, Open Graph, `robots.txt`, `sitemap.xml`, PWA manifest, and Person JSON-LD structured data
-- **Analytics** via Vercel Analytics
-
-## 🧱 Tech Stack
-
-| Area        | Tools                                             |
-| ----------- | ------------------------------------------------- |
-| Framework   | Next.js 16 (App Router), React 19                 |
-| Language    | TypeScript                                        |
-| Styling     | Tailwind CSS v4                                    |
-| Animation   | Framer Motion                                     |
-| Icons       | lucide-react, react-icons                         |
-| Analytics   | @vercel/analytics                                 |
-
-## ✍🏻 Typography
-
-Loaded and optimized with [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts):
-
-- **[Fraunces](https://fonts.google.com/specimen/Fraunces)** — display / headings (serif, with italics)
-- **[Inter](https://fonts.google.com/specimen/Inter)** — body / UI (sans-serif)
-
-## 📁 Project Structure
-
-```
-app/
-├── components/
-│   ├── Header.tsx            # Nav, mobile menu, scroll-spy
-│   ├── Banner.tsx            # Hero with spotlight, typing, count-up stats
-│   ├── About.tsx             # Mission statement + skills marquee
-│   ├── AnimatedTechSphere.tsx# Tech skills marquee
-│   ├── Services.tsx          # Expertise cards
-│   ├── Experience.tsx        # Work experience
-│   ├── Projects.tsx          # Selected works (with 3D tilt)
-│   ├── Footer.tsx            # Contact + socials
-│   ├── SplashScreen.tsx      # Intro loader
-│   ├── ScrollProgress.tsx    # Top progress bar
-│   ├── CountUp.tsx           # Animated number counter
-│   └── TiltCard.tsx          # 3D tilt wrapper
-├── globals.css               # Design tokens & base styles
-├── layout.tsx                # Fonts, metadata, JSON-LD
-├── page.tsx                  # Page composition
-├── manifest.ts               # PWA manifest
-├── robots.ts                 # robots.txt
-└── sitemap.ts                # sitemap.xml
-
-public/assets/                # Images referenced by the app
-```
-
-## 🖼️ Project Images
-
-Project and profile images live in `public/assets/` and are referenced in `Projects.tsx` and `Banner.tsx`.
-
-## 🛠️ Development
-
-```bash
-# clone
-git clone https://github.com/Tech-aficionado/portfolio.git
-cd portfolio
-
-# install
-npm install
-
-# run the dev server
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) and start editing `app/page.tsx` — the page auto-updates as you save.
-
-```bash
-npm run build   # production build
-npm run start   # serve the production build
-npm run lint    # lint
-```
-
-## 🚚 Deployment
-
-Deployed on [Vercel](https://vercel.com/). Pushes to `main` deploy to production at [ash-labs.tech](https://ash-labs.tech), and each pull request gets its own preview deployment.
-
-## 🏛 License
-
-© Copyright 2026 Shivansh Goel
-
-Feel free to fork and explore for learning. Please don't republish the site as a whole without written permission — the combination of typography, color, and layout is part of a personal brand identity. Remix it and make it your own instead.
+</div>
 
 ---
 
-⭐ If you found this project helpful or interesting, consider giving it a star!
+The personal portfolio of **Shivansh Goel**, a Full Stack Developer & Software Engineer. Built as a single-page experience with a warm editorial aesthetic, buttery motion, a light/dark theme, a mini-games arcade, and a real contact backend.
+
+## ✨ Highlights
+
+**🎨 Design & experience**
+- Warm editorial theme with a serif display face, coral accent, and a token-driven **light / dark mode** (defaults to the visitor's system, then remembers their choice)
+- Cursor-follow spotlight hero, typing effect, animated count-up stats, and 3D-tilt project cards
+- Smooth scroll, a scroll-progress bar, and a scroll-spy section navigator
+
+**⚡ Interactive**
+- **Command palette** (`⌘K` / `Ctrl+K`) to jump anywhere, toggle theme, copy email, or open socials
+- **Mini-games arcade** (`/play`) — 8 games with locally saved high scores
+- A hidden **Konami-code** easter egg 🎮 with confetti
+
+**🔧 Engineering**
+- **Working contact form** backed by a Next.js route handler → server-side validation, honeypot, rate limiting, and transactional email via **Brevo** (with a graceful `mailto` fallback)
+- Fully **responsive** and **accessible** — skip link, keyboard focus states, `prefers-reduced-motion`
+- **SEO-ready** — metadata, Open Graph, dynamic OG image, `robots.txt`, `sitemap.xml`, PWA manifest, and Person JSON-LD
+- Custom **404** and **error boundaries**
+
+## 🧱 Tech Stack
+
+| Area | Tools |
+| --- | --- |
+| Framework | Next.js 16 (App Router), React 19 |
+| Language | TypeScript |
+| Styling | Tailwind CSS v4 (CSS-variable design tokens) |
+| Animation | Framer Motion |
+| Email | Brevo (transactional API) |
+| Icons | lucide-react, react-icons |
+| Analytics | @vercel/analytics |
+
+## 📁 Structure
+
+```
+app/
+├── components/           # Header, Banner, About, Services, Experience,
+│                         # Projects, Footer, ContactForm, CommandPalette,
+│                         # ThemeToggle, SectionNav, arcade widgets, …
+├── play/                 # Mini-games arcade (hub + 8 games)
+├── api/contact/          # Contact route handler + Brevo email templates
+├── globals.css           # Design tokens, light/dark themes
+├── layout.tsx            # Fonts, metadata, JSON-LD, theme bootstrap
+├── page.tsx              # Page composition
+├── opengraph-image.tsx   # Dynamic social card
+├── manifest.ts / robots.ts / sitemap.ts
+├── not-found.tsx / error.tsx / global-error.tsx
+```
+
+## 🛠️ Getting Started
+
+```bash
+git clone https://github.com/Tech-aficionado/Portfolio.git
+cd Portfolio
+npm install
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000). Edit `app/page.tsx` and it hot-reloads.
+
+```bash
+npm run build   # production build
+npm run start   # serve the build
+npm run lint    # lint
+```
+
+## 📬 Contact Form (Brevo)
+
+The contact form posts to `app/api/contact/route.ts` with server-side validation, a
+honeypot, and rate limiting. Emails go out via [Brevo](https://www.brevo.com/) — a
+**notification** to the owner and a branded **receipt** to the visitor. Without
+configuration it gracefully falls back to a prefilled `mailto:` draft.
+
+Create `.env.local`:
+
+```bash
+# Brevo API key — https://app.brevo.com/settings/keys/api  (starts with "xkeysib-")
+BREVO_API_KEY=
+
+# "From" address — must be a verified sender: https://app.brevo.com/senders/list
+BREVO_SENDER_EMAIL=
+BREVO_SENDER_NAME=Shivansh Goel
+
+# Inbox that receives contact notifications
+CONTACT_TO_EMAIL=shivansh.goela12@gmail.com
+```
+
+| Variable | Required | Description |
+| --- | --- | --- |
+| `BREVO_API_KEY` | ✅ | Brevo transactional email API key |
+| `BREVO_SENDER_EMAIL` | ✅ | Verified Brevo sender address (the `from`) |
+| `BREVO_SENDER_NAME` | — | Sender display name (default: Shivansh Goel) |
+| `CONTACT_TO_EMAIL` | — | Where notifications are delivered |
+
+> Restart the dev server after editing `.env.local`. On Vercel, add the same
+> variables under **Project → Settings → Environment Variables**.
+
+## 🚚 Deployment
+
+Deployed on [Vercel](https://vercel.com/). Pushes to `main` ship to production at
+[ash-labs.tech](https://ash-labs.tech); every pull request gets a preview deployment.
+
+## 🏛 License
+
+© 2026 Shivansh Goel. Fork and explore for learning, but please don't republish the
+site as a whole — the typography, color, and layout are part of a personal brand
+identity. Remix it and make it your own instead.
+
+---
+
+<div align="center">
+
+⭐ If this was helpful or interesting, consider leaving a star.
+
+</div>
