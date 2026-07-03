@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, Search, X } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 const navItems = [
   { label: "About", href: "#about", id: "about" },
@@ -24,7 +25,6 @@ export default function Header(): React.JSX.Element {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Scroll-spy: highlight the section currently in view.
   useEffect(() => {
     const ids = navItems.map((n) => n.id);
     const observer = new IntersectionObserver(
@@ -76,7 +76,19 @@ export default function Header(): React.JSX.Element {
             ))}
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new Event("open-command-palette"))}
+              aria-label="Open command palette"
+              className="hidden md:inline-flex items-center gap-2 rounded-full border border-line px-3 py-2 text-xs text-muted hover:border-accent hover:text-accent transition-colors"
+            >
+              <Search className="h-3.5 w-3.5" />
+              <kbd className="font-sans">⌘K</kbd>
+            </button>
+
+            <ThemeToggle />
+
             <Link
               href="#contact"
               className="group hidden sm:inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper hover:bg-accent transition-colors"
