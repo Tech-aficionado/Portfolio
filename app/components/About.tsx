@@ -5,7 +5,7 @@ import AnimatedTechSphere from "./AnimatedTechSphere";
 
 export default function About(): React.JSX.Element {
   return (
-    <section id="about" className="py-24 sm:py-32 px-4 sm:px-6 bg-paper-2/40 border-y border-line">
+    <section id="about" className="py-16 sm:py-32 px-4 sm:px-6 bg-paper-2/40 border-y border-line">
       <div className="container mx-auto max-w-6xl">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           <div className="lg:col-span-4">

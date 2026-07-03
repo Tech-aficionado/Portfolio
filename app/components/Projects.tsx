@@ -49,7 +49,7 @@ const featuredProjects: Project[] = [
 
 export default function Projects(): React.JSX.Element {
   return (
-    <section id="lab" className="py-24 sm:py-32 px-4 sm:px-6">
+    <section id="lab" className="py-16 sm:py-32 px-4 sm:px-6">
       <div className="container mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -66,7 +66,7 @@ export default function Projects(): React.JSX.Element {
           </h2>
         </motion.div>
 
-        <div className="space-y-20 sm:space-y-28">
+        <div className="space-y-16 sm:space-y-28">
           {featuredProjects.map((project, index) => {
             const flip = index % 2 === 1;
             return (

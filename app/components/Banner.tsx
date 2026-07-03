@@ -85,14 +85,14 @@ export default function Banner(): React.JSX.Element {
               Available for new projects
             </div>
 
-            <h1 className="font-display text-5xl sm:text-7xl lg:text-[5.5rem] font-medium leading-[0.98] tracking-tight text-ink">
+            <h1 className="font-display text-4xl sm:text-6xl lg:text-[5.5rem] font-medium leading-[1.02] sm:leading-[0.98] tracking-tight text-ink">
               Crafting
               <br />
               digital{" "}
               <span className="italic text-accent">excellence</span>
             </h1>
 
-            <p className="mt-6 text-xl sm:text-2xl font-medium text-ink/80">
+            <p className="mt-5 sm:mt-6 text-lg sm:text-2xl font-medium text-ink/80">
               I&apos;m Shivansh, a{" "}
               <span className="text-accent">{displayedText}</span>
               <span className="animate-pulse font-light text-muted">|</span>
@@ -134,7 +134,7 @@ export default function Banner(): React.JSX.Element {
             transition={{ duration: 1, ease: "easeOut" }}
             className="lg:col-span-5 flex justify-center lg:justify-end"
           >
-            <div className="relative w-[280px] h-[340px] sm:w-[340px] sm:h-[420px]">
+            <div className="relative w-64 h-[19rem] sm:w-[340px] sm:h-[420px]">
               {/* Accent panel */}
               <div className="absolute inset-0 rounded-[2rem] bg-accent-soft border border-accent/20 rotate-3" />
               <div className="absolute inset-0 rounded-[2rem] bg-paper-2 border border-line -rotate-2" />

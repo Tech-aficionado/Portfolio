@@ -37,7 +37,7 @@ export default function Footer(): React.JSX.Element {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
             viewport={{ once: true }}
-            className="mt-5 font-display text-5xl sm:text-7xl font-medium leading-[1] text-paper"
+            className="mt-5 font-display text-4xl sm:text-6xl lg:text-7xl font-medium leading-[1.05] sm:leading-[1] text-paper"
           >
             Let&apos;s build
             <br />
@@ -52,7 +52,7 @@ export default function Footer(): React.JSX.Element {
 
           <a
             href="mailto:shivansh.goela12@gmail.com"
-            className="group mt-8 inline-flex items-center gap-3 font-display text-2xl sm:text-3xl text-paper hover:text-accent transition-colors"
+            className="group mt-8 inline-flex max-w-full flex-wrap items-center gap-2 sm:gap-3 font-display text-lg sm:text-3xl text-paper hover:text-accent transition-colors break-all"
           >
             shivansh.goela12@gmail.com
             <span className="transition-transform group-hover:translate-x-1">

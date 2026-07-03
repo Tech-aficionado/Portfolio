@@ -16,7 +16,7 @@ export default function Home(): React.JSX.Element {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <main className="min-h-screen bg-paper text-ink paper-grain overflow-x-hidden">
+    <main className="min-h-screen bg-paper text-ink paper-grain overflow-x-clip">
       <AnimatePresence mode="wait">
         {isLoading ? (
           <SplashScreen key="splash" finishLoading={() => setIsLoading(false)} />

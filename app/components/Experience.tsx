@@ -25,7 +25,7 @@ const experiences: ExperienceItem[] = [
 
 export default function Experience(): React.JSX.Element {
   return (
-    <section id="experience" className="py-24 sm:py-32 px-4 sm:px-6">
+    <section id="experience" className="py-16 sm:py-32 px-4 sm:px-6">
       <div className="container mx-auto max-w-6xl">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
           {/* Section label */}
