@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import ContactForm from "./ContactForm";
+import LocalTime from "./LocalTime";
 
 const socials = [
   {
@@ -28,56 +30,65 @@ export default function Footer(): React.JSX.Element {
       className="relative bg-ink text-paper px-4 sm:px-6 pt-24 pb-10 sm:pt-32 rounded-t-[2.5rem] mt-10"
     >
       <div className="container mx-auto max-w-6xl">
-        <div className="max-w-3xl">
-          <span className="text-xs uppercase tracking-[0.3em] text-accent">
-            05 / Contact
-          </span>
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
-            className="mt-5 font-display text-4xl sm:text-6xl lg:text-7xl font-medium leading-[1.05] sm:leading-[1] text-paper"
-          >
-            Let&apos;s build
-            <br />
-            something <span className="italic text-accent">great.</span>
-          </motion.h2>
-
-          <p className="mt-8 text-base sm:text-lg text-paper/70 max-w-xl leading-relaxed">
-            My mission is to empower businesses and startups by delivering
-            robust, user-centric web solutions. Have a project in mind? Let&apos;s
-            connect.
-          </p>
-
-          <a
-            href="mailto:shivansh.goela12@gmail.com"
-            className="group mt-8 inline-flex max-w-full flex-wrap items-center gap-2 sm:gap-3 font-display text-lg sm:text-3xl text-paper hover:text-accent transition-colors break-all"
-          >
-            shivansh.goela12@gmail.com
-            <span className="transition-transform group-hover:translate-x-1">
-              →
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+          {/* Left — pitch + direct links */}
+          <div>
+            <span className="text-xs uppercase tracking-[0.3em] text-accent">
+              05 / Contact
             </span>
-          </a>
-        </div>
-
-        {/* Socials */}
-        <div className="mt-16 flex flex-wrap gap-4">
-          {socials.map((s) => (
-            <Link
-              key={s.label}
-              href={s.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={s.label}
-              className="group flex items-center gap-2 rounded-full border border-paper/15 px-5 py-3 text-sm text-paper/80 hover:border-accent hover:text-accent transition-colors"
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              viewport={{ once: true }}
+              className="mt-5 font-display text-4xl sm:text-6xl font-medium leading-[1.05] sm:leading-[1] text-paper"
             >
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d={s.path} />
-              </svg>
-              {s.label}
-            </Link>
-          ))}
+              Let&apos;s build
+              <br />
+              something <span className="italic text-accent">great.</span>
+            </motion.h2>
+
+            <p className="mt-6 text-base sm:text-lg text-paper/70 max-w-md leading-relaxed">
+              Have a project in mind? Drop a message and I&apos;ll get back to
+              you — or reach out directly.
+            </p>
+
+            <a
+              href="mailto:shivansh.goela12@gmail.com"
+              className="group mt-6 inline-flex max-w-full flex-wrap items-center gap-2 font-display text-lg sm:text-2xl text-paper hover:text-accent transition-colors break-all"
+            >
+              shivansh.goela12@gmail.com
+              <span className="transition-transform group-hover:translate-x-1">→</span>
+            </a>
+
+            <div className="mt-6">
+              <LocalTime />
+            </div>
+
+            {/* Socials */}
+            <div className="mt-8 flex flex-wrap gap-3">
+              {socials.map((s) => (
+                <Link
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className="group flex items-center gap-2 rounded-full border border-paper/15 px-4 py-2.5 text-sm text-paper/80 hover:border-accent hover:text-accent transition-colors"
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d={s.path} />
+                  </svg>
+                  {s.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Right — working contact form */}
+          <div className="lg:pt-10">
+            <ContactForm />
+          </div>
         </div>
 
         <div className="mt-16 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-paper/10 pt-8">
