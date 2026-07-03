@@ -9,6 +9,18 @@
   --accent: #ff4e1a;
   --accent-soft: #ffe8de;
   --line: rgba(23, 19, 14, 0.12);
+  color-scheme: light;
+}
+
+.dark {
+  --paper: #12100c;
+  --paper-2: #1d1811;
+  --ink: #f2eee5;
+  --muted: #9c9284;
+  --accent: #ff5a2c;
+  --accent-soft: #33200f;
+  --line: rgba(242, 238, 229, 0.14);
+  color-scheme: dark;
 }
 
 @theme inline {
@@ -52,6 +64,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 @layer base {
