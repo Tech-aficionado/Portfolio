@@ -22,7 +22,6 @@ interface Tech {
   icon: React.ReactNode;
 }
 
-// Light-theme skills marquee (replaces the previous dark orbiting sphere)
 export default function AnimatedTechSphere() {
   const techs = useMemo<Tech[]>(
     () => [
@@ -41,7 +40,6 @@ export default function AnimatedTechSphere() {
     []
   );
 
-  // Duplicate the list so the marquee loops seamlessly.
   const loop = [...techs, ...techs];
 
   return (

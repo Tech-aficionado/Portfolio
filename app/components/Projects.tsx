@@ -30,7 +30,7 @@ const featuredProjects: Project[] = [
     title: "FiTrack AI",
     tag: "AI · Fitness",
     description:
-      "An AI-powered personal fitness assistant. It utilizes neural networks and adaptive machine learning algorithms to analyze performance patterns, dynamically adjust workout intensity, and provide real-time tracking for optimal fitness results.",
+      "An AI-powered fitness platform where neural networks analyze your performance and adaptive algorithms auto-tune workout intensity in real time. Features predictive analytics for goal timelines, NLP-based nutrition tracking with instant macro breakdowns, and recovery optimization that monitors fatigue — a personalized program that keeps learning from every session.",
     stack: ["Next.js", "Python", "Machine Learning"],
     link: "https://fitrack-ai.ash-labs.tech/",
     image: "/assets/image 3.png",
@@ -40,7 +40,7 @@ const featuredProjects: Project[] = [
     title: "Quizify",
     tag: "AI · Education",
     description:
-      "An AI-powered quiz generation platform that crafts engaging learning experiences for users on any topic, complete with an interactive UI.",
+      "An AI-powered quiz platform that generates challenging assessments on any topic in seconds. Offers instant feedback with explanations, cognitive analytics that track mastery over time, secure classrooms with encrypted access codes, and live global leaderboards — wrapped in a polished glassmorphic UI.",
     stack: ["Next.js", "React", "AI"],
     link: "https://quizify.ash-labs.tech",
     image: "/assets/image 2.png",

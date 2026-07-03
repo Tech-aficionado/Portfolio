@@ -147,12 +147,11 @@ export default function Banner(): React.JSX.Element {
               >
                 <Image
                   src="/assets/me.png"
-                  alt="Shivansh Goel — Full Stack Developer"
+                  alt="Shivansh Goel"
                   fill
                   className="object-contain object-bottom"
                   priority
-                  sizes="(max-width: 768px) 280px, 340px"
-                  quality={100}
+                  sizes="(max-width: 768px) 256px, 340px"
                 />
               </motion.div>
 
@@ -181,7 +180,7 @@ export default function Banner(): React.JSX.Element {
                 className="absolute -right-2 sm:-right-6 bottom-16 rounded-2xl bg-ink text-paper shadow-[0_8px_30px_rgba(23,19,14,0.15)] px-4 py-3"
               >
                 <p className="font-display text-2xl font-semibold leading-none">
-                  <CountUp value={10} suffix="+" />
+                  <CountUp value={7} suffix="+" />
                 </p>
                 <p className="text-[11px] uppercase tracking-wider text-paper/60 mt-1">
                   Projects
