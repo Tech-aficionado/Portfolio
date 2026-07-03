@@ -6,6 +6,9 @@ import Header from "./components/Header";
 import ScrollProgress from "./components/ScrollProgress";
 import BackToTop from "./components/BackToTop";
 import ArcadeButton from "./components/ArcadeButton";
+import CommandPalette from "./components/CommandPalette";
+import SectionNav from "./components/SectionNav";
+import KonamiEasterEgg from "./components/KonamiEasterEgg";
 import Banner from "./components/Banner";
 import Experience from "./components/Experience";
 import About from "./components/About";
@@ -36,6 +39,7 @@ export default function Home(): React.JSX.Element {
               Skip to content
             </a>
             <ScrollProgress />
+            <SectionNav />
             <Header />
             <Banner />
             <About />
@@ -45,6 +49,8 @@ export default function Home(): React.JSX.Element {
             <Footer />
             <BackToTop />
             <ArcadeButton />
+            <CommandPalette />
+            <KonamiEasterEgg />
           </motion.div>
         )}
       </AnimatePresence>
