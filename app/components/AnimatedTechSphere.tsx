@@ -46,13 +46,13 @@ export default function AnimatedTechSphere() {
 
   return (
     <div className="marquee-mask overflow-hidden py-2">
-      <div className="animate-marquee flex w-max gap-4 hover:[animation-play-state:paused]">
+      <div className="animate-marquee flex w-max gap-3 sm:gap-4 hover:[animation-play-state:paused]">
         {loop.map((tech, i) => (
           <div
             key={`${tech.name}-${i}`}
-            className="group flex shrink-0 items-center gap-3 rounded-2xl border border-line bg-paper px-5 py-4 transition-colors hover:border-accent/40 hover:bg-accent-soft/50"
+            className="group flex shrink-0 items-center gap-2.5 sm:gap-3 rounded-xl sm:rounded-2xl border border-line bg-paper px-4 py-3 sm:px-5 sm:py-4 transition-colors hover:border-accent/40 hover:bg-accent-soft/50"
           >
-            <span className="text-2xl text-ink/70 transition-colors group-hover:text-accent">
+            <span className="text-xl sm:text-2xl text-ink/70 transition-colors group-hover:text-accent">
               {tech.icon}
             </span>
             <span className="text-sm font-medium text-ink whitespace-nowrap">

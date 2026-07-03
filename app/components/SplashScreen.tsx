@@ -46,7 +46,7 @@ export default function SplashScreen({
           Portfolio — 2026
         </motion.span>
 
-        <h1 className="font-display text-6xl sm:text-8xl font-medium leading-[0.95] text-ink text-center">
+        <h1 className="font-display text-5xl sm:text-8xl font-medium leading-[0.95] text-ink text-center">
           {words.map((w, i) => (
             <span key={w} className="block overflow-hidden">
               <motion.span
@@ -64,7 +64,7 @@ export default function SplashScreen({
       </div>
 
       {/* Progress line */}
-      <div className="absolute bottom-16 left-1/2 -translate-x-1/2 w-56 sm:w-72">
+      <div className="absolute bottom-14 sm:bottom-16 left-1/2 -translate-x-1/2 w-[80vw] max-w-xs sm:w-72">
         <div className="h-px w-full bg-line overflow-hidden">
           <motion.div
             initial={{ width: 0 }}
@@ -73,9 +73,9 @@ export default function SplashScreen({
             className="h-full bg-accent"
           />
         </div>
-        <div className="mt-3 flex justify-between text-[10px] uppercase tracking-[0.3em] text-muted">
+        <div className="mt-3 flex items-center justify-between gap-3 text-[9px] sm:text-[10px] uppercase tracking-[0.15em] sm:tracking-[0.3em] text-muted">
           <span>Loading</span>
-          <span>Full Stack Developer</span>
+          <span className="truncate">Full Stack Developer</span>
         </div>
       </div>
     </motion.div>

@@ -7,7 +7,7 @@ export default function About(): React.JSX.Element {
   return (
     <section id="about" className="py-16 sm:py-32 px-4 sm:px-6 bg-paper-2/40 border-y border-line">
       <div className="container mx-auto max-w-6xl">
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           <div className="lg:col-span-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -31,7 +31,7 @@ export default function About(): React.JSX.Element {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
               viewport={{ once: true }}
-              className="font-display text-2xl sm:text-3xl lg:text-[2.4rem] leading-[1.35] text-ink"
+              className="font-display text-xl sm:text-3xl lg:text-[2.4rem] leading-[1.45] sm:leading-[1.35] text-ink"
             >
               I empower businesses and startups by delivering{" "}
               <span className="text-accent italic">
@@ -41,8 +41,8 @@ export default function About(): React.JSX.Element {
               polished, dependable products.
             </motion.p>
 
-            <div className="mt-14">
-              <p className="text-xs uppercase tracking-[0.3em] text-muted mb-6">
+            <div className="mt-10 sm:mt-14">
+              <p className="text-xs uppercase tracking-[0.3em] text-muted mb-5 sm:mb-6">
                 Tools & technologies
               </p>
               <AnimatedTechSphere />
