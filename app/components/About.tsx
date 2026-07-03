@@ -8,7 +8,7 @@ export default function About(): React.JSX.Element {
     <section id="about" className="py-16 sm:py-32 px-4 sm:px-6 bg-paper-2/40 border-y border-line">
       <div className="container mx-auto max-w-6xl">
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-start">
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-4 min-w-0">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -25,13 +25,13 @@ export default function About(): React.JSX.Element {
             </motion.div>
           </div>
 
-          <div className="lg:col-span-8">
+          <div className="lg:col-span-8 min-w-0">
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
               viewport={{ once: true }}
-              className="font-display text-xl sm:text-3xl lg:text-[2.4rem] leading-[1.45] sm:leading-[1.35] text-ink"
+              className="font-display text-xl sm:text-3xl lg:text-[2.4rem] leading-[1.45] sm:leading-[1.35] text-ink break-words"
             >
               I empower businesses and startups by delivering{" "}
               <span className="text-accent italic">

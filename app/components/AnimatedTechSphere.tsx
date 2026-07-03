@@ -45,7 +45,7 @@ export default function AnimatedTechSphere() {
   const loop = [...techs, ...techs];
 
   return (
-    <div className="marquee-mask overflow-hidden py-2">
+    <div className="marquee-mask w-full max-w-full min-w-0 overflow-hidden py-2">
       <div className="animate-marquee flex w-max gap-3 sm:gap-4 hover:[animation-play-state:paused]">
         {loop.map((tech, i) => (
           <div
