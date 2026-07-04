@@ -17,6 +17,16 @@ interface Project {
 const featuredProjects: Project[] = [
   {
     id: 1,
+    title: "Ziplink",
+    tag: "URL Shortener · SaaS",
+    description:
+      "A URL shortener that turns sprawling links into clean, memorable short links in a tap. Offers custom aliases, downloadable QR codes, and click analytics, with server-side 301 redirects running on the edge for near-instant hops — all in a dark, futuristic UI with one-tap Google sign-in.",
+    stack: ["Next.js", "Firebase", "Edge Redirects"],
+    link: "https://ziplink.ash-labs.tech",
+    image: "/assets/ziplink.png",
+  },
+  {
+    id: 2,
     title: "GhostRelay",
     tag: "Privacy · SaaS",
     description:
@@ -26,7 +36,7 @@ const featuredProjects: Project[] = [
     image: "/assets/ghostrelay.png",
   },
   {
-    id: 2,
+    id: 3,
     title: "FiTrack AI",
     tag: "AI · Fitness",
     description:
@@ -36,7 +46,7 @@ const featuredProjects: Project[] = [
     image: "/assets/image 3.png",
   },
   {
-    id: 3,
+    id: 4,
     title: "Quizify",
     tag: "AI · Education",
     description:
