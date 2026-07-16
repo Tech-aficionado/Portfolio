@@ -12,6 +12,7 @@ interface Project {
   image: string;
   stack: string[];
   link?: string;
+  sourceLink?: string;
 }
 
 const featuredProjects: Project[] = [
@@ -23,6 +24,7 @@ const featuredProjects: Project[] = [
       "Turns long URLs into trackable, brand-ready links that are easier to distribute across campaigns. QR downloads and edge redirects shorten the path from share to destination, while analytics make each link measurable.",
     stack: ["Next.js", "Firebase", "Edge Redirects"],
     link: "https://ziplink.ash-labs.tech",
+    sourceLink: "https://github.com/Tech-aficionado/ZipLink---Open-Source",
     image: "/assets/ziplink.png",
   },
   {
@@ -33,6 +35,7 @@ const featuredProjects: Project[] = [
       "Keeps a real inbox out of sign-up forms by routing messages through disposable aliases. If an alias attracts spam, it can be disabled without changing the primary address — giving users a practical containment layer.",
     stack: ["Cloudflare Workers", "D1", "Next.js", "React 19", "Resend"],
     link: "https://ghostrelay.me",
+    sourceLink: "https://github.com/Tech-aficionado/GhostRelay---Open-Source",
     image: "/assets/ghostrelay.png",
   },
   {
@@ -152,22 +155,40 @@ export default function Projects(): React.JSX.Element {
                     ))}
                   </div>
 
-                  {project.link && (
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group mt-7 inline-flex items-center gap-2 text-sm font-medium text-ink"
-                      aria-label={`Visit ${project.title}`}
-                    >
-                      <span className="border-b border-ink/30 pb-0.5 group-hover:border-accent group-hover:text-accent transition-colors">
-                        View live site
-                      </span>
-                      <span className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
-                        ↗
-                      </span>
-                    </a>
-                  )}
+                  <div className="mt-7 flex flex-wrap items-center gap-5">
+                    {project.link && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group inline-flex items-center gap-2 text-sm font-medium text-ink"
+                        aria-label={`Visit ${project.title}`}
+                      >
+                        <span className="border-b border-ink/30 pb-0.5 transition-colors group-hover:border-accent group-hover:text-accent">
+                          View live site
+                        </span>
+                        <span className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
+                          ↗
+                        </span>
+                      </a>
+                    )}
+                    {project.sourceLink && (
+                      <a
+                        href={project.sourceLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group inline-flex items-center gap-2 text-sm font-medium text-muted"
+                        aria-label={`View ${project.title} source code on GitHub`}
+                      >
+                        <span className="border-b border-line pb-0.5 transition-colors group-hover:border-accent group-hover:text-accent">
+                          View source
+                        </span>
+                        <span className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
+                          ↗
+                        </span>
+                      </a>
+                    )}
+                  </div>
                 </div>
               </motion.article>
             );
