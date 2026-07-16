@@ -9,6 +9,7 @@ import {
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import CountUp from "./CountUp";
+import { PORTFOLIO_STATS } from "../portfolio-stats";
 
 const ROLE_TITLES = ["AI Product Engineer", "Applied AI Builder", "Full Stack Developer"];
 
@@ -138,6 +139,18 @@ export default function Banner(): React.JSX.Element {
               >
                 View work
               </a>
+              <a
+                href="https://drive.google.com/file/d/1yd0N1QKORwi_b7wwOQcBD3sO3D1Y4-EL/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent-soft/50 px-7 py-3.5 text-sm font-medium text-ink transition-colors hover:border-accent hover:bg-accent-soft sm:text-base"
+                aria-label="View Shivansh Goel's résumé in Google Drive"
+              >
+                View résumé
+                <span className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                  ↗
+                </span>
+              </a>
             </div>
 
             <div className="mt-8 flex items-center justify-center lg:justify-start gap-2 text-sm text-muted">
@@ -216,7 +229,11 @@ export default function Banner(): React.JSX.Element {
                 className="absolute -left-4 sm:-left-8 top-10 rounded-2xl bg-paper border border-line shadow-[0_8px_30px_rgba(23,19,14,0.08)] px-4 py-3"
               >
                 <p className="font-display text-2xl font-semibold text-ink leading-none">
-                  <CountUp value={1.5} decimals={1} suffix="+" />
+                  <CountUp
+                    value={PORTFOLIO_STATS.experienceYears}
+                    decimals={1}
+                    suffix="+"
+                  />
                 </p>
                 <p className="text-[11px] uppercase tracking-wider text-muted mt-1">
                   Years exp
@@ -234,7 +251,7 @@ export default function Banner(): React.JSX.Element {
                 className="absolute -right-2 sm:-right-6 bottom-16 rounded-2xl bg-ink text-paper shadow-[0_8px_30px_rgba(23,19,14,0.15)] px-4 py-3"
               >
                 <p className="font-display text-2xl font-semibold leading-none">
-                  <CountUp value={2} />
+                  <CountUp value={PORTFOLIO_STATS.aiProducts} />
                 </p>
                 <p className="text-[11px] uppercase tracking-wider text-paper/60 mt-1">
                   AI products

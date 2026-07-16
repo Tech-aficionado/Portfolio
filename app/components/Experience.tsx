@@ -18,7 +18,7 @@ const experiences: ExperienceItem[] = [
     company: "TedForge Solutions Pvt. Ltd.",
     period: "Dec 2023 – May 2025",
     description:
-      "Spearheaded the development of high-performance web applications. Built scalable frontend components with React & Angular, while architecting secure and efficient RESTful APIs using Node.js. Optimized database queries in MySQL and MongoDB, significantly improving data retrieval speeds and overall system responsiveness.",
+      "Across a 17-month internship, built React and Angular interfaces, developed Node.js REST APIs, and improved MySQL and MongoDB data paths. The work focused on reducing query overhead and making product interactions more responsive and dependable.",
     stack: ["React", "Angular", "Node.js", "MySQL", "MongoDB"],
   },
 ];

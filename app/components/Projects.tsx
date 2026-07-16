@@ -8,7 +8,7 @@ interface Project {
   id: number;
   title: string;
   tag: string;
-  description: string;
+  outcome: string;
   image: string;
   stack: string[];
   link?: string;
@@ -19,8 +19,8 @@ const featuredProjects: Project[] = [
     id: 1,
     title: "Ziplink",
     tag: "URL Shortener · SaaS",
-    description:
-      "A URL shortener that turns sprawling links into clean, memorable short links in a tap. Offers custom aliases, downloadable QR codes, and click analytics, with server-side 301 redirects running on the edge for near-instant hops — all in a dark, futuristic UI with one-tap Google sign-in.",
+    outcome:
+      "Turns long URLs into trackable, brand-ready links that are easier to distribute across campaigns. QR downloads and edge redirects shorten the path from share to destination, while analytics make each link measurable.",
     stack: ["Next.js", "Firebase", "Edge Redirects"],
     link: "https://ziplink.ash-labs.tech",
     image: "/assets/ziplink.png",
@@ -29,8 +29,8 @@ const featuredProjects: Project[] = [
     id: 2,
     title: "GhostRelay",
     tag: "Privacy · SaaS",
-    description:
-      "A privacy-first email aliasing service running on Cloudflare's edge network. Generate aliases that forward to your real inbox — shielding your identity from spam, breaches, and tracking. Features one-click alias creation, instant disabling, and a real-time privacy dashboard, with sub-50ms delivery across 250+ edge locations.",
+    outcome:
+      "Keeps a real inbox out of sign-up forms by routing messages through disposable aliases. If an alias attracts spam, it can be disabled without changing the primary address — giving users a practical containment layer.",
     stack: ["Cloudflare Workers", "D1", "Next.js", "React 19", "Resend"],
     link: "https://ghostrelay.me",
     image: "/assets/ghostrelay.png",
@@ -39,8 +39,8 @@ const featuredProjects: Project[] = [
     id: 3,
     title: "FiTrack AI",
     tag: "AI · Fitness",
-    description:
-      "An AI-powered fitness platform where neural networks analyze your performance and adaptive algorithms auto-tune workout intensity in real time. Features predictive analytics for goal timelines, NLP-based nutrition tracking with instant macro breakdowns, and recovery optimization that monitors fatigue — a personalized program that keeps learning from every session.",
+    outcome:
+      "Brings workout, nutrition, and recovery signals into one adaptive flow. AI-guided intensity, macro breakdowns, and fatigue-aware recommendations reduce the manual work of reconciling separate fitness trackers.",
     stack: ["Next.js", "Python", "Machine Learning"],
     link: "https://fitrack-ai.ash-labs.tech/",
     image: "/assets/image 3.png",
@@ -49,8 +49,8 @@ const featuredProjects: Project[] = [
     id: 4,
     title: "Quizify",
     tag: "AI · Education",
-    description:
-      "An AI-powered quiz platform that generates challenging assessments on any topic in seconds. Offers instant feedback with explanations, cognitive analytics that track mastery over time, secure classrooms with encrypted access codes, and live global leaderboards — wrapped in a polished glassmorphic UI.",
+    outcome:
+      "Turns a topic into a ready-to-run assessment in seconds, reducing manual question writing. Instant explanations and mastery tracking show learners what to review next, while classroom codes make sharing straightforward.",
     stack: ["Next.js", "React", "AI"],
     link: "https://quizify.ash-labs.tech",
     image: "/assets/image 2.png",
@@ -132,9 +132,14 @@ export default function Projects(): React.JSX.Element {
                   <h3 className="mt-3 font-display text-3xl sm:text-4xl font-medium text-ink">
                     {project.title}
                   </h3>
-                  <p className="mt-5 text-base sm:text-lg leading-relaxed text-muted">
-                    {project.description}
-                  </p>
+                  <div className="mt-5 border-l-2 border-accent/60 pl-4 sm:pl-5">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-accent">
+                      Outcome
+                    </p>
+                    <p className="mt-2 text-base leading-relaxed text-muted sm:text-lg">
+                      {project.outcome}
+                    </p>
+                  </div>
 
                   <div className="mt-6 flex flex-wrap gap-2">
                     {project.stack.map((tech) => (

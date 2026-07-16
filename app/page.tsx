@@ -10,6 +10,7 @@ import CommandPalette from "./components/CommandPalette";
 import SectionNav from "./components/SectionNav";
 import KonamiEasterEgg from "./components/KonamiEasterEgg";
 import Banner from "./components/Banner";
+import FeaturedStats from "./components/FeaturedStats";
 import Experience from "./components/Experience";
 import About from "./components/About";
 import Services from "./components/Services";
@@ -33,6 +34,7 @@ export default function Home(): React.JSX.Element {
       <SectionNav />
       <Header />
       <Banner />
+      <FeaturedStats />
       <About />
       <Services />
       <Experience />
