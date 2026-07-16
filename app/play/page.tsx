@@ -1,25 +1,37 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ComponentType } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, Gamepad2 } from "lucide-react";
 
-import BugSquash from "./games/BugSquash";
-import ReactionTime from "./games/ReactionTime";
-import MemoryMatch from "./games/MemoryMatch";
-import TicTacToe from "./games/TicTacToe";
-import RockPaperScissors from "./games/RockPaperScissors";
-import TypingTest from "./games/TypingTest";
-import Simon from "./games/Simon";
-import GuessNumber from "./games/GuessNumber";
+function GameLoading(): React.JSX.Element {
+  return (
+    <div
+      role="status"
+      className="flex min-h-64 items-center justify-center rounded-2xl border border-line bg-paper-2 text-sm text-muted"
+    >
+      Loading game…
+    </div>
+  );
+}
+
+const BugSquash = dynamic(() => import("./games/BugSquash"), { loading: GameLoading });
+const ReactionTime = dynamic(() => import("./games/ReactionTime"), { loading: GameLoading });
+const MemoryMatch = dynamic(() => import("./games/MemoryMatch"), { loading: GameLoading });
+const TicTacToe = dynamic(() => import("./games/TicTacToe"), { loading: GameLoading });
+const RockPaperScissors = dynamic(() => import("./games/RockPaperScissors"), { loading: GameLoading });
+const TypingTest = dynamic(() => import("./games/TypingTest"), { loading: GameLoading });
+const Simon = dynamic(() => import("./games/Simon"), { loading: GameLoading });
+const GuessNumber = dynamic(() => import("./games/GuessNumber"), { loading: GameLoading });
 
 interface GameDef {
   slug: string;
   title: string;
   tagline: string;
   emoji: string;
-  Component: () => React.JSX.Element;
+  Component: ComponentType;
 }
 
 const GAMES: GameDef[] = [

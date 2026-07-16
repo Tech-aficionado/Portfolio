@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { useEffect } from "react";
 
 export default function SplashScreen({
@@ -8,10 +8,22 @@ export default function SplashScreen({
 }: {
   finishLoading: () => void;
 }) {
+  const shouldReduceMotion = useReducedMotion();
+
   useEffect(() => {
-    const timeout = setTimeout(() => finishLoading(), 2600);
-    return () => clearTimeout(timeout);
-  }, [finishLoading]);
+    const hasSeenIntro = sessionStorage.getItem("portfolio-intro-seen") === "true";
+
+    if (hasSeenIntro || shouldReduceMotion) {
+      finishLoading();
+      return;
+    }
+
+    const timeout = window.setTimeout(() => {
+      sessionStorage.setItem("portfolio-intro-seen", "true");
+      finishLoading();
+    }, 1600);
+    return () => window.clearTimeout(timeout);
+  }, [finishLoading, shouldReduceMotion]);
 
   const container: Variants = {
     exit: {
