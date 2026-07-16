@@ -1,7 +1,4 @@
-interface GitHubProfile {
-  public_repos: number;
-  html_url: string;
-}
+import "server-only";
 
 interface GitHubRepository {
   name: string;
@@ -15,6 +12,7 @@ interface GitHubRepository {
 }
 
 const GITHUB_USER = "Tech-aficionado";
+const GITHUB_PROFILE_URL = `https://github.com/${GITHUB_USER}`;
 const FEATURED_REPOSITORIES = [
   "Tamagochi---Open-Source-Game",
   "ZipLink---Open-Source",
@@ -28,25 +26,23 @@ const FALLBACK_DESCRIPTIONS: Record<string, string> = {
 
 async function getGitHubData() {
   try {
-    const options = {
-      headers: { Accept: "application/vnd.github+json" },
-      next: { revalidate: 21600 },
-    };
-    const [profileResponse, repositoriesResponse] = await Promise.all([
-      fetch(`https://api.github.com/users/${GITHUB_USER}`, options),
-      fetch(`https://api.github.com/users/${GITHUB_USER}/repos?per_page=100&sort=updated`, options),
-    ]);
-    if (!profileResponse.ok || !repositoriesResponse.ok) return null;
+    const response = await fetch(
+      `https://api.github.com/users/${GITHUB_USER}/repos?per_page=100&sort=updated`,
+      {
+        headers: { Accept: "application/vnd.github+json" },
+        next: { revalidate: 21600 },
+      }
+    );
+    if (!response.ok) return null;
 
-    const profile = (await profileResponse.json()) as GitHubProfile;
-    const repositories = (await repositoriesResponse.json()) as GitHubRepository[];
+    const repositories = (await response.json()) as GitHubRepository[];
     const owned = repositories.filter((repository) => !repository.fork && !repository.archived);
     const highlights = FEATURED_REPOSITORIES.map((name) =>
       owned.find((repository) => repository.name === name)
     ).filter((repository): repository is GitHubRepository => Boolean(repository));
 
     return {
-      profile,
+      publicRepoCount: repositories.length,
       highlights,
       totalStars: owned.reduce((total, repository) => total + repository.stargazers_count, 0),
     };
@@ -56,7 +52,6 @@ async function getGitHubData() {
 }
 export default async function GitHubActivity(): Promise<React.JSX.Element> {
   const data = await getGitHubData();
-  const profileUrl = data?.profile.html_url ?? `https://github.com/${GITHUB_USER}`;
 
   return (
     <section id="open-source" className="px-4 py-20 sm:px-6 sm:py-32" aria-labelledby="open-source-title">
@@ -71,7 +66,7 @@ export default async function GitHubActivity(): Promise<React.JSX.Element> {
               Reusable tools, product experiments, and source code you can inspect — refreshed from GitHub every six hours.
             </p>
           </div>
-          <a href={profileUrl} target="_blank" rel="noopener noreferrer" className="group inline-flex w-fit items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper transition-colors hover:bg-accent lg:col-span-4 lg:justify-self-end">
+          <a href={GITHUB_PROFILE_URL} target="_blank" rel="noopener noreferrer" className="group inline-flex w-fit items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper transition-colors hover:bg-accent lg:col-span-4 lg:justify-self-end">
             View GitHub profile
             <span className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
           </a>
@@ -81,7 +76,7 @@ export default async function GitHubActivity(): Promise<React.JSX.Element> {
           <>
             <div className="mt-12 grid overflow-hidden rounded-2xl border border-line bg-paper-2/40 sm:grid-cols-3">
               {[
-                [data.profile.public_repos, "Public repositories"],
+                [data.publicRepoCount, "Public repositories"],
                 [data.totalStars, "Stars across owned repos"],
                 [data.highlights.length, "Open-source highlights"],
               ].map(([value, label]) => (
