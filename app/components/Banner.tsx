@@ -10,7 +10,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import CountUp from "./CountUp";
 
-const ROLE_TITLES = ["Full Stack Developer", "Software Engineer", "Web Developer"];
+const ROLE_TITLES = ["AI Product Engineer", "Applied AI Builder", "Full Stack Developer"];
 
 function TypewriterRole(): React.JSX.Element {
   const shouldReduceMotion = useReducedMotion();
@@ -101,24 +101,25 @@ export default function Banner(): React.JSX.Element {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
               </span>
-              Available for new projects
+              Open to AI product &amp; full-stack roles
             </div>
 
             <h1 className="font-display text-4xl sm:text-6xl lg:text-[5.5rem] font-medium leading-[1.02] sm:leading-[0.98] tracking-tight text-ink">
-              Crafting
+              Building AI
               <br />
-              digital{" "}
-              <span className="italic text-accent">excellence</span>
+              products for the
+              <br />
+              <span className="italic text-accent">real world.</span>
             </h1>
 
             <p className="mt-5 sm:mt-6 text-lg sm:text-2xl font-medium text-ink/80">
-              I&apos;m Shivansh, a <TypewriterRole />
+              I&apos;m Shivansh — <TypewriterRole />
             </p>
 
             <p className="mt-5 max-w-xl mx-auto lg:mx-0 text-base sm:text-lg text-muted leading-relaxed">
-              Skilled in JavaScript, Python, React, Next.js, and Cloud. I build
-              robust, user-centric web solutions that empower businesses and
-              startups to scale dynamically in the digital landscape.
+              I turn AI ideas into dependable web products — from adaptive
+              fitness and learning tools to privacy-first SaaS — using Next.js,
+              Python, and cloud infrastructure.
             </p>
 
             <div className="mt-9 flex flex-wrap items-center justify-center lg:justify-start gap-4">
@@ -233,10 +234,10 @@ export default function Banner(): React.JSX.Element {
                 className="absolute -right-2 sm:-right-6 bottom-16 rounded-2xl bg-ink text-paper shadow-[0_8px_30px_rgba(23,19,14,0.15)] px-4 py-3"
               >
                 <p className="font-display text-2xl font-semibold leading-none">
-                  <CountUp value={7} suffix="+" />
+                  <CountUp value={2} />
                 </p>
                 <p className="text-[11px] uppercase tracking-wider text-paper/60 mt-1">
-                  Projects
+                  AI products
                 </p>
               </motion.div>
             </div>

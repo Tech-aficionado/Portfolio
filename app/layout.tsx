@@ -19,17 +19,19 @@ const fraunces = Fraunces({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ash-labs.tech"),
-  title: "Shivansh Goel - Full Stack Developer",
-  description: "A passionate Full Stack Developer and Software Engineer. Creating meaningful and robust digital solutions.",
+  title: "Shivansh Goel — AI Product Engineer & Full Stack Developer",
+  description:
+    "AI Product Engineer and Full Stack Developer building dependable AI-enabled products with Next.js, Python, and cloud infrastructure.",
   alternates: {
     canonical: "/",
   },
   keywords: [
     "Shivansh Goel",
-    "Software Engineer",
+    "AI Product Engineer",
+    "Applied AI Developer",
     "Full Stack Developer",
-    "Frontend Developer",
-    "Backend Developer",
+    "Machine Learning Developer",
+    "Python Developer",
     "React Developer",
     "Next.js Developer",
     "Portfolio",
@@ -41,14 +43,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://ash-labs.tech",
-    title: "Shivansh Goel - Full Stack Developer",
-    description: "A passionate Full Stack Developer and Software Engineer. Creating meaningful and robust digital solutions.",
+    title: "Shivansh Goel — AI Product Engineer",
+    description:
+      "Building dependable AI products for the real world with full-stack engineering.",
     siteName: "Shivansh Goel Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Shivansh Goel - Full Stack Developer",
-    description: "A passionate Full Stack Developer and Software Engineer.",
+    title: "Shivansh Goel — AI Product Engineer",
+    description:
+      "Building dependable AI products for the real world with full-stack engineering.",
   },
   robots: {
     index: true,
@@ -92,12 +96,15 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               name: "Shivansh Goel",
-              jobTitle: "Full Stack Developer",
+              jobTitle: "AI Product Engineer",
               description:
-                "A passionate Full Stack Developer and Software Engineer creating robust, user-centric digital solutions.",
+                "AI Product Engineer and Full Stack Developer building dependable AI-enabled products for practical, real-world use.",
               email: "mailto:shivansh.goela12@gmail.com",
               url: "https://ash-labs.tech",
               knowsAbout: [
+                "Artificial Intelligence",
+                "Applied Machine Learning",
+                "AI Product Development",
                 "JavaScript",
                 "TypeScript",
                 "React",

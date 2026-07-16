@@ -33,12 +33,13 @@ export default function About(): React.JSX.Element {
               viewport={{ once: true }}
               className="font-display text-xl sm:text-3xl lg:text-[2.4rem] leading-[1.45] sm:leading-[1.35] text-ink break-words"
             >
-              I empower businesses and startups by delivering{" "}
+              I build{" "}
               <span className="text-accent italic">
-                robust, user-centric web solutions
+                AI-enabled products
               </span>{" "}
-              that drive engagement and growth — turning ambitious ideas into
-              polished, dependable products.
+              that move from ambitious idea to dependable experience —
+              combining applied intelligence with full-stack engineering to
+              solve practical problems for people and businesses.
             </motion.p>
 
             <div className="mt-10 sm:mt-14">
