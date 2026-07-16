@@ -11,6 +11,7 @@ const navItems = [
   { label: "Expertise", href: "#services", id: "services" },
   { label: "Experience", href: "#experience", id: "experience" },
   { label: "Work", href: "#lab", id: "lab" },
+  { label: "Open Source", href: "#open-source", id: "open-source" },
 ];
 
 export default function Header(): React.JSX.Element {

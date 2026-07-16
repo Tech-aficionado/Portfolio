@@ -15,6 +15,7 @@ import Experience from "./components/Experience";
 import About from "./components/About";
 import Services from "./components/Services";
 import Projects from "./components/Projects";
+import GitHubActivity from "./components/GitHubActivity";
 import Footer from "./components/Footer";
 import SplashScreen from "./components/SplashScreen";
 
@@ -39,6 +40,7 @@ export default function Home(): React.JSX.Element {
       <Services />
       <Experience />
       <Projects />
+      <GitHubActivity />
       <Footer />
       <BackToTop />
       <ArcadeButton />
