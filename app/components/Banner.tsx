@@ -134,25 +134,61 @@ export default function Banner(): React.JSX.Element {
             transition={{ duration: 1, ease: "easeOut" }}
             className="lg:col-span-5 flex justify-center lg:justify-end"
           >
-            <div className="relative w-64 h-[19rem] sm:w-[340px] sm:h-[420px]">
-              {/* Accent panel */}
-              <div className="absolute inset-0 rounded-[2rem] bg-accent-soft border border-accent/20 rotate-3" />
-              <div className="absolute inset-0 rounded-[2rem] bg-paper-2 border border-line -rotate-2" />
+            <div className="relative isolate h-[19rem] w-64 sm:h-[420px] sm:w-[340px]">
+              {/* Sculpted editorial canvas */}
+              <div
+                aria-hidden="true"
+                className="absolute -right-7 top-9 h-40 w-40 rounded-full border-[18px] border-accent/10 sm:-right-10 sm:h-52 sm:w-52 sm:border-[22px]"
+              />
+              <div
+                aria-hidden="true"
+                style={{ borderRadius: "4.5rem 1.75rem 4.5rem 1.75rem" }}
+                className="absolute inset-1 rotate-5 border border-accent/30 bg-accent-soft shadow-[0_24px_80px_rgba(255,78,26,0.18)]"
+              />
+              <div
+                aria-hidden="true"
+                style={{ borderRadius: "1.75rem 4.5rem 1.75rem 4.5rem" }}
+                className="absolute -inset-1 -rotate-2 border border-line bg-paper-2 shadow-[0_18px_60px_rgba(23,19,14,0.10)]"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute -bottom-4 left-7 h-1.5 w-24 -rotate-6 rounded-full bg-accent shadow-[0_5px_18px_rgba(255,78,26,0.35)] sm:left-10 sm:w-32"
+              />
 
               {/* Portrait */}
               <motion.div
-                animate={{ y: [0, -12, 0] }}
+                animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute inset-x-0 -top-4 bottom-0"
               >
-                <Image
-                  src="/assets/me.png"
-                  alt="Shivansh Goel"
-                  fill
-                  className="object-contain object-bottom"
-                  priority
-                  sizes="(max-width: 768px) 256px, 340px"
-                />
+                <div
+                  style={{ borderRadius: "4.25rem 1.5rem 4.25rem 1.5rem" }}
+                  className="relative h-full w-full overflow-hidden border-[7px] border-paper bg-[#11100f] shadow-[0_30px_80px_rgba(23,19,14,0.25)] ring-1 ring-ink/10"
+                >
+                  <Image
+                    src="/Self-Image.jpeg"
+                    alt="Shivansh Goel"
+                    fill
+                    className="object-contain object-bottom"
+                    priority
+                    sizes="(max-width: 768px) 256px, 340px"
+                  />
+
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-x-0 top-0 h-24 bg-[linear-gradient(180deg,rgba(255,255,255,0.12),transparent)]"
+                  />
+
+                  <div className="absolute right-5 top-5 flex items-center gap-2 rounded-full border border-white/20 bg-black/30 px-3 py-1.5 text-[9px] font-medium uppercase tracking-[0.22em] text-white/90 backdrop-blur-md">
+                    <span className="h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_0_3px_rgba(255,78,26,0.24)]" />
+                    Portrait / 01
+                  </div>
+
+                  <div
+                    aria-hidden="true"
+                    className="absolute bottom-6 left-6 h-10 w-10 border-b-2 border-l-2 border-accent"
+                  />
+                </div>
               </motion.div>
 
               {/* Floating stat badges */}
