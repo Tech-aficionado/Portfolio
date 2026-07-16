@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useCallback, useState } from "react";
+import { AnimatePresence } from "framer-motion";
 import Header from "./components/Header";
 import ScrollProgress from "./components/ScrollProgress";
 import BackToTop from "./components/BackToTop";
@@ -19,40 +19,34 @@ import SplashScreen from "./components/SplashScreen";
 
 export default function Home(): React.JSX.Element {
   const [isLoading, setIsLoading] = useState(true);
+  const finishLoading = useCallback(() => setIsLoading(false), []);
 
   return (
     <main className="min-h-screen bg-paper text-ink paper-grain overflow-x-clip">
-      <AnimatePresence mode="wait">
+      <a
+        href="#home"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[70] focus:rounded-full focus:bg-ink focus:px-5 focus:py-2.5 focus:text-sm focus:font-medium focus:text-paper"
+      >
+        Skip to content
+      </a>
+      <ScrollProgress />
+      <SectionNav />
+      <Header />
+      <Banner />
+      <About />
+      <Services />
+      <Experience />
+      <Projects />
+      <Footer />
+      <BackToTop />
+      <ArcadeButton />
+      <CommandPalette />
+      <KonamiEasterEgg />
+
+      <AnimatePresence>
         {isLoading ? (
-          <SplashScreen key="splash" finishLoading={() => setIsLoading(false)} />
-        ) : (
-          <motion.div
-            key="content"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-          >
-            <a
-              href="#home"
-              className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[70] focus:rounded-full focus:bg-ink focus:px-5 focus:py-2.5 focus:text-sm focus:font-medium focus:text-paper"
-            >
-              Skip to content
-            </a>
-            <ScrollProgress />
-            <SectionNav />
-            <Header />
-            <Banner />
-            <About />
-            <Services />
-            <Experience />
-            <Projects />
-            <Footer />
-            <BackToTop />
-            <ArcadeButton />
-            <CommandPalette />
-            <KonamiEasterEgg />
-          </motion.div>
-        )}
+          <SplashScreen key="splash" finishLoading={finishLoading} />
+        ) : null}
       </AnimatePresence>
     </main>
   );

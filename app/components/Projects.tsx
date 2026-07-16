@@ -106,7 +106,7 @@ export default function Projects(): React.JSX.Element {
                         src={project.image}
                         alt={project.title}
                         fill
-                        sizes="(max-width: 1024px) 100vw, 60vw"
+                        sizes="(max-width: 1024px) calc(100vw - 2rem), 640px"
                         className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
                       />
                       <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />

@@ -1,21 +1,70 @@
 "use client";
 
-import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
+import {
+  motion,
+  useMotionTemplate,
+  useMotionValue,
+  useReducedMotion,
+} from "framer-motion";
 import Image from "next/image";
-import { useState, useEffect, useMemo } from "react";
+import { useEffect, useState } from "react";
 import CountUp from "./CountUp";
 
-export default function Banner(): React.JSX.Element {
-  const texts = useMemo(
-    () => ["Full Stack Developer", "Software Engineer", "Web Developer"],
-    []
-  );
+const ROLE_TITLES = ["Full Stack Developer", "Software Engineer", "Web Developer"];
+
+function TypewriterRole(): React.JSX.Element {
+  const shouldReduceMotion = useReducedMotion();
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [typingSpeed, setTypingSpeed] = useState(100);
 
-  // Cursor-follow spotlight
+  useEffect(() => {
+    if (shouldReduceMotion) return;
+
+    const currentText = ROLE_TITLES[currentTextIndex];
+
+    if (!isDeleting && displayedText.length < currentText.length) {
+      const timeout = window.setTimeout(() => {
+        setDisplayedText(currentText.slice(0, displayedText.length + 1));
+      }, typingSpeed);
+      return () => window.clearTimeout(timeout);
+    }
+
+    if (!isDeleting) {
+      const timeout = window.setTimeout(() => {
+        setIsDeleting(true);
+        setTypingSpeed(50);
+      }, 2000);
+      return () => window.clearTimeout(timeout);
+    }
+
+    if (displayedText.length > 0) {
+      const timeout = window.setTimeout(() => {
+        setDisplayedText(currentText.slice(0, displayedText.length - 1));
+      }, typingSpeed);
+      return () => window.clearTimeout(timeout);
+    }
+
+    const timeout = window.setTimeout(() => {
+      setIsDeleting(false);
+      setTypingSpeed(100);
+      setCurrentTextIndex((previous) => (previous + 1) % ROLE_TITLES.length);
+    }, typingSpeed);
+    return () => window.clearTimeout(timeout);
+  }, [currentTextIndex, displayedText, isDeleting, shouldReduceMotion, typingSpeed]);
+
+  return (
+    <>
+      <span className="text-accent">
+        {shouldReduceMotion ? ROLE_TITLES[0] : displayedText}
+      </span>
+      <span className="animate-pulse font-light text-muted">|</span>
+    </>
+  );
+}
+
+export default function Banner(): React.JSX.Element {
   const spotX = useMotionValue(-400);
   const spotY = useMotionValue(-400);
   const spotlight = useMotionTemplate`radial-gradient(500px circle at ${spotX}px ${spotY}px, rgba(255, 78, 26, 0.10), transparent 65%)`;
@@ -25,36 +74,6 @@ export default function Banner(): React.JSX.Element {
     spotX.set(e.clientX - rect.left);
     spotY.set(e.clientY - rect.top);
   }
-
-  useEffect(() => {
-    const currentText = texts[currentTextIndex];
-
-    if (!isDeleting) {
-      if (displayedText.length < currentText.length) {
-        const timeout = setTimeout(() => {
-          setDisplayedText(currentText.slice(0, displayedText.length + 1));
-        }, typingSpeed);
-        return () => clearTimeout(timeout);
-      } else {
-        const timeout = setTimeout(() => {
-          setIsDeleting(true);
-          setTypingSpeed(50);
-        }, 2000);
-        return () => clearTimeout(timeout);
-      }
-    } else {
-      if (displayedText.length > 0) {
-        const timeout = setTimeout(() => {
-          setDisplayedText(currentText.slice(0, displayedText.length - 1));
-        }, typingSpeed);
-        return () => clearTimeout(timeout);
-      } else {
-        setIsDeleting(false);
-        setTypingSpeed(100);
-        setCurrentTextIndex((prev) => (prev + 1) % texts.length);
-      }
-    }
-  }, [displayedText, isDeleting, currentTextIndex, texts, typingSpeed]);
 
   return (
     <section
@@ -93,9 +112,7 @@ export default function Banner(): React.JSX.Element {
             </h1>
 
             <p className="mt-5 sm:mt-6 text-lg sm:text-2xl font-medium text-ink/80">
-              I&apos;m Shivansh, a{" "}
-              <span className="text-accent">{displayedText}</span>
-              <span className="animate-pulse font-light text-muted">|</span>
+              I&apos;m Shivansh, a <TypewriterRole />
             </p>
 
             <p className="mt-5 max-w-xl mx-auto lg:mx-0 text-base sm:text-lg text-muted leading-relaxed">
@@ -169,7 +186,7 @@ export default function Banner(): React.JSX.Element {
                     src="/Self-Image.jpeg"
                     alt="Shivansh Goel"
                     fill
-                    className="object-contain object-bottom"
+                    className="object-cover object-[50%_42%]"
                     priority
                     sizes="(max-width: 768px) 256px, 340px"
                   />
