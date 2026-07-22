@@ -1,27 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-interface ExperienceItem {
-  id: number;
-  role: string;
-  company: string;
-  period: string;
-  description: string;
-  stack: string[];
-}
-
-const experiences: ExperienceItem[] = [
-  {
-    id: 1,
-    role: "Full Stack Developer — Intern",
-    company: "TedForge Solutions Pvt. Ltd.",
-    period: "Dec 2023 – May 2025",
-    description:
-      "Across a 17-month internship, built React and Angular interfaces, developed Node.js REST APIs, and improved MySQL and MongoDB data paths. The work focused on reducing query overhead and making product interactions more responsive and dependable.",
-    stack: ["React", "Angular", "Node.js", "MySQL", "MongoDB"],
-  },
-];
+import { EXPERIENCE as experiences } from "../portfolio-data";
 
 export default function Experience(): React.JSX.Element {
   return (
