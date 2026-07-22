@@ -95,12 +95,28 @@ export default function Footer(): React.JSX.Element {
           <p className="text-sm text-paper/50">
             © {new Date().getFullYear()} Shivansh Goel. All rights reserved.
           </p>
-          <a
-            href="#home"
-            className="text-sm text-paper/50 hover:text-paper transition-colors"
-          >
-            Back to top ↑
-          </a>
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+            <a
+              href="/llms.txt"
+              className="text-sm text-paper/50 hover:text-paper transition-colors"
+              title="LLM-friendly summary of this site"
+            >
+              llms.txt
+            </a>
+            <a
+              href="/api/profile"
+              className="text-sm text-paper/50 hover:text-paper transition-colors"
+              title="Machine-readable profile data (JSON)"
+            >
+              API
+            </a>
+            <a
+              href="#home"
+              className="text-sm text-paper/50 hover:text-paper transition-colors"
+            >
+              Back to top ↑
+            </a>
+          </div>
         </div>
       </div>
     </footer>
