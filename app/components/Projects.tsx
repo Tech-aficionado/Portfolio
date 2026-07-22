@@ -3,62 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import TiltCard from "./TiltCard";
-
-interface Project {
-  id: number;
-  title: string;
-  tag: string;
-  outcome: string;
-  image: string;
-  stack: string[];
-  link?: string;
-  sourceLink?: string;
-}
-
-const featuredProjects: Project[] = [
-  {
-    id: 1,
-    title: "Ziplink",
-    tag: "URL Shortener · SaaS",
-    outcome:
-      "Turns long URLs into trackable, brand-ready links that are easier to distribute across campaigns. QR downloads and edge redirects shorten the path from share to destination, while analytics make each link measurable.",
-    stack: ["Next.js", "Firebase", "Edge Redirects"],
-    link: "https://ziplink.ash-labs.tech",
-    sourceLink: "https://github.com/Tech-aficionado/ZipLink---Open-Source",
-    image: "/assets/ziplink.png",
-  },
-  {
-    id: 2,
-    title: "GhostRelay",
-    tag: "Privacy · SaaS",
-    outcome:
-      "Keeps a real inbox out of sign-up forms by routing messages through disposable aliases. If an alias attracts spam, it can be disabled without changing the primary address — giving users a practical containment layer.",
-    stack: ["Cloudflare Workers", "D1", "Next.js", "React 19", "Resend"],
-    link: "https://ghostrelay.me",
-    sourceLink: "https://github.com/Tech-aficionado/GhostRelay---Open-Source",
-    image: "/assets/ghostrelay.png",
-  },
-  {
-    id: 3,
-    title: "FiTrack AI",
-    tag: "AI · Fitness",
-    outcome:
-      "Brings workout, nutrition, and recovery signals into one adaptive flow. AI-guided intensity, macro breakdowns, and fatigue-aware recommendations reduce the manual work of reconciling separate fitness trackers.",
-    stack: ["Next.js", "Python", "Machine Learning"],
-    link: "https://fitrack-ai.ash-labs.tech/",
-    image: "/assets/image 3.png",
-  },
-  {
-    id: 4,
-    title: "Quizify",
-    tag: "AI · Education",
-    outcome:
-      "Turns a topic into a ready-to-run assessment in seconds, reducing manual question writing. Instant explanations and mastery tracking show learners what to review next, while classroom codes make sharing straightforward.",
-    stack: ["Next.js", "React", "AI"],
-    link: "https://quizify.ash-labs.tech",
-    image: "/assets/image 2.png",
-  },
-];
+import { PROJECTS as featuredProjects } from "../portfolio-data";
 
 export default function Projects(): React.JSX.Element {
   return (

@@ -3,6 +3,13 @@ import { Inter, Fraunces } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 
 import "./globals.css";
+import {
+  KNOWS_ABOUT,
+  PROFILE,
+  PROJECTS,
+  SITE_URL,
+  SOCIAL_LINKS,
+} from "./portfolio-data";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -74,6 +81,46 @@ export const viewport: Viewport = {
   themeColor: "#f4f1e9",
 };
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${SITE_URL}/#person`,
+      name: PROFILE.name,
+      jobTitle: PROFILE.headline,
+      description: PROFILE.summary,
+      email: `mailto:${PROFILE.email}`,
+      url: SITE_URL,
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: PROFILE.location.country,
+      },
+      knowsAbout: KNOWS_ABOUT,
+      sameAs: SOCIAL_LINKS.map((link) => link.url),
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: `${PROFILE.name} Portfolio`,
+      description: PROFILE.summary,
+      inLanguage: "en",
+      publisher: { "@id": `${SITE_URL}/#person` },
+    },
+    ...PROJECTS.map((project) => ({
+      "@type": "SoftwareApplication",
+      name: project.title,
+      applicationCategory: project.tag,
+      description: project.outcome,
+      url: project.link ?? SITE_URL,
+      ...(project.sourceLink ? { codeRepository: project.sourceLink } : {}),
+      operatingSystem: "Web",
+      author: { "@id": `${SITE_URL}/#person` },
+    })),
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -92,33 +139,7 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: "Shivansh Goel",
-              jobTitle: "AI Product Engineer",
-              description:
-                "AI Product Engineer and Full Stack Developer building dependable AI-enabled products for practical, real-world use.",
-              email: "mailto:shivansh.goela12@gmail.com",
-              url: "https://ash-labs.tech",
-              knowsAbout: [
-                "Artificial Intelligence",
-                "Applied Machine Learning",
-                "AI Product Development",
-                "JavaScript",
-                "TypeScript",
-                "React",
-                "Next.js",
-                "Node.js",
-                "Python",
-                "AWS",
-              ],
-              sameAs: [
-                "https://github.com/Tech-aficionado",
-                "https://www.linkedin.com/in/shivansh-goel-5b2309174/",
-                "https://www.instagram.com/shivanxx.__/",
-              ],
-            }),
+            __html: JSON.stringify(structuredData),
           }}
         />
         {children}

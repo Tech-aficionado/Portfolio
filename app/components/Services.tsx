@@ -2,44 +2,16 @@
 
 import { motion } from "framer-motion";
 import { Code2, Server, Layers, Database } from "lucide-react";
+import { CAPABILITIES, type Capability } from "../portfolio-data";
 
-interface Capability {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  skills: string[];
-}
+const ICONS: Record<Capability["iconKey"], React.ReactNode> = {
+  frontend: <Code2 className="h-6 w-6" />,
+  backend: <Server className="h-6 w-6" />,
+  data: <Database className="h-6 w-6" />,
+  fullstack: <Layers className="h-6 w-6" />,
+};
 
-const capabilities: Capability[] = [
-  {
-    icon: <Code2 className="h-6 w-6" />,
-    title: "Frontend Development",
-    description:
-      "Accessible, responsive interfaces with clean component architecture and smooth, purposeful interactions.",
-    skills: ["React", "Next.js", "Angular", "Tailwind CSS"],
-  },
-  {
-    icon: <Server className="h-6 w-6" />,
-    title: "Backend Development",
-    description:
-      "Secure, well-structured RESTful APIs and services built for reliability and maintainable growth.",
-    skills: ["Node.js", "Python", "REST APIs"],
-  },
-  {
-    icon: <Database className="h-6 w-6" />,
-    title: "Databases & Cloud",
-    description:
-      "Efficient data modeling and query optimization, with cloud deployments that scale on demand.",
-    skills: ["MySQL", "MongoDB", "AWS"],
-  },
-  {
-    icon: <Layers className="h-6 w-6" />,
-    title: "Full Stack Solutions",
-    description:
-      "End-to-end product delivery — from architecture and implementation through to deployment and iteration.",
-    skills: ["TypeScript", "System Design", "CI/CD"],
-  },
-];
+const capabilities = CAPABILITIES;
 
 export default function Services(): React.JSX.Element {
   return (
@@ -79,7 +51,7 @@ export default function Services(): React.JSX.Element {
                   className="group rounded-2xl border border-line bg-paper p-6 sm:p-7 transition-all hover:border-accent/40 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(23,19,14,0.06)]"
                 >
                   <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent-soft text-accent transition-colors group-hover:bg-accent group-hover:text-paper">
-                    {cap.icon}
+                    {ICONS[cap.iconKey]}
                   </div>
                   <h3 className="mt-5 font-display text-xl font-medium text-ink">
                     {cap.title}
