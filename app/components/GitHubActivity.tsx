@@ -14,10 +14,12 @@ interface GitHubRepository {
 const GITHUB_USER = "Tech-aficionado";
 const GITHUB_PROFILE_URL = `https://github.com/${GITHUB_USER}`;
 const FEATURED_REPOSITORIES = [
-  "Tamagochi---Open-Source-Game",
-  "ZipLink---Open-Source",
+  "Forkcast---Open-Source-Git",
   "CraftFolio---Open-Sourced-Minecraft-Portfolio-Library",
+  "Tamagochi---Open-Source-Game",
   "GhostRelay---Open-Source",
+  "ZipLink---Open-Source",
+  "Portfolio-Template---Open-Sourced",
 ];
 const FALLBACK_DESCRIPTIONS: Record<string, string> = {
   "ZipLink---Open-Source": "Open-source URL shortening project.",
