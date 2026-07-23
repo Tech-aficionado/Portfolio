@@ -1,0 +1,48 @@
+name: Build résumés
+
+# Rebuild résumé PDFs when the .tex sources change and commit them back.
+on:
+  push:
+    branches: [master]
+    paths:
+      - "resumes/**.tex"
+      - "scripts/build-resumes.mjs"
+      - ".github/workflows/resumes.yml"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-resumes
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Tectonic
+        uses: wtfjoke/setup-tectonic@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Compile résumés
+        run: npm run resumes
+
+      - name: Commit updated PDFs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain public/resumes)" ]; then
+            git add public/resumes
+            git commit -m "chore(resumes): Rebuild résumé PDFs [skip ci]"
+            git push
+          else
+            echo "No résumé changes to commit."
+          fi

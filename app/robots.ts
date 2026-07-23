@@ -2,8 +2,7 @@ import type { MetadataRoute } from "next";
 
 const BASE_URL = "https://ash-labs.tech";
 
-// AI assistants and their crawlers are explicitly welcomed so the portfolio's
-// machine-readable data (/api/profile, /llms.txt) can be discovered and indexed.
+// Let AI crawlers in so /api/profile and /llms.txt get picked up.
 const AI_CRAWLERS = [
   "GPTBot",
   "OAI-SearchBot",

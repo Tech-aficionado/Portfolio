@@ -6,7 +6,8 @@
     "dev": "next dev --port 3020",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "resumes": "node scripts/build-resumes.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",

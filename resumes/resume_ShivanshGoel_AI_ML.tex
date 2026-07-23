@@ -1,0 +1,255 @@
+\documentclass[10pt,a4paper]{article}
+
+% ---------- ATS-safe encoding and typography ----------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+% ATS glyph-to-unicode mapping (pdfTeX only; XeTeX/Tectonic emits Unicode natively)
+\ifdefined\pdfgentounicode
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+\fi
+
+% ---------- Page layout ----------
+\usepackage[
+  a4paper,
+  top=0.48in,
+  bottom=0.48in,
+  left=0.58in,
+  right=0.58in
+]{geometry}
+
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\usepackage{ragged2e}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\urlstyle{same}
+\raggedright
+
+% ---------- Colours ----------
+\definecolor{heading}{HTML}{1F2937}
+\definecolor{rulecolor}{HTML}{9CA3AF}
+
+% ---------- Bullet styling ----------
+\setlist[itemize]{
+  leftmargin=1.2em,
+  itemsep=1pt,
+  topsep=2pt,
+  parsep=0pt,
+  partopsep=0pt,
+  label=\textbullet
+}
+
+\newcommand{\resumeSection}[1]{%
+  \vspace{5pt}
+  {\normalsize\bfseries\color{heading} #1}\par
+  \vspace{1pt}
+  {\color{rulecolor}\hrule height 0.4pt}
+  \vspace{3pt}
+}
+
+% ---------- Reusable commands ----------
+\newcommand{\resumeHeader}[1]{%
+  {\fontsize{20}{22}\selectfont\bfseries\color{heading} #1}\par
+}
+
+\newcommand{\resumeTagline}[1]{%
+  \vspace{0.10em}
+  {\normalsize\bfseries #1}\par
+}
+
+\newcommand{\contactLine}[1]{%
+  \vspace{0.18em}
+  {\small #1}\par
+}
+
+\newcommand{\resumeSubheading}[4]{%
+  \textbf{#1}\hfill\textbf{#2}\par
+  \textit{#3}\hfill\textit{#4}\par
+  \vspace{-0.15em}
+}
+
+\newcommand{\projectHeading}[2]{%
+  \textbf{#1} \textbar{} \textit{#2}\par
+  \vspace{-0.15em}
+}
+
+\newcommand{\skillLine}[2]{%
+  \textbf{#1:} #2\par
+}
+
+\begin{document}
+
+% ==================== HEADER ====================
+\begin{center}
+    {\fontsize{21}{23}\selectfont\bfseries\color{heading}
+    SHIVANSH GOEL}\\[2pt]
+    {\normalsize\bfseries AI / ML Engineer}\\[4pt]
+
+    {\small
+    +91 9458569110
+    \quad \textbar{} \quad
+    \href{mailto:shivansh.goela12@gmail.com}
+    {shivansh.goela12@gmail.com}
+    \quad \textbar{} \quad
+    Delhi, India
+    \quad \textbar{} \quad
+    \href{https://www.linkedin.com/in/shivansh-goel-5b2309174}
+    {LinkedIn}
+    \quad \textbar{} \quad
+    \href{https://github.com/Tech-aficionado}
+    {GitHub}
+    \quad \textbar{} \quad
+    \href{https://ash-labs.tech}
+    {Portfolio}
+    }
+\end{center}
+
+\vspace{-4pt}
+
+% ==================== PROFESSIONAL SUMMARY ====================
+\resumeSection{PROFESSIONAL SUMMARY}
+
+AI/ML Engineer building production LLM applications with Retrieval-Augmented
+Generation (RAG), AI agents, and prompt engineering. Experienced integrating
+Google Gemini into live products, designing embedding and retrieval
+pipelines, engineering prompts for structured output, and hardening AI
+features with secure server-side model routing. Focused on accuracy,
+grounding, latency, and cost efficiency.
+
+% ==================== TECHNICAL SKILLS ====================
+\resumeSection{TECHNICAL SKILLS}
+
+\small
+
+\skillLine{LLM and Generative AI}
+{LLM Integration, Google Gemini, AI Agents, Prompt Engineering,
+Structured Output, Profile Contexting}
+
+\skillLine{Retrieval and NLP}
+{Retrieval-Augmented Generation (RAG), Semantic Retrieval, Embeddings,
+Document Chunking, TF-IDF, NLP, Sentiment Analysis}
+
+\skillLine{AI Security and Serving}
+{AI Security Middleware, API-Key Proxying, Access-Key Authentication,
+LLM Request Gating, Redis Caching for Inference}
+
+\skillLine{Languages}
+{Python, TypeScript, JavaScript (ES6+), SQL}
+
+\skillLine{Backend and Data}
+{FastAPI, Node.js, REST APIs, Supabase, Redis, Cloudflare D1, JSON}
+
+\skillLine{Tools}
+{Git, GitHub, Firebase Tools, Cloudflare Workers, VS Code, Debugging}
+
+\normalsize
+
+% ==================== PROFESSIONAL EXPERIENCE ====================
+\resumeSection{PROFESSIONAL EXPERIENCE}
+
+\resumeSubheading
+{Full Stack Developer, Intern}
+{December 2023 -- May 2025}
+{Tedforge Solutions Private Limited}
+{India}
+
+\begin{itemize}
+  \item Across a 17-month internship, built client-facing web applications
+  with React and Angular and developed Node.js REST APIs, integrating
+  data-driven, API-backed features.
+
+  \item Improved MySQL and MongoDB data paths, reducing query overhead and
+  making product interactions more responsive.
+
+  \item Improved application stability by reducing reported bugs 40 percent
+  through systematic debugging and refactoring, collaborating through Git and
+  GitHub.
+\end{itemize}
+
+% ==================== PROJECTS ====================
+\resumeSection{PROJECTS}
+
+\projectHeading
+{Quizify -- RAG-Based AI Assessment Platform \href{https://quizify.ash-labs.tech}{[Live]}}
+{Google Gemini, RAG, Embeddings, AI Agents, FastAPI, Redis, Supabase}
+
+\begin{itemize}
+  \item Built an AI-powered assessment platform where AI agents ingest
+  user-provided documentation and generate topic-based quizzes on demand,
+  cutting manual quiz-creation effort significantly.
+
+  \item Implemented a RAG pipeline that chunks and embeds source documents,
+  then retrieves relevant context to ground Gemini's question generation and
+  keep quizzes accurate and on-topic.
+
+  \item Engineered prompts for structured, schema-consistent output
+  (question, options, answer, explanation) and applied profile contexting to
+  tailor difficulty and style per learner.
+
+  \item Built an AI Security Middleware that proxies all Gemini calls
+  server-side with no client-side API key, and used Redis caching to reduce
+  repeat model calls, latency, and cost.
+\end{itemize}
+
+\projectHeading
+{FiTrack AI -- Adaptive AI Fitness Platform \href{https://fitrack-ai.ash-labs.tech/}{[Live]}}
+{Google Gemini, NLP, Machine Learning, Python, Next.js}
+
+\begin{itemize}
+  \item Built an AI-powered fitness platform that analyzes user performance
+  patterns and adaptively adjusts workout intensity for optimal results.
+
+  \item Integrated Gemini with profile contexting for personalized,
+  goal-aware guidance, and applied NLP to turn raw performance data into
+  plain-language, actionable feedback.
+\end{itemize}
+
+\projectHeading
+{GhostRelay -- Privacy-First Email Aliasing Platform \href{https://ghostrelay.me}{[Live]} \href{https://github.com/Tech-aficionado/GhostRelay---Open-Source}{[Source]}}
+{Next.js, React 19, Cloudflare Workers, Cloudflare D1, Resend}
+
+\begin{itemize}
+  \item Built a privacy-first email aliasing platform on Cloudflare's edge
+  network that forwards to a user's real inbox while keeping the real address
+  hidden from spam, breaches, and tracking.
+
+  \item Implemented one-click alias creation with per-alias enable and
+  disable controls, letting users instantly stop spam and pinpoint which
+  service leaked their email.
+\end{itemize}
+
+% ==================== EDUCATION ====================
+\resumeSection{EDUCATION}
+
+\resumeSubheading
+{Bachelor of Technology in Computer Science and Engineering}
+{2023 -- 2027}
+{COER University}
+{Roorkee, India}
+
+\begin{itemize}
+  \item Relevant Coursework: Data Structures and Algorithms,
+  Object-Oriented Programming, Database Management Systems, Operating
+  Systems, Computer Networks, Software Engineering.
+\end{itemize}
+
+% ==================== CERTIFICATIONS ====================
+\resumeSection{CERTIFICATIONS}
+
+{\small
+\textbf{Python 3.11 Programming with FastAPI Backend Framework}
+\quad \textbar{} \quad
+\textbf{TypeScript 5.2} -- Microsoft
+\\[2pt]
+\textbf{Angular 16 with TypeScript 5.2 and PrimeNG 16}
+\quad \textbar{} \quad
+\textbf{Onsite Technical Internship -- Trainee Software Developer (Full Stack)}
+}
+
+\end{document}

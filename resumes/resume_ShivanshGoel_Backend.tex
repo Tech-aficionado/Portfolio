@@ -1,0 +1,264 @@
+\documentclass[10pt,a4paper]{article}
+
+% ---------- ATS-safe encoding and typography ----------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+% ATS glyph-to-unicode mapping (pdfTeX only; XeTeX/Tectonic emits Unicode natively)
+\ifdefined\pdfgentounicode
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+\fi
+
+% ---------- Page layout ----------
+\usepackage[
+  a4paper,
+  top=0.48in,
+  bottom=0.48in,
+  left=0.58in,
+  right=0.58in
+]{geometry}
+
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\usepackage{ragged2e}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\urlstyle{same}
+\raggedright
+
+% ---------- Colours ----------
+\definecolor{heading}{HTML}{1F2937}
+\definecolor{rulecolor}{HTML}{9CA3AF}
+
+% ---------- Bullet styling ----------
+\setlist[itemize]{
+  leftmargin=1.2em,
+  itemsep=1pt,
+  topsep=2pt,
+  parsep=0pt,
+  partopsep=0pt,
+  label=\textbullet
+}
+
+\newcommand{\resumeSection}[1]{%
+  \vspace{5pt}
+  {\normalsize\bfseries\color{heading} #1}\par
+  \vspace{1pt}
+  {\color{rulecolor}\hrule height 0.4pt}
+  \vspace{3pt}
+}
+
+% ---------- Reusable commands ----------
+\newcommand{\resumeHeader}[1]{%
+  {\fontsize{20}{22}\selectfont\bfseries\color{heading} #1}\par
+}
+
+\newcommand{\resumeTagline}[1]{%
+  \vspace{0.10em}
+  {\normalsize\bfseries #1}\par
+}
+
+\newcommand{\contactLine}[1]{%
+  \vspace{0.18em}
+  {\small #1}\par
+}
+
+\newcommand{\resumeSubheading}[4]{%
+  \textbf{#1}\hfill\textbf{#2}\par
+  \textit{#3}\hfill\textit{#4}\par
+  \vspace{-0.15em}
+}
+
+\newcommand{\projectHeading}[2]{%
+  \textbf{#1} \textbar{} \textit{#2}\par
+  \vspace{-0.15em}
+}
+
+\newcommand{\skillLine}[2]{%
+  \textbf{#1:} #2\par
+}
+
+\begin{document}
+
+% ==================== HEADER ====================
+\begin{center}
+    {\fontsize{21}{23}\selectfont\bfseries\color{heading}
+    SHIVANSH GOEL}\\[2pt]
+    {\normalsize\bfseries Backend Developer}\\[4pt]
+
+    {\small
+    +91 9458569110
+    \quad \textbar{} \quad
+    \href{mailto:shivansh.goela12@gmail.com}
+    {shivansh.goela12@gmail.com}
+    \quad \textbar{} \quad
+    Delhi, India
+    \quad \textbar{} \quad
+    \href{https://www.linkedin.com/in/shivansh-goel-5b2309174}
+    {LinkedIn}
+    \quad \textbar{} \quad
+    \href{https://github.com/Tech-aficionado}
+    {GitHub}
+    \quad \textbar{} \quad
+    \href{https://ash-labs.tech}
+    {Portfolio}
+    }
+\end{center}
+
+\vspace{-4pt}
+
+% ==================== PROFESSIONAL SUMMARY ====================
+\resumeSection{PROFESSIONAL SUMMARY}
+
+Backend Developer building secure, scalable server-side systems with Node.js,
+FastAPI, and Python on serverless and edge infrastructure. Experienced
+designing REST APIs, database schemas, and caching layers, and hardening
+services with authentication, API-key proxying, and request gating.
+Skilled at integrating LLM backends and optimizing latency and cost through
+Redis caching and efficient data access.
+
+% ==================== TECHNICAL SKILLS ====================
+\resumeSection{TECHNICAL SKILLS}
+
+\small
+
+\skillLine{Languages}
+{Python, TypeScript, JavaScript (ES6+), SQL}
+
+\skillLine{Backend and Frameworks}
+{Node.js, FastAPI, REST APIs, JSON, CRUD Operations, Server-Side Logic,
+Cloudflare Workers (Edge Functions)}
+
+\skillLine{Databases and Caching}
+{Supabase (PostgreSQL), Cloudflare D1, Redis, MySQL, Query Optimization}
+
+\skillLine{API Security and Infrastructure}
+{Access-Key Authentication, API-Key Proxying, LLM Request Gating,
+Server-Side Model Routing, Rate Control}
+
+\skillLine{AI and LLM Backends}
+{LLM Integration, Google Gemini, RAG Pipelines, Embeddings,
+Structured Output, Prompt Engineering}
+
+\skillLine{Tools and Concepts}
+{Git, GitHub, Firebase Tools, Debugging, OOP, DBMS, Computer Networks}
+
+\normalsize
+
+% ==================== PROFESSIONAL EXPERIENCE ====================
+\resumeSection{PROFESSIONAL EXPERIENCE}
+
+\resumeSubheading
+{Full Stack Developer, Intern}
+{December 2023 -- May 2025}
+{Tedforge Solutions Private Limited}
+{India}
+
+\begin{itemize}
+  \item Across a 17-month internship, developed Node.js REST APIs powering
+  client-facing web applications and connecting React and Angular frontends
+  to data services.
+
+  \item Improved MySQL and MongoDB data paths and queries, reducing query
+  overhead and improving response times across product workflows.
+
+  \item Improved application stability and reliability by reducing reported
+  bugs 40 percent through systematic debugging and refactoring, using Git and
+  GitHub for version control.
+\end{itemize}
+
+% ==================== PROJECTS ====================
+\resumeSection{PROJECTS}
+
+\projectHeading
+{Quizify -- AI-Powered Assessment Backend \href{https://quizify.ash-labs.tech}{[Live]}}
+{FastAPI, Node.js, Supabase, Redis, Google Gemini, RAG, REST APIs}
+
+\begin{itemize}
+  \item Designed and built the server-side backend for an AI assessment
+  platform, exposing REST endpoints that generate topic-based quizzes on
+  demand from user-provided documentation.
+
+  \item Implemented a RAG pipeline that chunks, embeds, and retrieves source
+  documents to ground Gemini's generation, with prompts engineered for
+  structured, schema-consistent output.
+
+  \item Built an AI Security Middleware that proxies all Gemini calls
+  server-side with no client-side API key, authenticating via scoped access
+  keys, gating LLM traffic, and caching results in Redis to cut latency
+  and cost.
+\end{itemize}
+
+\projectHeading
+{GhostRelay -- Privacy-First Email Routing Service \href{https://ghostrelay.me}{[Live]} \href{https://github.com/Tech-aficionado/GhostRelay---Open-Source}{[Source]}}
+{Cloudflare Workers, Cloudflare D1, Resend, REST APIs}
+
+\begin{itemize}
+  \item Built the backend of a privacy-first email aliasing service on
+  Cloudflare's edge network, handling alias creation, storage in D1, and
+  inbound email forwarding through Resend.
+
+  \item Implemented per-alias enable and disable controls and routing logic
+  that forwards mail to a user's real inbox while keeping the real address
+  hidden from spam, breaches, and tracking.
+\end{itemize}
+
+\projectHeading
+{FiTrack AI -- Adaptive Fitness Backend \href{https://fitrack-ai.ash-labs.tech/}{[Live]}}
+{Python, Machine Learning, Google Gemini, Node.js, NLP, REST APIs}
+
+\begin{itemize}
+  \item Built the data and AI backend for a fitness platform that analyzes
+  user performance patterns and adaptively adjusts workout intensity.
+
+  \item Reused a secure server-side proxy pattern to keep Gemini API keys
+  server-side and applied NLP to transform raw performance data into
+  structured, actionable feedback.
+\end{itemize}
+
+\projectHeading
+{Ziplink -- URL Shortener SaaS \href{https://ziplink.ash-labs.tech}{[Live]} \href{https://github.com/Tech-aficionado/ZipLink---Open-Source}{[Source]}}
+{Next.js, Firebase, Edge Redirects, REST APIs}
+
+\begin{itemize}
+  \item Built the backend of a URL shortener SaaS with edge redirects for
+  low-latency global redirection and Firebase-backed link storage.
+
+  \item Implemented link creation, QR generation, and per-link click
+  analytics exposed through the application's API.
+\end{itemize}
+
+% ==================== EDUCATION ====================
+\resumeSection{EDUCATION}
+
+\resumeSubheading
+{Bachelor of Technology in Computer Science and Engineering}
+{2023 -- 2027}
+{COER University}
+{Roorkee, India}
+
+\begin{itemize}
+  \item Relevant Coursework: Data Structures and Algorithms, Database
+  Management Systems, Operating Systems, Computer Networks,
+  Object-Oriented Programming, Software Engineering.
+\end{itemize}
+
+% ==================== CERTIFICATIONS ====================
+\resumeSection{CERTIFICATIONS}
+
+{\small
+\textbf{Python 3.11 Programming with FastAPI Backend Framework}
+\quad \textbar{} \quad
+\textbf{TypeScript 5.2} -- Microsoft
+\\[2pt]
+\textbf{Angular 16 with TypeScript 5.2 and PrimeNG 16}
+\quad \textbar{} \quad
+\textbf{Onsite Technical Internship -- Trainee Software Developer (Full Stack)}
+}
+
+\end{document}

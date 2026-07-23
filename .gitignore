@@ -40,3 +40,15 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 temp_svg/node_modules
+
+# local tooling (e.g. downloaded tectonic binary)
+/.tools
+
+# latex build artifacts (generated PDFs in public/resumes are committed)
+/.resumes-build
+resumes/*.aux
+resumes/*.log
+resumes/*.out
+resumes/*.fls
+resumes/*.fdb_latexmk
+resumes/*.synctex.gz
