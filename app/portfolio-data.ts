@@ -57,6 +57,8 @@ export const SOCIAL_LINKS: SocialLink[] = [
   { label: "GitHub", url: "https://github.com/Tech-aficionado" },
   { label: "LinkedIn", url: "https://www.linkedin.com/in/shivansh-goel-5b2309174/" },
   { label: "Instagram", url: "https://www.instagram.com/shivanxx.__/" },
+  { label: "Hashnode", url: "https://tech-aficionado.hashnode.dev" },
+  { label: "Dev.to", url: "https://dev.to/tech-aficionado" },
   { label: "Website", url: SITE_URL },
 ];
 
