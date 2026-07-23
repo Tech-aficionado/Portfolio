@@ -99,14 +99,14 @@ export default function Footer(): React.JSX.Element {
             <a
               href="/llms.txt"
               className="text-sm text-paper/50 hover:text-paper transition-colors"
-              title="LLM-friendly summary of this site"
+              title="Plain-text summary for AI tools"
             >
               llms.txt
             </a>
             <a
               href="/api/profile"
               className="text-sm text-paper/50 hover:text-paper transition-colors"
-              title="Machine-readable profile data (JSON)"
+              title="Profile data as JSON"
             >
               API
             </a>

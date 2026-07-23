@@ -1,13 +1,7 @@
 import { NextResponse } from "next/server";
 import { PORTFOLIO, PROFILE, SITE_URL } from "../../portfolio-data";
 
-/**
- * Public, machine-readable portfolio data.
- *
- * Returns a stable JSON document that any AI agent, crawler, or online tool can
- * fetch cross-origin. The data is static per build/deploy, so it is cached
- * aggressively at the edge and revalidated periodically.
- */
+// Public JSON feed of the portfolio for agents and tools. CORS-open, edge-cached.
 
 export const revalidate = 21600; // 6 hours
 
@@ -36,6 +30,15 @@ export function GET(): NextResponse {
     },
     stats: PORTFOLIO.stats,
     skills: PORTFOLIO.knowsAbout,
+    roles: PORTFOLIO.roles.map((role) => ({
+      id: role.id,
+      title: role.title,
+      summary: role.summary,
+      focus: role.focus,
+      skills: role.skills,
+      resumeUrl: `${SITE_URL}${role.resumeUrl}`,
+      exploreUrl: `${SITE_URL}/?role=${role.id}#roles`,
+    })),
     capabilities: PORTFOLIO.capabilities,
     experience: PORTFOLIO.experience,
     projects: PORTFOLIO.projects.map((project) => ({

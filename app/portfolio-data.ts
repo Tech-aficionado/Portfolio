@@ -1,12 +1,6 @@
 import { PORTFOLIO_STATS } from "./portfolio-stats";
 
-/**
- * Canonical, machine-readable source of truth for the portfolio.
- *
- * This module is intentionally free of JSX and framework specifics so it can be
- * consumed by UI components, the JSON API (`/api/profile`), the `llms.txt`
- * route, and structured data (JSON-LD) without duplication or drift.
- */
+// All portfolio content lives here so the UI, API, and llms.txt stay in sync.
 
 export const SITE_URL = "https://ash-labs.tech";
 
@@ -122,6 +116,120 @@ export const EXPERIENCE: ExperienceItem[] = [
   },
 ];
 
+export interface Role {
+  id: string;
+  title: string;
+  blurb: string;
+  summary: string;
+  focus: string[];
+  skills: string[];
+  resumeUrl: string;
+}
+
+// One entry per hiring track, each with its own résumé. Deep-linkable via ?role=<id>.
+export const ROLES: Role[] = [
+  {
+    id: "ai-ml",
+    title: "AI / ML Engineer",
+    blurb: "Production LLM apps, RAG, and AI agents.",
+    summary:
+      "AI/ML Engineer building production LLM applications with Retrieval-Augmented Generation (RAG), AI agents, and prompt engineering. Integrates Google Gemini into live products, designs embedding and retrieval pipelines, and hardens AI features with secure server-side model routing — focused on accuracy, grounding, latency, and cost.",
+    focus: [
+      "RAG pipelines & semantic retrieval",
+      "Prompt engineering for structured output",
+      "AI security middleware & model routing",
+      "Latency & cost optimization with caching",
+    ],
+    skills: [
+      "Google Gemini",
+      "RAG",
+      "Embeddings",
+      "AI Agents",
+      "Prompt Engineering",
+      "Python",
+      "FastAPI",
+      "Redis",
+      "NLP",
+    ],
+    resumeUrl: "/resumes/resume_ShivanshGoel_AI_ML.pdf",
+  },
+  {
+    id: "full-stack",
+    title: "Full Stack Developer",
+    blurb: "End-to-end product delivery, frontend to backend.",
+    summary:
+      "Full Stack Developer building production web applications end to end with React, Next.js, and Node.js on modern serverless infrastructure. Designs responsive interfaces, builds REST APIs and database-backed services, and ships features from design through deployment — owning both the frontend experience and the backend logic, including AI and LLM integrations.",
+    focus: [
+      "End-to-end feature delivery",
+      "Responsive UIs with React & Next.js",
+      "REST APIs & database-backed services",
+      "AI/LLM integration & deployment",
+    ],
+    skills: [
+      "React",
+      "Next.js",
+      "Node.js",
+      "FastAPI",
+      "TypeScript",
+      "Python",
+      "Supabase",
+      "Redis",
+      "Cloudflare Workers",
+    ],
+    resumeUrl: "/resumes/resume_ShivanshGoel_FullStack.pdf",
+  },
+  {
+    id: "backend",
+    title: "Backend Developer",
+    blurb: "Secure, scalable server-side systems.",
+    summary:
+      "Backend Developer building secure, scalable server-side systems with Node.js, FastAPI, and Python on serverless and edge infrastructure. Designs REST APIs, database schemas, and caching layers, and hardens services with authentication, API-key proxying, and request gating — optimizing latency and cost through Redis caching and efficient data access.",
+    focus: [
+      "REST API & database schema design",
+      "Caching layers & query optimization",
+      "API security, auth & request gating",
+      "LLM backends & server-side model routing",
+    ],
+    skills: [
+      "Node.js",
+      "FastAPI",
+      "Python",
+      "REST APIs",
+      "Supabase (PostgreSQL)",
+      "Redis",
+      "Cloudflare D1",
+      "MySQL",
+      "RAG",
+    ],
+    resumeUrl: "/resumes/resume_ShivanshGoel_Backend.pdf",
+  },
+  {
+    id: "frontend",
+    title: "Frontend Developer",
+    blurb: "Responsive, component-driven interfaces.",
+    summary:
+      "Frontend Developer building responsive, production-ready user interfaces with React, Next.js, and Angular. Translates requirements into clean, component-driven UIs with Tailwind CSS, PrimeNG, and MUI, integrates REST and AI-powered APIs, and optimizes performance and stability — focused on accessible, maintainable frontends across desktop and mobile.",
+    focus: [
+      "Component-driven, accessible UI",
+      "Responsive design across devices",
+      "Client-side state & SSR (Next.js)",
+      "REST & AI-powered API integration",
+    ],
+    skills: [
+      "React",
+      "React 19",
+      "Next.js",
+      "Angular",
+      "TypeScript",
+      "Tailwind CSS",
+      "PrimeNG",
+      "MUI",
+      "Responsive Design",
+    ],
+    resumeUrl: "/resumes/resume_ShivanshGoel_Frontend.pdf",
+  },
+];
+
 export const PROJECTS: Project[] = [
   {
     id: 1,
@@ -172,6 +280,7 @@ export const PORTFOLIO = {
   stats: PORTFOLIO_STATS,
   social: SOCIAL_LINKS,
   knowsAbout: KNOWS_ABOUT,
+  roles: ROLES,
   capabilities: CAPABILITIES,
   experience: EXPERIENCE,
   projects: PROJECTS,

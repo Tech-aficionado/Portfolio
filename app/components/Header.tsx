@@ -7,6 +7,7 @@ import { Menu, Search, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 
 const navItems = [
+  { label: "Roles", href: "#roles", id: "roles" },
   { label: "About", href: "#about", id: "about" },
   { label: "Expertise", href: "#services", id: "services" },
   { label: "Experience", href: "#experience", id: "experience" },

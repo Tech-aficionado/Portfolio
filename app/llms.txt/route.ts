@@ -1,9 +1,6 @@
 import { PORTFOLIO, PROFILE, SITE_URL } from "../portfolio-data";
 
-/**
- * llms.txt — a plain-text, LLM-friendly summary of this site.
- * See https://llmstxt.org for the emerging convention.
- */
+// Plain-text summary for LLMs (https://llmstxt.org).
 
 export const revalidate = 21600; // 6 hours
 
@@ -33,6 +30,13 @@ export function GET(): Response {
     .map((cap) => `- ${cap.title}: ${cap.description} [${cap.skills.join(", ")}]`)
     .join("\n");
 
+  const roles = PORTFOLIO.roles
+    .map(
+      (role) =>
+        `- ${role.title}: ${role.summary} (Résumé: ${SITE_URL}${role.resumeUrl} · Explore: ${SITE_URL}/?role=${role.id}#roles)`
+    )
+    .join("\n");
+
   const social = PORTFOLIO.social
     .map((link) => `- ${link.label}: ${link.url}`)
     .join("\n");
@@ -59,6 +63,9 @@ ${PROFILE.roles.map((role) => `- ${role}`).join("\n")}
 
 ## Skills
 ${PORTFOLIO.knowsAbout.map((skill) => `- ${skill}`).join("\n")}
+
+## Roles (hire by track)
+${roles}
 
 ## Capabilities
 ${capabilities}

@@ -11,6 +11,7 @@ import Experience from "./components/Experience";
 import About from "./components/About";
 import Services from "./components/Services";
 import Projects from "./components/Projects";
+import RoleExplorer from "./components/RoleExplorer";
 import GitHubActivity from "./components/GitHubActivity";
 import Footer from "./components/Footer";
 import SplashOverlay from "./components/SplashOverlay";
@@ -29,6 +30,7 @@ export default function Home(): React.JSX.Element {
       <Header />
       <Banner />
       <FeaturedStats />
+      <RoleExplorer />
       <About />
       <Services />
       <Experience />
