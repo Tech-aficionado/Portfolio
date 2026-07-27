@@ -115,12 +115,11 @@
 % ==================== PROFESSIONAL SUMMARY ====================
 \resumeSection{PROFESSIONAL SUMMARY}
 
-Full Stack Developer building production web applications end to end with
-React, Next.js, and Node.js on modern serverless infrastructure. Experienced
-designing responsive user interfaces, building REST APIs and database-backed
-services, and shipping features from design through deployment. Comfortable
-owning both the frontend experience and the backend logic, including AI and
-LLM integrations.
+Full Stack Developer with 17 months of professional experience building
+client-facing web applications in React, Angular, and Node.js, backed by four
+self-directed products running in production. Takes features from requirement
+through deployment on serverless and edge platforms, including LLM-backed
+features integrated server-side.
 
 % ==================== TECHNICAL SKILLS ====================
 \resumeSection{TECHNICAL SKILLS}
@@ -131,20 +130,21 @@ LLM integrations.
 {JavaScript (ES6+), TypeScript, Python, SQL, HTML5, CSS3}
 
 \skillLine{Frontend}
-{React.js, React 19, Next.js, Angular, Tailwind CSS, PrimeNG, Minimal UI (MUI),
+{React, Next.js, Angular, Tailwind CSS, PrimeNG, MUI (Material UI),
 Responsive Design}
 
 \skillLine{Backend and APIs}
-{Node.js, FastAPI, REST APIs, JSON, CRUD Operations, Server-Side Rendering}
+{Node.js, FastAPI, REST APIs, Server-Side Rendering}
 
 \skillLine{Databases and Storage}
-{Supabase, Redis, Cloudflare D1, Caching}
+{MySQL, MongoDB, Supabase (PostgreSQL), Cloudflare D1, Redis}
 
 \skillLine{Cloud and DevOps}
-{Cloudflare Workers, Firebase Tools, Git, GitHub, Vercel-style Deployment}
+{Cloudflare Workers, Vercel, Firebase, Git, GitHub}
 
 \skillLine{AI Integration}
-{LLM Integration, Google Gemini, RAG, Prompt Engineering, AI Security Middleware}
+{Google Gemini API, Retrieval-Augmented Generation (RAG), Prompt Engineering,
+Server-Side Model Proxying}
 
 \normalsize
 
@@ -158,16 +158,16 @@ Responsive Design}
 {India}
 
 \begin{itemize}
-  \item Across a 17-month internship, built client-facing interfaces with
-  React and Angular and developed Node.js REST APIs, turning requirements
-  into responsive, production-ready features end to end.
+  \item Seventeen continuous months on a client-facing product team --
+  long enough to carry features from requirement to release rather than
+  observe them.
 
-  \item Improved MySQL and MongoDB data paths, reducing query overhead and
-  making product interactions more responsive and dependable.
+  \item Built responsive interfaces in React and Angular and the Node.js REST
+  APIs behind them, owning both sides of each feature.
 
-  \item Improved application stability by reducing reported bugs 40 percent
-  through systematic debugging and refactoring, collaborating through Git and
-  GitHub.
+  \item Reworked MySQL and MongoDB queries on data-heavy screens to cut round
+  trips and redundant reads, and took bug reports through reproduction and
+  root-cause analysis rather than surface patches.
 \end{itemize}
 
 % ==================== PROJECTS ====================
@@ -196,25 +196,28 @@ Responsive Design}
   Next.js frontend and quiz UI to the Supabase data layer and server-side
   API routes that generate topic-based quizzes on demand.
 
-  \item Implemented a RAG pipeline and a server-side AI Security Middleware
-  that proxies Gemini calls with no client-side API key, and used Redis
-  caching to reduce latency and cost.
+  \item Implemented the retrieval pipeline that grounds generated questions in
+  the user's uploaded documents, routed all Gemini calls through server-side
+  API routes so no key reaches the browser, and cached responses in Redis to
+  avoid paying for repeat generations.
 
-  \item Applied prompt engineering for structured, schema-consistent output
-  and profile contexting to tailor question difficulty per learner.
+  \item Constrained model output to a fixed schema through prompt design and
+  passed learner profile data into the prompt to vary question difficulty.
 \end{itemize}
 
 \projectHeading
-{FiTrack AI -- Adaptive AI Fitness Platform \href{https://fitrack-ai.ash-labs.tech/}{[Live]}}
-{Next.js, Python, Machine Learning, Supabase, Google Gemini}
+{FiTrack AI -- Adaptive Fitness Platform \href{https://fitrack-ai.ash-labs.tech/}{[Live]}}
+{Next.js, Python, Supabase, Google Gemini}
 
 \begin{itemize}
   \item Built a full stack fitness platform that unifies workout, nutrition,
-  and recovery signals and adaptively adjusts workout intensity, with a
-  Next.js frontend and a Python/ML-backed service.
+  and recovery logs into one view and adjusts recommended training intensity
+  as the user's history changes, with a Next.js frontend over a Python
+  service.
 
-  \item Integrated Gemini through a secure server-side proxy and delivered
-  personalized, goal-aware workout guidance from each user's history.
+  \item Called Gemini through a server-side route with each user's profile and
+  recent performance as context, returning goal-aware guidance in plain
+  language rather than raw metrics.
 \end{itemize}
 
 \projectHeading

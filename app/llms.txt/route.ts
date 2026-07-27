@@ -56,10 +56,10 @@ export function GET(): Response {
 ${PROFILE.roles.map((role) => `- ${role}`).join("\n")}
 
 ## At a glance
-- Years of experience: ${PORTFOLIO.stats.experienceYears}+
-- Featured products: ${PORTFOLIO.stats.featuredProducts}
-- AI products: ${PORTFOLIO.stats.aiProducts}
-- Browser games: ${PORTFOLIO.stats.browserGames}
+- Years of professional experience: ${PORTFOLIO.stats.experienceYears}+ (Dec 2023 – May 2025, TedForge Solutions)
+- Products in production: ${PORTFOLIO.stats.liveProducts}
+- LLM-backed products: ${PORTFOLIO.stats.aiProducts} (self-directed, not employed work)
+- Open-source projects: ${PORTFOLIO.stats.openSourceProjects}
 
 ## Skills
 ${PORTFOLIO.knowsAbout.map((skill) => `- ${skill}`).join("\n")}

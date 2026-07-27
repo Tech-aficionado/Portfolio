@@ -45,8 +45,8 @@ export default function RoleExplorer(): React.JSX.Element {
             Pick the role you&apos;re <span className="italic">hiring for.</span>
           </h2>
           <p className="mt-5 text-base leading-relaxed text-muted sm:text-lg">
-            The same work, framed for the role you need. Choose a track to see
-            tailored positioning and download a résumé built for it.
+            Two tracks, one body of work. Same projects, same experience — each
+            résumé just leads with the part that matters to you.
           </p>
         </div>
 

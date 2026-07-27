@@ -4,22 +4,22 @@ const stats = [
   {
     value: `${PORTFOLIO_STATS.experienceYears}+`,
     label: "Years of experience",
-    detail: "Dec 2023–May 2025 professional experience",
+    detail: "Dec 2023 – May 2025 at TedForge Solutions",
   },
   {
-    value: String(PORTFOLIO_STATS.featuredProducts),
-    label: "Featured products",
-    detail: "Four product case studies showcased below",
+    value: String(PORTFOLIO_STATS.liveProducts),
+    label: "Products in production",
+    detail: "Each one deployed at a public URL you can open now",
   },
   {
     value: String(PORTFOLIO_STATS.aiProducts),
-    label: "AI products",
-    detail: "FiTrack AI and Quizify",
+    label: "LLM-backed products",
+    detail: "FiTrack AI and Quizify, both running on Gemini",
   },
   {
-    value: String(PORTFOLIO_STATS.browserGames),
-    label: "Browser games",
-    detail: "Playable projects in the site arcade",
+    value: String(PORTFOLIO_STATS.openSourceProjects),
+    label: "Open source",
+    detail: "Ziplink and GhostRelay, source on GitHub",
   },
 ];
 

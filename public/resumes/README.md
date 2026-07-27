@@ -6,10 +6,11 @@ and committed so the deployed site can serve them.
 
 Expected generated files (referenced in `app/portfolio-data.ts`):
 
+- `resume_ShivanshGoel_FullStack.pdf` — also the canonical `PROFILE.resumeUrl`
 - `resume_ShivanshGoel_AI_ML.pdf`
-- `resume_ShivanshGoel_FullStack.pdf`
-- `resume_ShivanshGoel_Backend.pdf`
-- `resume_ShivanshGoel_Frontend.pdf`
+
+The Backend and Frontend variants were retired; their sources sit unused in
+`/resumes/archive/`.
 
 Served at `https://ash-labs.tech/resumes/<file>` and surfaced by the Role
 Explorer (preview + download), `/api/profile`, and `/llms.txt`.

@@ -89,7 +89,7 @@
 \begin{center}
     {\fontsize{21}{23}\selectfont\bfseries\color{heading}
     SHIVANSH GOEL}\\[2pt]
-    {\normalsize\bfseries AI / ML Engineer}\\[4pt]
+    {\normalsize\bfseries AI Product Engineer}\\[4pt]
 
     {\small
     +91 9458569110
@@ -115,35 +115,36 @@
 % ==================== PROFESSIONAL SUMMARY ====================
 \resumeSection{PROFESSIONAL SUMMARY}
 
-AI/ML Engineer building production LLM applications with Retrieval-Augmented
-Generation (RAG), AI agents, and prompt engineering. Experienced integrating
-Google Gemini into live products, designing embedding and retrieval
-pipelines, engineering prompts for structured output, and hardening AI
-features with secure server-side model routing. Focused on accuracy,
-grounding, latency, and cost efficiency.
+Full stack developer who integrates LLMs into products people can actually
+use. Seventeen months of professional web development, plus two self-directed
+LLM products running in production: document-grounded retrieval over
+user-uploaded material, prompt design for schema-consistent output, and
+server-side Gemini calls with response caching to keep latency and API spend
+down. Comfortable owning the feature end to end, from retrieval logic to the
+interface that consumes it.
 
 % ==================== TECHNICAL SKILLS ====================
 \resumeSection{TECHNICAL SKILLS}
 
 \small
 
-\skillLine{LLM and Generative AI}
-{LLM Integration, Google Gemini, AI Agents, Prompt Engineering,
-Structured Output, Profile Contexting}
+\skillLine{LLM Integration}
+{Google Gemini API, Prompt Engineering, Structured/Schema-Constrained Output,
+Per-User Prompt Context}
 
-\skillLine{Retrieval and NLP}
-{Retrieval-Augmented Generation (RAG), Semantic Retrieval, Embeddings,
-Document Chunking, TF-IDF, NLP, Sentiment Analysis}
+\skillLine{Retrieval}
+{Retrieval-Augmented Generation (RAG), Embeddings, Document Chunking,
+Semantic Search}
 
-\skillLine{AI Security and Serving}
-{AI Security Middleware, API-Key Proxying, Access-Key Authentication,
-LLM Request Gating, Redis Caching for Inference}
+\skillLine{Serving and Cost Control}
+{Server-Side Model Proxying, API-Key Handling, Access-Key Authentication,
+Redis Response Caching}
 
 \skillLine{Languages}
 {Python, TypeScript, JavaScript (ES6+), SQL}
 
 \skillLine{Backend and Data}
-{FastAPI, Node.js, REST APIs, Supabase, Redis, Cloudflare D1, JSON}
+{FastAPI, Node.js, REST APIs, Supabase (PostgreSQL), Redis, Cloudflare D1}
 
 \skillLine{Tools}
 {Git, GitHub, Firebase Tools, Cloudflare Workers, VS Code, Debugging}
@@ -160,54 +161,60 @@ LLM Request Gating, Redis Caching for Inference}
 {India}
 
 \begin{itemize}
-  \item Across a 17-month internship, built client-facing web applications
-  with React and Angular and developed Node.js REST APIs, integrating
-  data-driven, API-backed features.
+  \item Seventeen continuous months on a client-facing product team --
+  long enough to carry features from requirement to release rather than
+  observe them.
 
-  \item Improved MySQL and MongoDB data paths, reducing query overhead and
-  making product interactions more responsive.
+  \item Built REST APIs in Node.js and wired them to React and Angular
+  frontends, delivering data-driven features against real client
+  requirements.
 
-  \item Improved application stability by reducing reported bugs 40 percent
-  through systematic debugging and refactoring, collaborating through Git and
-  GitHub.
+  \item Reworked MySQL and MongoDB queries on data-heavy screens to cut
+  round trips and redundant reads, improving perceived responsiveness.
+
+  \item Took bug reports through reproduction, root-cause analysis, and
+  refactoring rather than surface patches, working in Git and GitHub
+  alongside the product team.
 \end{itemize}
 
 % ==================== PROJECTS ====================
 \resumeSection{PROJECTS}
 
 \projectHeading
-{Quizify -- RAG-Based AI Assessment Platform \href{https://quizify.ash-labs.tech}{[Live]}}
-{Google Gemini, RAG, Embeddings, AI Agents, FastAPI, Redis, Supabase}
+{Quizify -- Document-Grounded Assessment Platform \href{https://quizify.ash-labs.tech}{[Live]}}
+{Google Gemini, RAG, Embeddings, FastAPI, Redis, Supabase}
 
 \begin{itemize}
-  \item Built an AI-powered assessment platform where AI agents ingest
-  user-provided documentation and generate topic-based quizzes on demand,
-  cutting manual quiz-creation effort significantly.
+  \item Built an assessment platform that ingests a user's own documentation
+  and generates topic-based quizzes from it on demand, replacing manual
+  question writing.
 
-  \item Implemented a RAG pipeline that chunks and embeds source documents,
-  then retrieves relevant context to ground Gemini's question generation and
-  keep quizzes accurate and on-topic.
+  \item Implemented the retrieval pipeline end to end: chunking source
+  documents, embedding them, and retrieving relevant passages to ground
+  Gemini's question generation so quizzes stay on-topic instead of
+  hallucinating.
 
-  \item Engineered prompts for structured, schema-consistent output
-  (question, options, answer, explanation) and applied profile contexting to
-  tailor difficulty and style per learner.
+  \item Constrained model output to a fixed schema (question, options,
+  answer, explanation) through prompt design, and passed learner profile data
+  into the prompt to vary difficulty.
 
-  \item Built an AI Security Middleware that proxies all Gemini calls
-  server-side with no client-side API key, and used Redis caching to reduce
-  repeat model calls, latency, and cost.
+  \item Routed every Gemini call through a server-side API route so no key is
+  exposed to the browser, and cached responses in Redis to avoid paying for
+  repeat generations.
 \end{itemize}
 
 \projectHeading
-{FiTrack AI -- Adaptive AI Fitness Platform \href{https://fitrack-ai.ash-labs.tech/}{[Live]}}
-{Google Gemini, NLP, Machine Learning, Python, Next.js}
+{FiTrack AI -- Adaptive Fitness Platform \href{https://fitrack-ai.ash-labs.tech/}{[Live]}}
+{Google Gemini, Python, Next.js, Supabase}
 
 \begin{itemize}
-  \item Built an AI-powered fitness platform that analyzes user performance
-  patterns and adaptively adjusts workout intensity for optimal results.
+  \item Built a fitness platform that reads a user's logged workout,
+  nutrition, and recovery history and adjusts recommended training intensity
+  as that history changes.
 
-  \item Integrated Gemini with profile contexting for personalized,
-  goal-aware guidance, and applied NLP to turn raw performance data into
-  plain-language, actionable feedback.
+  \item Passed each user's profile and recent performance into the Gemini
+  prompt to produce goal-aware guidance in plain language rather than raw
+  metrics, served through a server-side route.
 \end{itemize}
 
 \projectHeading
