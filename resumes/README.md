@@ -4,12 +4,22 @@ Put the role-tailored LaTeX résumés here. Use these **exact** base names so th
 generated PDFs match the paths referenced by the site
 (`app/portfolio-data.ts` → `ROLES[].resumeUrl`):
 
-| Role                 | Source file                          |
-| -------------------- | ------------------------------------ |
-| AI / ML Engineer     | `resume_ShivanshGoel_AI_ML.tex`      |
-| Full Stack Developer | `resume_ShivanshGoel_FullStack.tex`  |
-| Backend Developer    | `resume_ShivanshGoel_Backend.tex`    |
-| Frontend Developer   | `resume_ShivanshGoel_Frontend.tex`   |
+| Role                 | Source file                         |
+| -------------------- | ----------------------------------- |
+| Full Stack Developer | `resume_ShivanshGoel_FullStack.tex` |
+| AI Product Engineer  | `resume_ShivanshGoel_AI_ML.tex`     |
+
+### Why only two
+
+There is one body of work behind these résumés: a 17-month internship and four
+shipped products. Splitting it across more tracks than this produces variants
+that are visibly the same evidence relabeled, which reads as keyword targeting.
+Keep it at two.
+
+`archive/` holds the retired Backend and Frontend variants. Files in
+`archive/` are **not** compiled — the build script only reads `.tex` at the top
+level of this folder. To bring one back, move it up a level, add it to `ROLES`,
+and run `npm run resumes`.
 
 ## Compile
 

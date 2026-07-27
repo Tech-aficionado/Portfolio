@@ -10,8 +10,10 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import CountUp from "./CountUp";
 import { PORTFOLIO_STATS } from "../portfolio-stats";
+import { PROFILE } from "../portfolio-data";
 
-const ROLE_TITLES = ["AI Product Engineer", "Applied AI Builder", "Full Stack Developer"];
+// Single source of truth — keep the hero in sync with PROFILE.roles.
+const ROLE_TITLES: readonly string[] = PROFILE.roles;
 
 function TypewriterRole(): React.JSX.Element {
   const shouldReduceMotion = useReducedMotion();
@@ -102,7 +104,7 @@ export default function Banner(): React.JSX.Element {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
               </span>
-              Open to AI product &amp; full-stack roles
+              {PROFILE.availability}
             </div>
 
             <h1 className="font-display text-4xl sm:text-6xl lg:text-[5.5rem] font-medium leading-[1.02] sm:leading-[0.98] tracking-tight text-ink">
@@ -140,11 +142,11 @@ export default function Banner(): React.JSX.Element {
                 View work
               </a>
               <a
-                href="https://drive.google.com/file/d/1yd0N1QKORwi_b7wwOQcBD3sO3D1Y4-EL/view?usp=sharing"
+                href={PROFILE.resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent-soft/50 px-7 py-3.5 text-sm font-medium text-ink transition-colors hover:border-accent hover:bg-accent-soft sm:text-base"
-                aria-label="View Shivansh Goel's résumé in Google Drive"
+                aria-label="View Shivansh Goel's résumé (PDF)"
               >
                 View résumé
                 <span className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">

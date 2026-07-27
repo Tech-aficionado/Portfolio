@@ -26,21 +26,20 @@ const fraunces = Fraunces({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ash-labs.tech"),
-  title: "Shivansh Goel — AI Product Engineer & Full Stack Developer",
+  title: "Shivansh Goel — Full Stack Developer & AI Product Engineer",
   description:
-    "AI Product Engineer and Full Stack Developer building dependable AI-enabled products with Next.js, Python, and cloud infrastructure.",
+    "Full Stack Developer building AI-enabled web products with Next.js, Python, and cloud infrastructure. Four products live in production.",
   alternates: {
     canonical: "/",
   },
   keywords: [
     "Shivansh Goel",
-    "AI Product Engineer",
-    "Applied AI Developer",
     "Full Stack Developer",
-    "Machine Learning Developer",
-    "Python Developer",
+    "AI Product Engineer",
     "React Developer",
     "Next.js Developer",
+    "Node.js Developer",
+    "Python Developer",
     "Portfolio",
   ],
   authors: [{ name: "Shivansh Goel" }],
@@ -50,16 +49,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://ash-labs.tech",
-    title: "Shivansh Goel — AI Product Engineer",
+    title: "Shivansh Goel — Full Stack Developer & AI Product Engineer",
     description:
-      "Building dependable AI products for the real world with full-stack engineering.",
+      "Full-stack engineering with LLM features that ship. Four products live in production.",
     siteName: "Shivansh Goel Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Shivansh Goel — AI Product Engineer",
+    title: "Shivansh Goel — Full Stack Developer & AI Product Engineer",
     description:
-      "Building dependable AI products for the real world with full-stack engineering.",
+      "Full-stack engineering with LLM features that ship. Four products live in production.",
   },
   robots: {
     index: true,

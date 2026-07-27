@@ -38,19 +38,19 @@ export interface Project {
 
 export const PROFILE = {
   name: "Shivansh Goel",
-  headline: "AI Product Engineer & Full Stack Developer",
+  headline: "Full Stack Developer & AI Product Engineer",
   tagline: "Building AI products for the real world.",
   summary:
-    "AI Product Engineer and Full Stack Developer building dependable AI-enabled products with Next.js, Python, and cloud infrastructure. I turn AI ideas into dependable web products — from adaptive fitness and learning tools to privacy-first SaaS.",
-  roles: ["AI Product Engineer", "Applied AI Builder", "Full Stack Developer"],
+    "Full Stack Developer building AI-enabled web products with Next.js, Python, and cloud infrastructure. Professional experience is 17 months of full-stack product work; the AI work is self-directed and shipped — adaptive fitness, document-grounded assessments, and privacy-first SaaS, all live and inspectable.",
+  roles: ["Full Stack Developer", "AI Product Engineer"],
   location: {
     label: "India",
     country: "IN",
   },
   email: "shivansh.goela12@gmail.com",
-  resumeUrl:
-    "https://drive.google.com/file/d/1yd0N1QKORwi_b7wwOQcBD3sO3D1Y4-EL/view?usp=sharing",
-  availability: "Open to AI product & full-stack roles",
+  // Canonical résumé. Role-specific variants live in ROLES below.
+  resumeUrl: "/resumes/resume_ShivanshGoel_FullStack.pdf",
+  availability: "Open to full-stack & AI product roles",
 } as const;
 
 export const SOCIAL_LINKS: SocialLink[] = [
@@ -113,7 +113,7 @@ export const EXPERIENCE: ExperienceItem[] = [
     company: "TedForge Solutions Pvt. Ltd.",
     period: "Dec 2023 – May 2025",
     description:
-      "Across a 17-month internship, built React and Angular interfaces, developed Node.js REST APIs, and improved MySQL and MongoDB data paths. The work focused on reducing query overhead and making product interactions more responsive and dependable.",
+      "A 17-month internship — long enough to own features end to end rather than shadow them. Built client-facing React and Angular interfaces, developed Node.js REST APIs, and reworked MySQL and MongoDB queries to cut overhead on data-heavy screens.",
     stack: ["React", "Angular", "Node.js", "MySQL", "MongoDB"],
   },
 ];
@@ -128,107 +128,59 @@ export interface Role {
   resumeUrl: string;
 }
 
-// One entry per hiring track, each with its own résumé. Deep-linkable via ?role=<id>.
+// Two tracks only. The underlying work is the same body of evidence — splitting it
+// into more variants than that reads as keyword targeting, not depth.
+// Deep-linkable via ?role=<id>.
 export const ROLES: Role[] = [
-  {
-    id: "ai-ml",
-    title: "AI / ML Engineer",
-    blurb: "Production LLM apps, RAG, and AI agents.",
-    summary:
-      "AI/ML Engineer building production LLM applications with Retrieval-Augmented Generation (RAG), AI agents, and prompt engineering. Integrates Google Gemini into live products, designs embedding and retrieval pipelines, and hardens AI features with secure server-side model routing — focused on accuracy, grounding, latency, and cost.",
-    focus: [
-      "RAG pipelines & semantic retrieval",
-      "Prompt engineering for structured output",
-      "AI security middleware & model routing",
-      "Latency & cost optimization with caching",
-    ],
-    skills: [
-      "Google Gemini",
-      "RAG",
-      "Embeddings",
-      "AI Agents",
-      "Prompt Engineering",
-      "Python",
-      "FastAPI",
-      "Redis",
-      "NLP",
-    ],
-    resumeUrl: "/resumes/resume_ShivanshGoel_AI_ML.pdf",
-  },
   {
     id: "full-stack",
     title: "Full Stack Developer",
     blurb: "End-to-end product delivery, frontend to backend.",
     summary:
-      "Full Stack Developer building production web applications end to end with React, Next.js, and Node.js on modern serverless infrastructure. Designs responsive interfaces, builds REST APIs and database-backed services, and ships features from design through deployment — owning both the frontend experience and the backend logic, including AI and LLM integrations.",
+      "Full Stack Developer building production web applications end to end with React, Next.js, and Node.js on serverless infrastructure. This is the track my paid experience sits in: 17 months building client-facing React and Angular interfaces, Node.js REST APIs, and MySQL/MongoDB data layers, plus four self-directed products shipped and running in the open.",
     focus: [
       "End-to-end feature delivery",
       "Responsive UIs with React & Next.js",
       "REST APIs & database-backed services",
-      "AI/LLM integration & deployment",
+      "Deployment on edge and serverless platforms",
     ],
     skills: [
       "React",
       "Next.js",
       "Node.js",
-      "FastAPI",
       "TypeScript",
+      "Angular",
       "Python",
       "Supabase",
-      "Redis",
+      "MySQL",
       "Cloudflare Workers",
     ],
     resumeUrl: "/resumes/resume_ShivanshGoel_FullStack.pdf",
   },
   {
-    id: "backend",
-    title: "Backend Developer",
-    blurb: "Secure, scalable server-side systems.",
+    id: "ai-ml",
+    title: "AI Product Engineer",
+    blurb: "LLM features in shipped products: retrieval, prompting, cost.",
     summary:
-      "Backend Developer building secure, scalable server-side systems with Node.js, FastAPI, and Python on serverless and edge infrastructure. Designs REST APIs, database schemas, and caching layers, and hardens services with authentication, API-key proxying, and request gating — optimizing latency and cost through Redis caching and efficient data access.",
+      "AI Product Engineer integrating LLMs into live web products — document-grounded retrieval, prompt design for structured output, and server-side model calls that keep API keys off the client. My AI work is self-directed rather than employed: two products in production, both Gemini-backed, both with the retrieval and caching decisions made under real latency and cost constraints.",
     focus: [
-      "REST API & database schema design",
-      "Caching layers & query optimization",
-      "API security, auth & request gating",
-      "LLM backends & server-side model routing",
+      "Retrieval-augmented generation over user documents",
+      "Prompt design for schema-consistent output",
+      "Server-side model calls & API key handling",
+      "Cutting repeat inference cost with caching",
     ],
     skills: [
-      "Node.js",
-      "FastAPI",
-      "Python",
-      "REST APIs",
-      "Supabase (PostgreSQL)",
-      "Redis",
-      "Cloudflare D1",
-      "MySQL",
+      "Google Gemini",
       "RAG",
-    ],
-    resumeUrl: "/resumes/resume_ShivanshGoel_Backend.pdf",
-  },
-  {
-    id: "frontend",
-    title: "Frontend Developer",
-    blurb: "Responsive, component-driven interfaces.",
-    summary:
-      "Frontend Developer building responsive, production-ready user interfaces with React, Next.js, and Angular. Translates requirements into clean, component-driven UIs with Tailwind CSS, PrimeNG, and MUI, integrates REST and AI-powered APIs, and optimizes performance and stability — focused on accessible, maintainable frontends across desktop and mobile.",
-    focus: [
-      "Component-driven, accessible UI",
-      "Responsive design across devices",
-      "Client-side state & SSR (Next.js)",
-      "REST & AI-powered API integration",
-    ],
-    skills: [
-      "React",
-      "React 19",
+      "Embeddings",
+      "Prompt Engineering",
+      "Python",
+      "FastAPI",
+      "Redis",
       "Next.js",
-      "Angular",
-      "TypeScript",
-      "Tailwind CSS",
-      "PrimeNG",
-      "MUI",
-      "Responsive Design",
+      "Supabase",
     ],
-    resumeUrl: "/resumes/resume_ShivanshGoel_Frontend.pdf",
+    resumeUrl: "/resumes/resume_ShivanshGoel_AI_ML.pdf",
   },
 ];
 
@@ -261,7 +213,7 @@ export const PROJECTS: Project[] = [
     tag: "AI · Fitness",
     outcome:
       "Brings workout, nutrition, and recovery signals into one adaptive flow. AI-guided intensity, macro breakdowns, and fatigue-aware recommendations reduce the manual work of reconciling separate fitness trackers.",
-    stack: ["Next.js", "Python", "Machine Learning"],
+    stack: ["Next.js", "Python", "Google Gemini"],
     link: "https://fitrack-ai.ash-labs.tech/",
     image: "/assets/image 3.png",
   },
@@ -271,7 +223,7 @@ export const PROJECTS: Project[] = [
     tag: "AI · Education",
     outcome:
       "Turns a topic into a ready-to-run assessment in seconds, reducing manual question writing. Instant explanations and mastery tracking show learners what to review next, while classroom codes make sharing straightforward.",
-    stack: ["Next.js", "React", "AI"],
+    stack: ["Next.js", "Google Gemini", "RAG", "Redis"],
     link: "https://quizify.ash-labs.tech",
     image: "/assets/image 2.png",
   },
