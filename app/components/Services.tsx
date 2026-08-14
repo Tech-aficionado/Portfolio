@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Code2, Server, Layers, Database } from "lucide-react";
 import { CAPABILITIES, type Capability } from "../portfolio-data";
+import HexMarker from "./HexMarker";
 
 const ICONS: Record<Capability["iconKey"], React.ReactNode> = {
   frontend: <Code2 className="h-6 w-6" />,
@@ -26,9 +27,7 @@ export default function Services(): React.JSX.Element {
               viewport={{ once: true }}
               className="lg:sticky lg:top-28"
             >
-              <span className="text-xs uppercase tracking-[0.3em] text-accent">
-                02 / Expertise
-              </span>
+              <HexMarker index={4} label="Expertise" />
               <h2 className="mt-4 font-display text-4xl sm:text-5xl font-medium leading-tight text-ink">
                 What I <span className="italic">do</span>
               </h2>

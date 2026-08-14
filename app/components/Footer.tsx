@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import ContactForm from "./ContactForm";
 import LocalTime from "./LocalTime";
+import HexMarker from "./HexMarker";
 
 const socials = [
   {
@@ -43,9 +44,7 @@ export default function Footer(): React.JSX.Element {
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left — pitch + direct links */}
           <div>
-            <span className="text-xs uppercase tracking-[0.3em] text-accent">
-              05 / Contact
-            </span>
+            <HexMarker index={8} label="Contact" />
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}

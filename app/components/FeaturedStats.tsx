@@ -1,4 +1,5 @@
 import { PORTFOLIO_STATS } from "../portfolio-stats";
+import HexMarker from "./HexMarker";
 
 const stats = [
   {
@@ -19,7 +20,7 @@ const stats = [
   {
     value: String(PORTFOLIO_STATS.openSourceProjects),
     label: "Open source",
-    detail: "Ziplink and GhostRelay, source on GitHub",
+    detail: "Ziplink, GhostRelay and DareStake, source on GitHub",
   },
 ];
 
@@ -28,7 +29,7 @@ export default function FeaturedStats(): React.JSX.Element {
     <section id="stats" className="px-4 py-20 sm:px-6 sm:py-28" aria-labelledby="stats-title">
       <div className="container mx-auto max-w-6xl">
         <div className="mb-10 max-w-2xl sm:mb-14">
-          <p className="text-xs font-medium uppercase tracking-[0.3em] text-accent">Featured stats</p>
+          <HexMarker index={1} label="Stats" />
           <h2 id="stats-title" className="mt-4 font-display text-3xl font-medium text-ink sm:text-5xl">
             Proof, without the padding.
           </h2>

@@ -10,7 +10,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import CountUp from "./CountUp";
 import { PORTFOLIO_STATS } from "../portfolio-stats";
-import { PROFILE } from "../portfolio-data";
+import { PROFILE, SITE_URL } from "../portfolio-data";
 
 // Single source of truth — keep the hero in sync with PROFILE.roles.
 const ROLE_TITLES: readonly string[] = PROFILE.roles;
@@ -99,7 +99,7 @@ export default function Banner(): React.JSX.Element {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="lg:col-span-7 text-center lg:text-left"
           >
-            <div className="inline-flex items-center gap-2 rounded-full border border-line bg-paper-2/60 px-4 py-1.5 text-xs font-medium text-muted mb-6">
+            <div className="inline-flex items-center gap-2 rounded-full border border-line bg-paper-2/60 px-4 py-1.5 font-mono text-[0.6875rem] tracking-wide text-muted mb-6">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
@@ -155,8 +155,21 @@ export default function Banner(): React.JSX.Element {
               </a>
             </div>
 
-            <div className="mt-8 flex items-center justify-center lg:justify-start gap-2 text-sm text-muted">
+            <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-x-4 gap-y-2 text-sm text-muted">
               <span>📍 Based in India 🇮🇳</span>
+              <span aria-hidden="true" className="hidden h-3 w-px bg-line sm:block" />
+              {/* The domain doubles as the signature: 0x is the through-line
+                  between the handle and the hex section markers below. */}
+              <a
+                href={SITE_URL}
+                className="group font-mono text-[0.8125rem] tracking-tight text-muted transition-colors hover:text-accent"
+              >
+                <span className="text-accent">0x</span>
+                shiv
+                <span className="opacity-50 transition-opacity group-hover:opacity-100">
+                  .dev
+                </span>
+              </a>
             </div>
           </motion.div>
 
@@ -199,7 +212,7 @@ export default function Banner(): React.JSX.Element {
                   className="relative h-full w-full overflow-hidden border-[7px] border-paper bg-[#11100f] shadow-[0_30px_80px_rgba(23,19,14,0.25)] ring-1 ring-ink/10"
                 >
                   <Image
-                    src="/Self-Image.jpeg"
+                    src="/self-image.webp"
                     alt="Shivansh Goel"
                     fill
                     className="object-cover object-[50%_42%]"

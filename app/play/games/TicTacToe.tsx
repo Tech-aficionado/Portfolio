@@ -49,36 +49,38 @@ export default function TicTacToe(): React.JSX.Element {
   const result = winner(board);
 
   useEffect(() => {
-    if (result) {
-      setScore((s) =>
-        result === "X"
-          ? { ...s, w: s.w + 1 }
-          : result === "O"
-          ? { ...s, l: s.l + 1 }
-          : { ...s, d: s.d + 1 }
-      );
-      return;
-    }
-    if (turn === "O") {
-      const t = setTimeout(() => {
-        setBoard((b) => {
-          if (winner(b)) return b;
-          const move = aiMove(b);
-          const nb = [...b];
-          nb[move] = "O";
-          return nb;
-        });
-        setTurn("X");
-      }, 420);
-      return () => clearTimeout(t);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [turn, result]);
+    if (result || turn !== "O") return;
+    const t = setTimeout(() => {
+      if (winner(board)) return;
+      const move = aiMove(board);
+      const nb = [...board];
+      nb[move] = "O";
+      const aiResult = winner(nb);
+      setBoard(nb);
+      setTurn("X");
+      // Scored here, NOT inside the setBoard updater: an updater must be pure,
+      // and StrictMode double-invokes it, which would count the round twice.
+      if (aiResult) {
+        setScore((s) =>
+          aiResult === "O" ? { ...s, l: s.l + 1 } : { ...s, d: s.d + 1 }
+        );
+      }
+    }, 420);
+    return () => clearTimeout(t);
+  }, [turn, result, board]);
 
   const play = (i: number) => {
     if (board[i] || result || turn !== "X") return;
     const nb = [...board];
     nb[i] = "X";
+    const playerResult = winner(nb);
+    if (playerResult) {
+      setScore((s) =>
+        playerResult === "X"
+          ? { ...s, w: s.w + 1 }
+          : { ...s, d: s.d + 1 }
+      );
+    }
     setBoard(nb);
     setTurn("O");
   };

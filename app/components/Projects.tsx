@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import TiltCard from "./TiltCard";
 import { PROJECTS as featuredProjects } from "../portfolio-data";
+import HexMarker from "./HexMarker";
 
 export default function Projects(): React.JSX.Element {
   return (
@@ -16,9 +17,7 @@ export default function Projects(): React.JSX.Element {
           viewport={{ once: true }}
           className="mb-16 sm:mb-20 max-w-2xl"
         >
-          <span className="text-xs uppercase tracking-[0.3em] text-accent">
-            04 / Lab
-          </span>
+          <HexMarker index={6} label="Lab" />
           <h2 className="mt-4 font-display text-4xl sm:text-6xl font-medium leading-tight text-ink">
             Selected <span className="italic">works</span>
           </h2>

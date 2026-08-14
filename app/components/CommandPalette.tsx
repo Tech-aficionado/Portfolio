@@ -98,10 +98,14 @@ export default function CommandPalette(): React.JSX.Element {
     const onKey = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
         e.preventDefault();
-        setOpen((o) => !o);
+        setOpen((prev) => !prev);
+        setIndex(0);
       }
     };
-    const onOpen = () => setOpen(true);
+    const onOpen = () => {
+      setIndex(0);
+      setOpen(true);
+    };
     window.addEventListener("keydown", onKey);
     window.addEventListener("open-command-palette", onOpen);
     return () => {
@@ -112,12 +116,9 @@ export default function CommandPalette(): React.JSX.Element {
 
   useEffect(() => {
     if (open) {
-      setIndex(0);
       setTimeout(() => inputRef.current?.focus(), 40);
     }
   }, [open]);
-
-  useEffect(() => setIndex(0), [query]);
 
   const onKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Escape") close();
@@ -160,7 +161,10 @@ export default function CommandPalette(): React.JSX.Element {
               <input
                 ref={inputRef}
                 value={query}
-                onChange={(e) => setQuery(e.target.value)}
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                  setIndex(0);
+                }}
                 placeholder="Type a command or search…"
                 className="w-full bg-transparent py-4 text-base text-ink outline-none placeholder:text-muted"
                 autoCapitalize="off"

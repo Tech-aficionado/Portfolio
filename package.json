@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "resumes": "node scripts/build-resumes.mjs"
+    "resumes": "node scripts/build-resumes.mjs",
+    "assets": "node scripts/optimize-assets.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",

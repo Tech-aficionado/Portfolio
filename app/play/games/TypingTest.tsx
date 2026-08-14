@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { RotateCcw } from "lucide-react";
 
 const PHRASES = [
@@ -12,45 +12,78 @@ const PHRASES = [
   "simplicity is the ultimate sophistication",
 ];
 
+function randomPhrase(): string {
+  return PHRASES[Math.floor(Math.random() * PHRASES.length)];
+}
+
 export default function TypingTest(): React.JSX.Element {
-  const [phrase, setPhrase] = useState("");
+  const [phrase, setPhrase] = useState(randomPhrase);
   const [input, setInput] = useState("");
   const [startedAt, setStartedAt] = useState<number | null>(null);
   const [done, setDone] = useState(false);
-  const [best, setBest] = useState(0);
+  const [best, setBest] = useState(() => {
+    if (typeof window === "undefined") return 0;
+    const stored = localStorage.getItem("typing_best");
+    return stored ? parseInt(stored, 10) : 0;
+  });
+  const [wpm, setWpm] = useState(0);
+  const [accuracy, setAccuracy] = useState(100);
   const inputRef = useRef<HTMLInputElement>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const pick = () => {
-    setPhrase(PHRASES[Math.floor(Math.random() * PHRASES.length)]);
+    setPhrase(randomPhrase());
     setInput("");
     setStartedAt(null);
     setDone(false);
+    setWpm(0);
+    setAccuracy(100);
     setTimeout(() => inputRef.current?.focus(), 50);
   };
 
+  // Live WPM ticks from an interval. The elapsed time is computed in the
+  // callback and passed to setWpm as a plain value — not via an updater, since
+  // reading performance.now() inside an updater would make it impure.
   useEffect(() => {
-    pick();
-    const stored = localStorage.getItem("typing_best");
-    if (stored) setBest(parseInt(stored, 10));
-  }, []);
+    if (!startedAt || done) return;
+    const id = setInterval(() => {
+      const minutes = (performance.now() - startedAt) / 60000;
+      const words = input.trim().length / 5;
+      setWpm(minutes > 0 ? Math.round(words / minutes) : 0);
+    }, 300);
+    intervalRef.current = id;
+    return () => clearInterval(id);
+  }, [startedAt, done, input]);
 
-  const { wpm, accuracy } = useMemo(() => {
-    if (!startedAt) return { wpm: 0, accuracy: 100 };
-    const minutes = (performance.now() - startedAt) / 60000;
-    const words = input.trim().length / 5;
-    const correct = [...input].filter((ch, i) => ch === phrase[i]).length;
-    const acc = input.length ? Math.round((correct / input.length) * 100) : 100;
-    return { wpm: minutes > 0 ? Math.round(words / minutes) : 0, accuracy: acc };
-  }, [input, startedAt, phrase]);
+  const computeStats = (currentInput: string, start: number) => {
+    const minutes = (performance.now() - start) / 60000;
+    const words = currentInput.trim().length / 5;
+    const correct = [...currentInput].filter((ch, i) => ch === phrase[i]).length;
+    const acc = currentInput.length ? Math.round((correct / currentInput.length) * 100) : 100;
+    const currentWpm = minutes > 0 ? Math.round(words / minutes) : 0;
+    return { wpm: currentWpm, accuracy: acc };
+  };
 
   const onChange = (v: string) => {
     if (done) return;
-    if (!startedAt && v.length === 1) setStartedAt(performance.now());
+    let start = startedAt;
+    if (!startedAt && v.length === 1) {
+      start = performance.now();
+      setStartedAt(start);
+    }
     setInput(v);
-    if (v === phrase) {
+
+    // Update accuracy on each keystroke
+    const correct = [...v].filter((ch, i) => ch === phrase[i]).length;
+    setAccuracy(v.length ? Math.round((correct / v.length) * 100) : 100);
+
+    if (v === phrase && start) {
+      const stats = computeStats(v, start);
+      setWpm(stats.wpm);
+      setAccuracy(stats.accuracy);
       setDone(true);
       setBest((prev) => {
-        const next = Math.max(prev, wpm);
+        const next = Math.max(prev, stats.wpm);
         localStorage.setItem("typing_best", String(next));
         return next;
       });

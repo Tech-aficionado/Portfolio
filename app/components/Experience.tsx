@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { EXPERIENCE as experiences } from "../portfolio-data";
+import HexMarker from "./HexMarker";
 
 export default function Experience(): React.JSX.Element {
   return (
@@ -17,9 +18,7 @@ export default function Experience(): React.JSX.Element {
               viewport={{ once: true }}
               className="lg:sticky lg:top-28"
             >
-              <span className="text-xs uppercase tracking-[0.3em] text-accent">
-                03 / Experience
-              </span>
+              <HexMarker index={5} label="Experience" />
               <h2 className="mt-4 font-display text-4xl sm:text-5xl font-medium leading-tight text-ink">
                 Where I&apos;ve
                 <br />
