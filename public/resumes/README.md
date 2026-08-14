@@ -12,7 +12,7 @@ Expected generated files (referenced in `app/portfolio-data.ts`):
 The Backend and Frontend variants were retired; their sources sit unused in
 `/resumes/archive/`.
 
-Served at `https://ash-labs.tech/resumes/<file>` and surfaced by the Role
+Served at `https://0xshiv.dev/resumes/<file>` and surfaced by the Role
 Explorer (preview + download), `/api/profile`, and `/llms.txt`.
 
 To regenerate: add/edit the LaTeX in `/resumes/`, then run `npm run resumes`.

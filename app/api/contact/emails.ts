@@ -8,7 +8,7 @@ const BRAND = {
   line: "#e4ddcd",
 };
 
-const SITE = "https://ash-labs.tech";
+const SITE = "https://0xshiv.dev";
 const GITHUB = "https://github.com/Tech-aficionado";
 const LINKEDIN = "https://www.linkedin.com/in/shivansh-goel-5b2309174/";
 
@@ -65,7 +65,7 @@ function shell(opts: { preheader: string; eyebrow: string; body: string }): stri
                     &copy; ${new Date().getFullYear()} Shivansh Goel
                   </td>
                   <td align="right" style="font-size:12px;">
-                    <a href="${SITE}" style="color:${BRAND.accent};text-decoration:none;">ash-labs.tech</a>
+                    <a href="${SITE}" style="color:${BRAND.accent};text-decoration:none;">0xshiv.dev</a>
                   </td>
                 </tr>
               </table>
@@ -73,7 +73,7 @@ function shell(opts: { preheader: string; eyebrow: string; body: string }): stri
           </tr>
         </table>
         <p style="margin:16px 0 0;font-family:Helvetica,Arial,sans-serif;font-size:11px;color:${BRAND.muted};">
-          Sent from the contact form at ash-labs.tech
+          Sent from the contact form at 0xshiv.dev
         </p>
       </td>
     </tr>

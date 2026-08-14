@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const BASE_URL = "https://ash-labs.tech";
+const BASE_URL = "https://0xshiv.dev";
 
 // Let AI crawlers in so /api/profile and /llms.txt get picked up.
 const AI_CRAWLERS = [

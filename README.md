@@ -10,7 +10,7 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-06B6D4?style=flat&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![Framer Motion](https://img.shields.io/badge/Framer_Motion-12-0055FF?style=flat&logo=framer&logoColor=white)](https://www.framer.com/motion/)
 
-### [🌐 Live at ash-labs.tech →](https://ash-labs.tech)
+### [🌐 Live at 0xshiv.dev →](https://0xshiv.dev)
 
 </div>
 
@@ -116,7 +116,7 @@ CONTACT_TO_EMAIL=shivansh.goela12@gmail.com
 ## 🚚 Deployment
 
 Deployed on [Vercel](https://vercel.com/). Pushes to `main` ship to production at
-[ash-labs.tech](https://ash-labs.tech); every pull request gets a preview deployment.
+[0xshiv.dev](https://0xshiv.dev); every pull request gets a preview deployment.
 
 ## 🏛 License
 

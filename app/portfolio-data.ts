@@ -2,7 +2,7 @@ import { PORTFOLIO_STATS } from "./portfolio-stats";
 
 // All portfolio content lives here so the UI, API, and llms.txt stay in sync.
 
-export const SITE_URL = "https://ash-labs.tech";
+export const SITE_URL = "https://0xshiv.dev";
 
 export interface SocialLink {
   label: string;
@@ -192,7 +192,7 @@ export const PROJECTS: Project[] = [
     outcome:
       "Turns long URLs into trackable, brand-ready links that are easier to distribute across campaigns. QR downloads and edge redirects shorten the path from share to destination, while analytics make each link measurable.",
     stack: ["Next.js", "Firebase", "Edge Redirects"],
-    link: "https://ziplink.ash-labs.tech",
+    link: "https://ziplink.0xshiv.dev",
     sourceLink: "https://github.com/Tech-aficionado/ZipLink---Open-Source",
     image: "/assets/ziplink.png",
   },
@@ -214,7 +214,7 @@ export const PROJECTS: Project[] = [
     outcome:
       "Brings workout, nutrition, and recovery signals into one adaptive flow. AI-guided intensity, macro breakdowns, and fatigue-aware recommendations reduce the manual work of reconciling separate fitness trackers.",
     stack: ["Next.js", "Python", "Google Gemini"],
-    link: "https://fitrack-ai.ash-labs.tech/",
+    link: "https://fittrack.0xshiv.dev/",
     image: "/assets/image 3.png",
   },
   {
@@ -224,7 +224,7 @@ export const PROJECTS: Project[] = [
     outcome:
       "Turns a topic into a ready-to-run assessment in seconds, reducing manual question writing. Instant explanations and mastery tracking show learners what to review next, while classroom codes make sharing straightforward.",
     stack: ["Next.js", "Google Gemini", "RAG", "Redis"],
-    link: "https://quizify.ash-labs.tech",
+    link: "https://quizify.0xshiv.dev",
     image: "/assets/image 2.png",
   },
 ];
