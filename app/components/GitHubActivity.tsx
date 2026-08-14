@@ -1,4 +1,5 @@
 import "server-only";
+import HexMarker from "./HexMarker";
 
 interface GitHubRepository {
   name: string;
@@ -60,7 +61,7 @@ export default async function GitHubActivity(): Promise<React.JSX.Element> {
       <div className="container mx-auto max-w-6xl">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">
-            <p className="text-xs font-medium uppercase tracking-[0.3em] text-accent">GitHub / Open Source</p>
+            <HexMarker index={7} label="Open Source" />
             <h2 id="open-source-title" className="mt-4 font-display text-4xl font-medium text-ink sm:text-6xl">
               Building in public.
             </h2>

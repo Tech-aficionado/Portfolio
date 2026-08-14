@@ -1,31 +1,33 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { RotateCcw } from "lucide-react";
 
 const MAX = 100;
 
+function randomTarget() {
+  return Math.floor(Math.random() * MAX) + 1;
+}
+
 export default function GuessNumber(): React.JSX.Element {
-  const [target, setTarget] = useState(0);
+  const [target, setTarget] = useState(randomTarget);
   const [guess, setGuess] = useState("");
   const [attempts, setAttempts] = useState(0);
   const [hint, setHint] = useState("I'm thinking of a number between 1 and 100.");
   const [won, setWon] = useState(false);
-  const [best, setBest] = useState<number | null>(null);
+  const [best, setBest] = useState<number | null>(() => {
+    if (typeof window === "undefined") return null;
+    const stored = localStorage.getItem("guess_best");
+    return stored ? parseInt(stored, 10) : null;
+  });
 
   const reset = () => {
-    setTarget(Math.floor(Math.random() * MAX) + 1);
+    setTarget(randomTarget());
     setGuess("");
     setAttempts(0);
     setHint("I'm thinking of a number between 1 and 100.");
     setWon(false);
   };
-
-  useEffect(() => {
-    reset();
-    const stored = localStorage.getItem("guess_best");
-    if (stored) setBest(parseInt(stored, 10));
-  }, []);
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();

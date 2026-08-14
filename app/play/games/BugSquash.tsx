@@ -10,17 +10,16 @@ const ROUND_SECONDS = 30;
 export default function BugSquash(): React.JSX.Element {
   const [phase, setPhase] = useState<Phase>("idle");
   const [score, setScore] = useState(0);
-  const [best, setBest] = useState(0);
+  const [best, setBest] = useState(() => {
+    if (typeof window === "undefined") return 0;
+    const stored = localStorage.getItem("bugsquash_best");
+    return stored ? parseInt(stored, 10) || 0 : 0;
+  });
   const [combo, setCombo] = useState(1);
   const [timeLeft, setTimeLeft] = useState(ROUND_SECONDS);
   const [bug, setBug] = useState({ x: 50, y: 50, id: 0 });
   const [pops, setPops] = useState<{ id: number; x: number; y: number; value: number }[]>([]);
   const relocateRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  useEffect(() => {
-    const stored = localStorage.getItem("bugsquash_best");
-    if (stored) setBest(parseInt(stored, 10) || 0);
-  }, []);
 
   const relocateBug = useCallback(() => {
     setBug((b) => ({
@@ -42,20 +41,24 @@ export default function BugSquash(): React.JSX.Element {
     };
   }, [phase, bug.id, timeLeft, relocateBug]);
 
+  // The countdown and the game-over transition both live in the timer callback.
+  // They must NOT live inside a setState updater: updaters have to be pure, and
+  // StrictMode double-invokes them — which would double-write the best score.
   useEffect(() => {
     if (phase !== "running") return;
-    if (timeLeft <= 0) {
-      setPhase("over");
-      setBest((prev) => {
-        const next = Math.max(prev, score);
-        localStorage.setItem("bugsquash_best", String(next));
-        return next;
-      });
-      return;
-    }
-    const t = setTimeout(() => setTimeLeft((s) => s - 1), 1000);
+    if (timeLeft <= 0) return;
+    const t = setTimeout(() => {
+      const next = timeLeft - 1;
+      setTimeLeft(next);
+      if (next <= 0) {
+        setPhase("over");
+        const updated = Math.max(best, score);
+        setBest(updated);
+        localStorage.setItem("bugsquash_best", String(updated));
+      }
+    }, 1000);
     return () => clearTimeout(t);
-  }, [phase, timeLeft, score]);
+  }, [phase, timeLeft, score, best]);
 
   const start = () => {
     setScore(0);

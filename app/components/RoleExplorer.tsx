@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useCallback, useEffect, useState } from "react";
 import { ROLES } from "../portfolio-data";
 import ResumeViewer from "./ResumeViewer";
+import HexMarker from "./HexMarker";
 
 export default function RoleExplorer(): React.JSX.Element {
   const [activeId, setActiveId] = useState<string>(ROLES[0].id);
@@ -35,9 +36,7 @@ export default function RoleExplorer(): React.JSX.Element {
     >
       <div className="container mx-auto max-w-6xl">
         <div className="max-w-2xl">
-          <p className="text-xs font-medium uppercase tracking-[0.3em] text-accent">
-            Hiring? Explore by role
-          </p>
+          <HexMarker index={2} label="Roles" />
           <h2
             id="roles-title"
             className="mt-4 font-display text-4xl font-medium text-ink sm:text-6xl"

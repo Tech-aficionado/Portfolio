@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { RotateCcw } from "lucide-react";
 
@@ -22,14 +22,10 @@ function buildDeck(): Card[] {
 }
 
 export default function MemoryMatch(): React.JSX.Element {
-  const [deck, setDeck] = useState<Card[]>([]);
+  const [deck, setDeck] = useState<Card[]>(buildDeck);
   const [picked, setPicked] = useState<number[]>([]);
   const [moves, setMoves] = useState(0);
   const [lock, setLock] = useState(false);
-
-  useEffect(() => {
-    setDeck(buildDeck());
-  }, []);
 
   const won = useMemo(() => deck.length > 0 && deck.every((c) => c.matched), [deck]);
 

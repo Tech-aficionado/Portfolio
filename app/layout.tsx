@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Fraunces } from "next/font/google";
+import { Inter, Fraunces, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 
 import "./globals.css";
@@ -24,11 +24,20 @@ const fraunces = Fraunces({
   display: "swap",
 });
 
+// Used for the 0x section markers and other machine-ish labels. Only the
+// weights actually referenced are loaded.
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-jetbrains-mono",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://0xshiv.dev"),
   title: "Shivansh Goel — Full Stack Developer & AI Product Engineer",
   description:
-    "Full Stack Developer building AI-enabled web products with Next.js, Python, and cloud infrastructure. Four products live in production.",
+    "Full Stack Developer building AI-enabled web products with Next.js, Python, and cloud infrastructure. Five products live in production.",
   alternates: {
     canonical: "/",
   },
@@ -51,14 +60,14 @@ export const metadata: Metadata = {
     url: "https://0xshiv.dev",
     title: "Shivansh Goel — Full Stack Developer & AI Product Engineer",
     description:
-      "Full-stack engineering with LLM features that ship. Four products live in production.",
+      "Full-stack engineering with LLM features that ship. Five products live in production.",
     siteName: "Shivansh Goel Portfolio",
   },
   twitter: {
     card: "summary_large_image",
     title: "Shivansh Goel — Full Stack Developer & AI Product Engineer",
     description:
-      "Full-stack engineering with LLM features that ship. Four products live in production.",
+      "Full-stack engineering with LLM features that ship. Five products live in production.",
   },
   robots: {
     index: true,
@@ -128,7 +137,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${fraunces.variable} font-sans antialiased`}
+        className={`${inter.variable} ${fraunces.variable} ${jetbrainsMono.variable} font-sans antialiased`}
       >
         <script
           dangerouslySetInnerHTML={{

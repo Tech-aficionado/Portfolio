@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import AnimatedTechSphere from "./AnimatedTechSphere";
+import HexMarker from "./HexMarker";
 
 export default function About(): React.JSX.Element {
   return (
@@ -16,9 +17,7 @@ export default function About(): React.JSX.Element {
               viewport={{ once: true }}
               className="lg:sticky lg:top-28"
             >
-              <span className="text-xs uppercase tracking-[0.3em] text-accent">
-                01 / About
-              </span>
+              <HexMarker index={3} label="About" />
               <h2 className="mt-4 font-display text-4xl sm:text-5xl font-medium leading-tight text-ink">
                 The <span className="italic">mission</span>
               </h2>

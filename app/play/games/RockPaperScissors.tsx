@@ -21,6 +21,10 @@ function decide(you: MoveKey, cpu: MoveKey): "win" | "lose" | "draw" {
   return beats[you] === cpu ? "win" : "lose";
 }
 
+function randomCpuMove(): MoveKey {
+  return MOVES[Math.floor(Math.random() * 3)].key;
+}
+
 export default function RockPaperScissors(): React.JSX.Element {
   const [you, setYou] = useState<MoveKey | null>(null);
   const [cpu, setCpu] = useState<MoveKey | null>(null);
@@ -28,7 +32,7 @@ export default function RockPaperScissors(): React.JSX.Element {
   const [score, setScore] = useState({ w: 0, l: 0 });
 
   const play = (move: MoveKey) => {
-    const cpuMove = MOVES[Math.floor(Math.random() * 3)].key;
+    const cpuMove = randomCpuMove();
     const res = decide(move, cpuMove);
     setYou(move);
     setCpu(cpuMove);

@@ -137,7 +137,7 @@ export const ROLES: Role[] = [
     title: "Full Stack Developer",
     blurb: "End-to-end product delivery, frontend to backend.",
     summary:
-      "Full Stack Developer building production web applications end to end with React, Next.js, and Node.js on serverless infrastructure. This is the track my paid experience sits in: 17 months building client-facing React and Angular interfaces, Node.js REST APIs, and MySQL/MongoDB data layers, plus four self-directed products shipped and running in the open.",
+      "Full Stack Developer building production web applications end to end with React, Next.js, and Node.js on serverless infrastructure. This is the track my paid experience sits in: 17 months building client-facing React and Angular interfaces, Node.js REST APIs, and MySQL/MongoDB data layers, plus five self-directed products shipped and running in the open.",
     focus: [
       "End-to-end feature delivery",
       "Responsive UIs with React & Next.js",
@@ -194,7 +194,7 @@ export const PROJECTS: Project[] = [
     stack: ["Next.js", "Firebase", "Edge Redirects"],
     link: "https://ziplink.0xshiv.dev",
     sourceLink: "https://github.com/Tech-aficionado/ZipLink---Open-Source",
-    image: "/assets/ziplink.png",
+    image: "/assets/ziplink.webp",
   },
   {
     id: 2,
@@ -205,7 +205,7 @@ export const PROJECTS: Project[] = [
     stack: ["Cloudflare Workers", "D1", "Next.js", "React 19", "Resend"],
     link: "https://ghostrelay.me",
     sourceLink: "https://github.com/Tech-aficionado/GhostRelay---Open-Source",
-    image: "/assets/ghostrelay.png",
+    image: "/assets/ghostrelay.webp",
   },
   {
     id: 3,
@@ -215,7 +215,7 @@ export const PROJECTS: Project[] = [
       "Brings workout, nutrition, and recovery signals into one adaptive flow. AI-guided intensity, macro breakdowns, and fatigue-aware recommendations reduce the manual work of reconciling separate fitness trackers.",
     stack: ["Next.js", "Python", "Google Gemini"],
     link: "https://fittrack.0xshiv.dev/",
-    image: "/assets/image 3.png",
+    image: "/assets/fittrack.webp",
   },
   {
     id: 4,
@@ -225,7 +225,18 @@ export const PROJECTS: Project[] = [
       "Turns a topic into a ready-to-run assessment in seconds, reducing manual question writing. Instant explanations and mastery tracking show learners what to review next, while classroom codes make sharing straightforward.",
     stack: ["Next.js", "Google Gemini", "RAG", "Redis"],
     link: "https://quizify.0xshiv.dev",
-    image: "/assets/image 2.png",
+    image: "/assets/quizify.webp",
+  },
+  {
+    id: 5,
+    title: "DareStake",
+    tag: "Accountability · PWA",
+    outcome:
+      "Puts a real cost behind a daily commitment: two people set dares for each other, and a missed deadline moves money to a shared jar instead of passing unnoticed. Deadlines resolve against a single fixed timezone so a late-night check-in lands on the day the user meant, and penalties are claimed in a transaction so the same miss can never be charged twice.",
+    stack: ["Next.js", "TypeScript", "Firestore", "PWA", "Vitest"],
+    link: "https://darestake.0xshiv.dev",
+    sourceLink: "https://github.com/Tech-aficionado/darestake",
+    image: "/assets/darestake.webp",
   },
 ];
 

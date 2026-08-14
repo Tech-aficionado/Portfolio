@@ -8,13 +8,15 @@ type Phase = "idle" | "waiting" | "now" | "result" | "tooSoon";
 export default function ReactionTime(): React.JSX.Element {
   const [phase, setPhase] = useState<Phase>("idle");
   const [ms, setMs] = useState(0);
-  const [best, setBest] = useState<number | null>(null);
+  const [best, setBest] = useState<number | null>(() => {
+    if (typeof window === "undefined") return null;
+    const stored = localStorage.getItem("reaction_best");
+    return stored ? parseInt(stored, 10) : null;
+  });
   const startRef = useRef(0);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    const stored = localStorage.getItem("reaction_best");
-    if (stored) setBest(parseInt(stored, 10));
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
     };
