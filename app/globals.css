@@ -178,9 +178,12 @@ img {
   font-variant-numeric: tabular-nums;
 }
 
-/* The 0x prefix sits back so the significant digits read first. */
+/* The 0x prefix sits back so the significant digits read first. It must also
+   stay lowercase: the parent uppercases the label, which would render the
+   prefix as "0X" — not hex literal notation, and it reads as a typo. */
 .hex-marker > .hex-prefix {
   opacity: 0.45;
+  text-transform: lowercase;
 }
 
 /* Hairline divider carrying a hex label, used between major sections. */
