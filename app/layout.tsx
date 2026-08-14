@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://0xshiv.dev"),
   title: "Shivansh Goel — Full Stack Developer & AI Product Engineer",
   description:
-    "Full Stack Developer building AI-enabled web products with Next.js, Python, and cloud infrastructure. Five products live in production.",
+    "Full Stack Developer building AI-enabled web products with Next.js, Python, and cloud infrastructure. Six products live in production.",
   alternates: {
     canonical: "/",
   },
@@ -60,14 +60,14 @@ export const metadata: Metadata = {
     url: "https://0xshiv.dev",
     title: "Shivansh Goel — Full Stack Developer & AI Product Engineer",
     description:
-      "Full-stack engineering with LLM features that ship. Five products live in production.",
+      "Full-stack engineering with LLM features that ship. Six products live in production.",
     siteName: "Shivansh Goel Portfolio",
   },
   twitter: {
     card: "summary_large_image",
     title: "Shivansh Goel — Full Stack Developer & AI Product Engineer",
     description:
-      "Full-stack engineering with LLM features that ship. Five products live in production.",
+      "Full-stack engineering with LLM features that ship. Six products live in production.",
   },
   robots: {
     index: true,

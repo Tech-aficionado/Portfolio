@@ -238,6 +238,17 @@ export const PROJECTS: Project[] = [
     sourceLink: "https://github.com/Tech-aficionado/darestake",
     image: "/assets/darestake.webp",
   },
+  {
+    id: 6,
+    title: "MoodRadio",
+    tag: "AI · Music",
+    outcome:
+      "Takes a sentence about how someone feels and returns music that matches it, instead of asking the listener to pick a genre first. The interface adopts the colour of the detected emotion so the mood is visible, not just inferred, and candidate tracks are scored against the listener's own YouTube library and recent plays so the same few artists stop resurfacing.",
+    stack: ["Next.js", "TypeScript", "Google Gemini", "YouTube Data API", "Firebase"],
+    link: "https://moodradio.0xshiv.dev",
+    sourceLink: "https://github.com/Tech-aficionado/MoodRadio",
+    image: "/assets/moodradio.webp",
+  },
 ];
 
 export const PORTFOLIO = {
