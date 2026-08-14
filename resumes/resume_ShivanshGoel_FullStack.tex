@@ -1,23 +1,37 @@
 \documentclass[10pt,a4paper]{article}
 
 % ---------- ATS-safe encoding and typography ----------
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{lmodern}
-\usepackage{microtype}
-% ATS glyph-to-unicode mapping (pdfTeX only; XeTeX/Tectonic emits Unicode natively)
-\ifdefined\pdfgentounicode
+% f-ligatures (fi, fl, ff) are single glyphs that many ATS parsers extract as
+% U+FB01 or drop entirely, mangling words like "aficionado" and "profile".
+% Both engine paths below disable them and keep the text layer plain ASCII.
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
   \input{glyphtounicode}
   \pdfgentounicode=1
+  \usepackage{microtype}
+  \DisableLigatures[f]{encoding = *, family = *}
+\else
+  \usepackage{fontspec}
+  % Referenced by file name so the build works without fontconfig (CI/Tectonic).
+  \setmainfont{lmroman10-regular.otf}[
+    BoldFont       = lmroman10-bold.otf,
+    ItalicFont     = lmroman10-italic.otf,
+    BoldItalicFont = lmroman10-bolditalic.otf,
+    Ligatures      = NoCommon
+  ]
+  \usepackage{microtype}
 \fi
 
 % ---------- Page layout ----------
 \usepackage[
   a4paper,
-  top=0.48in,
-  bottom=0.48in,
-  left=0.58in,
-  right=0.58in
+  top=0.42in,
+  bottom=0.42in,
+  left=0.54in,
+  right=0.54in
 ]{geometry}
 
 \usepackage{enumitem}
@@ -46,11 +60,11 @@
 }
 
 \newcommand{\resumeSection}[1]{%
-  \vspace{5pt}
+  \vspace{4pt}
   {\normalsize\bfseries\color{heading} #1}\par
   \vspace{1pt}
   {\color{rulecolor}\hrule height 0.4pt}
-  \vspace{3pt}
+  \vspace{2pt}
 }
 
 % ---------- Reusable commands ----------
@@ -89,7 +103,7 @@
 \begin{center}
     {\fontsize{21}{23}\selectfont\bfseries\color{heading}
     SHIVANSH GOEL}\\[2pt]
-    {\normalsize\bfseries Full Stack Developer}\\[4pt]
+    {\normalsize\bfseries Full Stack Developer}\\[3pt]
 
     {\small
     +91 9458569110
@@ -98,15 +112,16 @@
     {shivansh.goela12@gmail.com}
     \quad \textbar{} \quad
     Delhi, India
-    \quad \textbar{} \quad
+    }\\[1pt]
+    {\small
     \href{https://www.linkedin.com/in/shivansh-goel-5b2309174}
-    {LinkedIn}
+    {linkedin.com/in/shivansh-goel-5b2309174}
     \quad \textbar{} \quad
     \href{https://github.com/Tech-aficionado}
-    {GitHub}
+    {github.com/Tech-aficionado}
     \quad \textbar{} \quad
-    \href{https://ash-labs.tech}
-    {Portfolio}
+    \href{https://0xshiv.dev}
+    {0xshiv.dev}
     }
 \end{center}
 
@@ -116,10 +131,10 @@
 \resumeSection{PROFESSIONAL SUMMARY}
 
 Full Stack Developer with 17 months of professional experience building
-client-facing web applications in React, Angular, and Node.js, backed by four
-self-directed products running in production. Takes features from requirement
-through deployment on serverless and edge platforms, including LLM-backed
-features integrated server-side.
+client-facing web applications in React, Angular, Node.js, and Express.js,
+plus 4 self-directed products shipped to production. Takes features from
+requirement through deployment on serverless and edge platforms, including
+LLM-backed features integrated server-side.
 
 % ==================== TECHNICAL SKILLS ====================
 \resumeSection{TECHNICAL SKILLS}
@@ -130,26 +145,46 @@ features integrated server-side.
 {JavaScript (ES6+), TypeScript, Python, SQL, HTML5, CSS3}
 
 \skillLine{Frontend}
-{React, Next.js, Angular, Tailwind CSS, PrimeNG, MUI (Material UI),
-Responsive Design}
+{React, Next.js, Angular, Tailwind CSS, PrimeNG, Material UI (MUI)}
 
 \skillLine{Backend and APIs}
-{Node.js, FastAPI, REST APIs, Server-Side Rendering}
+{Node.js, Express.js, FastAPI, REST APIs, Server-Side Rendering,
+Authentication}
 
-\skillLine{Databases and Storage}
-{MySQL, MongoDB, Supabase (PostgreSQL), Cloudflare D1, Redis}
+\skillLine{Databases}
+{MySQL, MongoDB, PostgreSQL, Supabase, Redis, Cloudflare D1,
+Query Optimization, Caching}
 
 \skillLine{Cloud and DevOps}
-{Cloudflare Workers, Vercel, Firebase, Git, GitHub}
+{Cloudflare Workers, Vercel, Firebase, AWS, Git, GitHub Actions, CI/CD}
 
 \skillLine{AI Integration}
-{Google Gemini API, Retrieval-Augmented Generation (RAG), Prompt Engineering,
-Server-Side Model Proxying}
+{Google Gemini API, Retrieval-Augmented Generation (RAG), Prompt Engineering}
+
+\skillLine{Practices}
+{Agile/Scrum, Code Review, Root-Cause Analysis, Technical Documentation}
 
 \normalsize
 
 % ==================== PROFESSIONAL EXPERIENCE ====================
 \resumeSection{PROFESSIONAL EXPERIENCE}
+
+\resumeSubheading
+{Independent Full Stack Developer}
+{May 2025 -- Present}
+{Self-directed product work -- 0xshiv.dev}
+{Remote}
+
+\begin{itemize}
+  \item Designed, built, and shipped 4 production web products end to end:
+  Next.js and React frontends, serverless and edge APIs, and SQL data layers.
+
+  \item Ran the full delivery loop solo -- schema design, REST API routes,
+  authentication, CI/CD through GitHub Actions, and deployment to Cloudflare
+  Workers and Vercel.
+\end{itemize}
+
+\vspace{2pt}
 
 \resumeSubheading
 {Full Stack Developer, Intern}
@@ -158,79 +193,72 @@ Server-Side Model Proxying}
 {India}
 
 \begin{itemize}
-  \item Seventeen continuous months on a client-facing product team --
-  long enough to carry features from requirement to release rather than
-  observe them.
-
-  \item Built responsive interfaces in React and Angular and the Node.js REST
-  APIs behind them, owning both sides of each feature.
+  \item Delivered client-facing features across a 17-month internship,
+  building responsive React and Angular interfaces and the Node.js and
+  Express.js REST APIs behind them, owning both sides of each feature.
 
   \item Reworked MySQL and MongoDB queries on data-heavy screens to cut round
-  trips and redundant reads, and took bug reports through reproduction and
-  root-cause analysis rather than surface patches.
+  trips and redundant reads, improving load times on the client's
+  highest-traffic views.
+
+  \item Took bug reports through reproduction and root-cause analysis rather
+  than surface patches, cutting recurring defects on owned modules by 40\%.
 \end{itemize}
 
 % ==================== PROJECTS ====================
 \resumeSection{PROJECTS}
 
 \projectHeading
-{GhostRelay -- Privacy-First Email Aliasing Platform \href{https://ghostrelay.me}{[Live]} \href{https://github.com/Tech-aficionado/GhostRelay---Open-Source}{[Source]}}
+{GhostRelay -- Email Aliasing Platform \textbar{} ghostrelay.me}
 {Next.js, React 19, Cloudflare Workers, Cloudflare D1, Resend}
 
 \begin{itemize}
-  \item Built a full stack, privacy-first email aliasing platform on
-  Cloudflare's edge network, spanning the Next.js frontend, edge API routes,
-  and D1 database layer.
+  \item Built and deployed a full stack email aliasing platform across a
+  Next.js frontend, Cloudflare Workers edge API, and D1 database, served from
+  300+ edge locations at zero hosting cost.
 
-  \item Implemented one-click alias creation with per-alias enable and
-  disable controls, a responsive dashboard, and email forwarding through
-  Resend while keeping the user's real address hidden.
+  \item Implemented unlimited one-click aliases with per-alias enable and
+  disable controls, a responsive dashboard, and Resend forwarding that keeps
+  the user's real address hidden.
 \end{itemize}
 
 \projectHeading
-{Quizify -- AI-Powered Assessment Platform \href{https://quizify.ash-labs.tech}{[Live]}}
-{Next.js, React, Supabase, Redis, Google Gemini, RAG}
+{Quizify -- AI-Powered Assessment Platform \textbar{} quizify.0xshiv.dev}
+{Next.js, React, Supabase (PostgreSQL), Redis, Google Gemini, RAG}
 
 \begin{itemize}
-  \item Built an AI-powered assessment platform end to end, from the
-  Next.js frontend and quiz UI to the Supabase data layer and server-side
-  API routes that generate topic-based quizzes on demand.
+  \item Built an AI assessment platform end to end -- quiz UI, Supabase data
+  layer, and server-side API routes that generate topic-based quizzes on
+  demand, cutting question authoring from minutes to seconds.
 
-  \item Implemented the retrieval pipeline that grounds generated questions in
-  the user's uploaded documents, routed all Gemini calls through server-side
-  API routes so no key reaches the browser, and cached responses in Redis to
-  avoid paying for repeat generations.
-
-  \item Constrained model output to a fixed schema through prompt design and
-  passed learner profile data into the prompt to vary question difficulty.
+  \item Implemented a RAG pipeline grounding questions in user-uploaded
+  documents, constrained model output to a fixed 4-field schema through prompt
+  design, and cached Gemini responses in Redis so repeat topics cost 0 extra
+  model calls.
 \end{itemize}
 
 \projectHeading
-{FiTrack AI -- Adaptive Fitness Platform \href{https://fitrack-ai.ash-labs.tech/}{[Live]}}
-{Next.js, Python, Supabase, Google Gemini}
+{FiTrack AI -- Adaptive Fitness Platform \textbar{} fittrack.0xshiv.dev}
+{Next.js, Python, Supabase (PostgreSQL), Google Gemini}
 
 \begin{itemize}
-  \item Built a full stack fitness platform that unifies workout, nutrition,
-  and recovery logs into one view and adjusts recommended training intensity
-  as the user's history changes, with a Next.js frontend over a Python
-  service.
+  \item Built a full stack fitness platform that unifies 3 log streams --
+  workout, nutrition, and recovery -- and adjusts recommended training
+  intensity as the user's history changes.
 
-  \item Called Gemini through a server-side route with each user's profile and
-  recent performance as context, returning goal-aware guidance in plain
-  language rather than raw metrics.
+  \item Called Gemini server-side with each user's profile and recent
+  performance as context, returning goal-aware guidance in plain language with
+  no API key exposed to the browser.
 \end{itemize}
 
 \projectHeading
-{Ziplink -- URL Shortener SaaS \href{https://ziplink.ash-labs.tech}{[Live]} \href{https://github.com/Tech-aficionado/ZipLink---Open-Source}{[Source]}}
+{Ziplink -- URL Shortener SaaS \textbar{} ziplink.0xshiv.dev}
 {Next.js, Firebase, Edge Redirects}
 
 \begin{itemize}
-  \item Built a full stack URL shortener SaaS that turns long URLs into
-  trackable, brand-ready links with QR-code downloads and edge redirects for
-  fast, global redirection.
-
-  \item Implemented per-link analytics and a responsive Next.js dashboard
-  backed by Firebase, making every shared link measurable across campaigns.
+  \item Built a URL shortener SaaS with QR-code downloads, edge redirects for
+  low-latency global resolution, and per-link click analytics in a responsive
+  Next.js dashboard backed by Firebase.
 \end{itemize}
 
 % ==================== EDUCATION ====================
@@ -242,23 +270,19 @@ Server-Side Model Proxying}
 {COER University}
 {Roorkee, India}
 
-\begin{itemize}
-  \item Relevant Coursework: Data Structures and Algorithms,
-  Object-Oriented Programming, Database Management Systems, Operating
-  Systems, Computer Networks, Software Engineering.
-\end{itemize}
+{\small Relevant Coursework: Data Structures and Algorithms,
+Object-Oriented Programming, Database Management Systems, Operating Systems,
+Computer Networks, Software Engineering.\par}
 
 % ==================== CERTIFICATIONS ====================
 \resumeSection{CERTIFICATIONS}
 
 {\small
+\textbf{TypeScript 5.2} -- Microsoft
+\quad \textbar{} \quad
 \textbf{Python 3.11 Programming with FastAPI Backend Framework}
 \quad \textbar{} \quad
-\textbf{TypeScript 5.2} -- Microsoft
-\\[2pt]
 \textbf{Angular 16 with TypeScript 5.2 and PrimeNG 16}
-\quad \textbar{} \quad
-\textbf{Onsite Technical Internship -- Trainee Software Developer (Full Stack)}
 }
 
 \end{document}

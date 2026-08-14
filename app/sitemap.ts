@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const BASE_URL = "https://ash-labs.tech";
+const BASE_URL = "https://0xshiv.dev";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();

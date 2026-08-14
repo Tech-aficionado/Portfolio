@@ -25,7 +25,7 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ash-labs.tech"),
+  metadataBase: new URL("https://0xshiv.dev"),
   title: "Shivansh Goel — Full Stack Developer & AI Product Engineer",
   description:
     "Full Stack Developer building AI-enabled web products with Next.js, Python, and cloud infrastructure. Four products live in production.",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://ash-labs.tech",
+    url: "https://0xshiv.dev",
     title: "Shivansh Goel — Full Stack Developer & AI Product Engineer",
     description:
       "Full-stack engineering with LLM features that ship. Four products live in production.",

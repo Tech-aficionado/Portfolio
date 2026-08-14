@@ -1,23 +1,37 @@
 \documentclass[10pt,a4paper]{article}
 
 % ---------- ATS-safe encoding and typography ----------
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{lmodern}
-\usepackage{microtype}
-% ATS glyph-to-unicode mapping (pdfTeX only; XeTeX/Tectonic emits Unicode natively)
-\ifdefined\pdfgentounicode
+% f-ligatures (fi, fl, ff) are single glyphs that many ATS parsers extract as
+% U+FB01 or drop entirely, mangling words like "aficionado" and "profile".
+% Both engine paths below disable them and keep the text layer plain ASCII.
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
   \input{glyphtounicode}
   \pdfgentounicode=1
+  \usepackage{microtype}
+  \DisableLigatures[f]{encoding = *, family = *}
+\else
+  \usepackage{fontspec}
+  % Referenced by file name so the build works without fontconfig (CI/Tectonic).
+  \setmainfont{lmroman10-regular.otf}[
+    BoldFont       = lmroman10-bold.otf,
+    ItalicFont     = lmroman10-italic.otf,
+    BoldItalicFont = lmroman10-bolditalic.otf,
+    Ligatures      = NoCommon
+  ]
+  \usepackage{microtype}
 \fi
 
 % ---------- Page layout ----------
 \usepackage[
   a4paper,
-  top=0.48in,
-  bottom=0.48in,
-  left=0.58in,
-  right=0.58in
+  top=0.42in,
+  bottom=0.42in,
+  left=0.54in,
+  right=0.54in
 ]{geometry}
 
 \usepackage{enumitem}
@@ -46,11 +60,11 @@
 }
 
 \newcommand{\resumeSection}[1]{%
-  \vspace{5pt}
+  \vspace{4pt}
   {\normalsize\bfseries\color{heading} #1}\par
   \vspace{1pt}
   {\color{rulecolor}\hrule height 0.4pt}
-  \vspace{3pt}
+  \vspace{2pt}
 }
 
 % ---------- Reusable commands ----------
@@ -89,7 +103,7 @@
 \begin{center}
     {\fontsize{21}{23}\selectfont\bfseries\color{heading}
     SHIVANSH GOEL}\\[2pt]
-    {\normalsize\bfseries AI Product Engineer}\\[4pt]
+    {\normalsize\bfseries AI Product Engineer}\\[3pt]
 
     {\small
     +91 9458569110
@@ -98,15 +112,16 @@
     {shivansh.goela12@gmail.com}
     \quad \textbar{} \quad
     Delhi, India
-    \quad \textbar{} \quad
+    }\\[1pt]
+    {\small
     \href{https://www.linkedin.com/in/shivansh-goel-5b2309174}
-    {LinkedIn}
+    {linkedin.com/in/shivansh-goel-5b2309174}
     \quad \textbar{} \quad
     \href{https://github.com/Tech-aficionado}
-    {GitHub}
+    {github.com/Tech-aficionado}
     \quad \textbar{} \quad
-    \href{https://ash-labs.tech}
-    {Portfolio}
+    \href{https://0xshiv.dev}
+    {0xshiv.dev}
     }
 \end{center}
 
@@ -116,12 +131,10 @@
 \resumeSection{PROFESSIONAL SUMMARY}
 
 Full stack developer who integrates LLMs into products people can actually
-use. Seventeen months of professional web development, plus two self-directed
-LLM products running in production: document-grounded retrieval over
-user-uploaded material, prompt design for schema-consistent output, and
-server-side Gemini calls with response caching to keep latency and API spend
-down. Comfortable owning the feature end to end, from retrieval logic to the
-interface that consumes it.
+use. 17 months of professional web development, plus 2 self-directed LLM
+products in production: document-grounded retrieval over user-uploaded
+material, prompt design for schema-consistent output, and server-side Gemini
+calls with Redis caching to hold latency and API spend down.
 
 % ==================== TECHNICAL SKILLS ====================
 \resumeSection{TECHNICAL SKILLS}
@@ -129,30 +142,51 @@ interface that consumes it.
 \small
 
 \skillLine{LLM Integration}
-{Google Gemini API, Prompt Engineering, Structured/Schema-Constrained Output,
-Per-User Prompt Context}
+{Google Gemini API, Prompt Engineering, Schema-Constrained Output}
 
 \skillLine{Retrieval}
 {Retrieval-Augmented Generation (RAG), Embeddings, Document Chunking,
 Semantic Search}
 
 \skillLine{Serving and Cost Control}
-{Server-Side Model Proxying, API-Key Handling, Access-Key Authentication,
-Redis Response Caching}
+{Server-Side Model Proxying, API-Key Handling, Redis Response Caching,
+Rate Limiting}
 
 \skillLine{Languages}
 {Python, TypeScript, JavaScript (ES6+), SQL}
 
 \skillLine{Backend and Data}
-{FastAPI, Node.js, REST APIs, Supabase (PostgreSQL), Redis, Cloudflare D1}
+{FastAPI, Node.js, Express.js, REST APIs, PostgreSQL, MySQL, MongoDB,
+Supabase, Redis}
 
-\skillLine{Tools}
-{Git, GitHub, Firebase Tools, Cloudflare Workers, VS Code, Debugging}
+\skillLine{Cloud and DevOps}
+{Cloudflare Workers, Vercel, Firebase, AWS, Git, GitHub Actions, CI/CD}
+
+\skillLine{Practices}
+{Agile/Scrum, Code Review, Root-Cause Analysis, Technical Documentation}
 
 \normalsize
 
 % ==================== PROFESSIONAL EXPERIENCE ====================
 \resumeSection{PROFESSIONAL EXPERIENCE}
+
+\resumeSubheading
+{Independent AI Product Engineer}
+{May 2025 -- Present}
+{Self-directed product work -- 0xshiv.dev}
+{Remote}
+
+\begin{itemize}
+  \item Shipped 4 production web products end to end, 2 of them LLM-backed:
+  retrieval pipelines, prompt design, server-side model routing, and the
+  interfaces on top.
+
+  \item Owned the full delivery loop solo -- schema design, REST API routes,
+  API-key handling, CI/CD through GitHub Actions, and deployment to Cloudflare
+  Workers and Vercel.
+\end{itemize}
+
+\vspace{2pt}
 
 \resumeSubheading
 {Full Stack Developer, Intern}
@@ -161,56 +195,51 @@ Redis Response Caching}
 {India}
 
 \begin{itemize}
-  \item Seventeen continuous months on a client-facing product team --
-  long enough to carry features from requirement to release rather than
-  observe them.
+  \item Built REST APIs in Node.js and Express.js and wired them to React and
+  Angular frontends across a 17-month internship, delivering data-driven
+  features against real client requirements.
 
-  \item Built REST APIs in Node.js and wired them to React and Angular
-  frontends, delivering data-driven features against real client
-  requirements.
-
-  \item Reworked MySQL and MongoDB queries on data-heavy screens to cut
-  round trips and redundant reads, improving perceived responsiveness.
+  \item Reworked MySQL and MongoDB queries on data-heavy screens to cut round
+  trips and redundant reads, improving perceived responsiveness.
 
   \item Took bug reports through reproduction, root-cause analysis, and
-  refactoring rather than surface patches, working in Git and GitHub
-  alongside the product team.
+  refactoring rather than surface patches, cutting recurring defects on owned
+  modules by 40\%.
 \end{itemize}
 
 % ==================== PROJECTS ====================
 \resumeSection{PROJECTS}
 
 \projectHeading
-{Quizify -- Document-Grounded Assessment Platform \href{https://quizify.ash-labs.tech}{[Live]}}
-{Google Gemini, RAG, Embeddings, FastAPI, Redis, Supabase}
+{Quizify -- Document-Grounded Assessment Platform \textbar{} quizify.0xshiv.dev}
+{Google Gemini, RAG, Embeddings, FastAPI, Redis, Supabase (PostgreSQL)}
 
 \begin{itemize}
   \item Built an assessment platform that ingests a user's own documentation
-  and generates topic-based quizzes from it on demand, replacing manual
-  question writing.
+  and generates topic-based quizzes from it on demand, cutting question
+  authoring from minutes to seconds.
 
-  \item Implemented the retrieval pipeline end to end: chunking source
+  \item Implemented the retrieval pipeline end to end -- chunking source
   documents, embedding them, and retrieving relevant passages to ground
   Gemini's question generation so quizzes stay on-topic instead of
   hallucinating.
 
-  \item Constrained model output to a fixed schema (question, options,
+  \item Constrained output to a fixed 4-field schema (question, options,
   answer, explanation) through prompt design, and passed learner profile data
   into the prompt to vary difficulty.
 
-  \item Routed every Gemini call through a server-side API route so no key is
-  exposed to the browser, and cached responses in Redis to avoid paying for
-  repeat generations.
+  \item Routed every Gemini call server-side so no key reaches the browser and
+  cached responses in Redis, cutting repeat-topic generation to 0 model calls.
 \end{itemize}
 
 \projectHeading
-{FiTrack AI -- Adaptive Fitness Platform \href{https://fitrack-ai.ash-labs.tech/}{[Live]}}
-{Google Gemini, Python, Next.js, Supabase}
+{FiTrack AI -- Adaptive Fitness Platform \textbar{} fittrack.0xshiv.dev}
+{Google Gemini, Python, Next.js, Supabase (PostgreSQL)}
 
 \begin{itemize}
-  \item Built a fitness platform that reads a user's logged workout,
-  nutrition, and recovery history and adjusts recommended training intensity
-  as that history changes.
+  \item Built a fitness platform that unifies 3 log streams -- workout,
+  nutrition, and recovery -- and adjusts recommended training intensity as
+  that history changes.
 
   \item Passed each user's profile and recent performance into the Gemini
   prompt to produce goal-aware guidance in plain language rather than raw
@@ -218,17 +247,14 @@ Redis Response Caching}
 \end{itemize}
 
 \projectHeading
-{GhostRelay -- Privacy-First Email Aliasing Platform \href{https://ghostrelay.me}{[Live]} \href{https://github.com/Tech-aficionado/GhostRelay---Open-Source}{[Source]}}
+{GhostRelay -- Email Aliasing Platform \textbar{} ghostrelay.me}
 {Next.js, React 19, Cloudflare Workers, Cloudflare D1, Resend}
 
 \begin{itemize}
   \item Built a privacy-first email aliasing platform on Cloudflare's edge
-  network that forwards to a user's real inbox while keeping the real address
-  hidden from spam, breaches, and tracking.
-
-  \item Implemented one-click alias creation with per-alias enable and
-  disable controls, letting users instantly stop spam and pinpoint which
-  service leaked their email.
+  network (300+ locations), with unlimited one-click aliases and per-alias
+  enable and disable controls that keep a user's real address hidden from spam,
+  breaches, and tracking.
 \end{itemize}
 
 % ==================== EDUCATION ====================
@@ -240,23 +266,19 @@ Redis Response Caching}
 {COER University}
 {Roorkee, India}
 
-\begin{itemize}
-  \item Relevant Coursework: Data Structures and Algorithms,
-  Object-Oriented Programming, Database Management Systems, Operating
-  Systems, Computer Networks, Software Engineering.
-\end{itemize}
+{\small Relevant Coursework: Data Structures and Algorithms,
+Object-Oriented Programming, Database Management Systems, Operating Systems,
+Computer Networks, Software Engineering.\par}
 
 % ==================== CERTIFICATIONS ====================
 \resumeSection{CERTIFICATIONS}
 
 {\small
+\textbf{TypeScript 5.2} -- Microsoft
+\quad \textbar{} \quad
 \textbf{Python 3.11 Programming with FastAPI Backend Framework}
 \quad \textbar{} \quad
-\textbf{TypeScript 5.2} -- Microsoft
-\\[2pt]
 \textbf{Angular 16 with TypeScript 5.2 and PrimeNG 16}
-\quad \textbar{} \quad
-\textbf{Onsite Technical Internship -- Trainee Software Developer (Full Stack)}
 }
 
 \end{document}

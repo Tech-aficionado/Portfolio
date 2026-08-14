@@ -86,7 +86,7 @@ export default function OpengraphImage() {
             color: "#17130e",
           }}
         >
-          <div>ash-labs.tech</div>
+          <div>0xshiv.dev</div>
           <div style={{ color: "#6f675a" }}>@Tech-aficionado</div>
         </div>
       </div>
