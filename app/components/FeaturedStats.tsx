@@ -15,12 +15,12 @@ const stats = [
   {
     value: String(PORTFOLIO_STATS.aiProducts),
     label: "LLM-backed products",
-    detail: "FiTrack AI and Quizify, both running on Gemini",
+    detail: "FiTrack AI, Quizify and MoodRadio, all running on Gemini",
   },
   {
     value: String(PORTFOLIO_STATS.openSourceProjects),
     label: "Open source",
-    detail: "Ziplink, GhostRelay and DareStake, source on GitHub",
+    detail: "Ziplink, GhostRelay, DareStake and MoodRadio, source on GitHub",
   },
 ];
 
