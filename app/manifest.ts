@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Shivansh Goel — Full Stack Developer",
     short_name: "Shivansh Goel",
     description:
-      "A passionate Full Stack Developer and Software Engineer. Creating meaningful and robust digital solutions.",
+      "Full Stack Developer building AI-enabled web products with Next.js, Python, and cloud infrastructure. Six products live in production.",
     start_url: "/",
     display: "standalone",
     background_color: "#f4f1e9",

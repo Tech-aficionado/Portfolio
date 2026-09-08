@@ -17,17 +17,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.5,
     },
-    {
-      url: `${BASE_URL}/llms.txt`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.5,
-    },
-    {
-      url: `${BASE_URL}/api/profile`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.5,
-    },
   ];
 }
