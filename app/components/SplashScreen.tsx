@@ -11,7 +11,12 @@ export default function SplashScreen({
   const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
-    const hasSeenIntro = sessionStorage.getItem("portfolio-intro-seen") === "true";
+    let hasSeenIntro = false;
+    try {
+      hasSeenIntro = sessionStorage.getItem("portfolio-intro-seen") === "true";
+    } catch {
+      // Storage can be blocked by privacy modes; the intro must still finish.
+    }
 
     if (hasSeenIntro || shouldReduceMotion) {
       finishLoading();
@@ -19,9 +24,13 @@ export default function SplashScreen({
     }
 
     const timeout = window.setTimeout(() => {
-      sessionStorage.setItem("portfolio-intro-seen", "true");
+      try {
+        sessionStorage.setItem("portfolio-intro-seen", "true");
+      } catch {
+        // Ignore storage failures; they must never leave the splash stuck.
+      }
       finishLoading();
-    }, 1600);
+    }, 900);
     return () => window.clearTimeout(timeout);
   }, [finishLoading, shouldReduceMotion]);
 

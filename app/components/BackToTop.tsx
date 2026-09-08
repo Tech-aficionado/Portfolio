@@ -8,10 +8,22 @@ export default function BackToTop(): React.JSX.Element {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 600);
-    onScroll();
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const next = window.scrollY > 600;
+      setVisible((previous) => (previous === next ? previous : next));
+    };
+    const onScroll = () => {
+      if (frame === 0) frame = window.requestAnimationFrame(update);
+    };
+
+    update();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
   }, []);
 
   const scrollToTop = () => {
