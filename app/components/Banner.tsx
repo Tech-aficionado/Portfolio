@@ -7,7 +7,7 @@ import {
   useReducedMotion,
 } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import CountUp from "./CountUp";
 import { PORTFOLIO_STATS } from "../portfolio-stats";
 import { PROFILE, SITE_URL } from "../portfolio-data";
@@ -70,18 +70,32 @@ function TypewriterRole(): React.JSX.Element {
 export default function Banner(): React.JSX.Element {
   const spotX = useMotionValue(-400);
   const spotY = useMotionValue(-400);
+  const spotlightRect = useRef<DOMRect | null>(null);
   const spotlight = useMotionTemplate`radial-gradient(500px circle at ${spotX}px ${spotY}px, rgba(255, 78, 26, 0.10), transparent 65%)`;
 
+  function handleEnter(e: React.MouseEvent<HTMLElement>) {
+    spotlightRect.current = e.currentTarget.getBoundingClientRect();
+  }
+
   function handleMove(e: React.MouseEvent<HTMLElement>) {
-    const rect = e.currentTarget.getBoundingClientRect();
+    const rect = spotlightRect.current;
+    if (!rect) return;
     spotX.set(e.clientX - rect.left);
     spotY.set(e.clientY - rect.top);
+  }
+
+  function handleLeave() {
+    spotlightRect.current = null;
+    spotX.set(-400);
+    spotY.set(-400);
   }
 
   return (
     <section
       id="home"
+      onMouseEnter={handleEnter}
       onMouseMove={handleMove}
+      onMouseLeave={handleLeave}
       className="relative min-h-screen flex items-center pt-28 pb-16 px-4 sm:px-6"
     >
       {/* Cursor-follow spotlight */}

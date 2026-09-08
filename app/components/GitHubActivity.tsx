@@ -34,6 +34,7 @@ async function getGitHubData() {
       {
         headers: { Accept: "application/vnd.github+json" },
         next: { revalidate: 21600 },
+        signal: AbortSignal.timeout(4000),
       }
     );
     if (!response.ok) return null;
