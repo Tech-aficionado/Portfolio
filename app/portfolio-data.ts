@@ -137,7 +137,7 @@ export const ROLES: Role[] = [
     title: "Full Stack Developer",
     blurb: "End-to-end product delivery, frontend to backend.",
     summary:
-      "Full Stack Developer building production web applications end to end with React, Next.js, and Node.js on serverless infrastructure. This is the track my paid experience sits in: 17 months building client-facing React and Angular interfaces, Node.js REST APIs, and MySQL/MongoDB data layers, plus five self-directed products shipped and running in the open.",
+      "Full Stack Developer building production web applications end to end with React, Next.js, and Node.js on serverless infrastructure. This is the track my paid experience sits in: 17 months building client-facing React and Angular interfaces, Node.js REST APIs, and MySQL/MongoDB data layers, plus six self-directed products shipped and running in the open.",
     focus: [
       "End-to-end feature delivery",
       "Responsive UIs with React & Next.js",
@@ -162,7 +162,7 @@ export const ROLES: Role[] = [
     title: "AI Product Engineer",
     blurb: "LLM features in shipped products: retrieval, prompting, cost.",
     summary:
-      "AI Product Engineer integrating LLMs into live web products — document-grounded retrieval, prompt design for structured output, and server-side model calls that keep API keys off the client. My AI work is self-directed rather than employed: two products in production, both Gemini-backed, both with the retrieval and caching decisions made under real latency and cost constraints.",
+      "AI Product Engineer integrating LLMs into live web products — document-grounded retrieval, prompt design for structured output, and server-side model calls that keep API keys off the client. My AI work is self-directed rather than employed: three products in production, all Gemini-backed, with retrieval and caching decisions made under real latency and cost constraints.",
     focus: [
       "Retrieval-augmented generation over user documents",
       "Prompt design for schema-consistent output",
