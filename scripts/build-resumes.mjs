@@ -19,23 +19,33 @@ function has(cmd) {
 }
 
 function pickEngine() {
-  if (has("tectonic")) return "tectonic";
-  if (has("latexmk")) return "latexmk";
-  if (has("pdflatex")) return "pdflatex";
+  if (has("tectonic")) return { type: "tectonic", command: "tectonic" };
+
+  const bundledTectonic = join(
+    ROOT,
+    ".tools",
+    process.platform === "win32" ? "tectonic.exe" : "tectonic"
+  );
+  if (existsSync(bundledTectonic)) {
+    return { type: "tectonic", command: bundledTectonic };
+  }
+
+  if (has("latexmk")) return { type: "latexmk", command: "latexmk" };
+  if (has("pdflatex")) return { type: "pdflatex", command: "pdflatex" };
   return null;
 }
 
 function compile(engine, texFile) {
   const name = basename(texFile, ".tex");
-  if (engine === "tectonic") {
+  if (engine.type === "tectonic") {
     // tectonic drops just the .pdf in the outdir
-    return spawnSync("tectonic", [texFile, "--outdir", OUT_DIR], {
+    return spawnSync(engine.command, [texFile, "--outdir", OUT_DIR], {
       stdio: "inherit",
     });
   }
-  if (engine === "latexmk") {
+  if (engine.type === "latexmk") {
     const result = spawnSync(
-      "latexmk",
+      engine.command,
       ["-pdf", "-interaction=nonstopmode", `-outdir=${TMP_DIR}`, texFile],
       { stdio: "inherit" }
     );
@@ -46,7 +56,7 @@ function compile(engine, texFile) {
   let result;
   for (let pass = 0; pass < 2; pass += 1) {
     result = spawnSync(
-      "pdflatex",
+      engine.command,
       ["-interaction=nonstopmode", `-output-directory=${TMP_DIR}`, texFile],
       { stdio: "inherit" }
     );
@@ -83,7 +93,7 @@ function main() {
 
   mkdirSync(OUT_DIR, { recursive: true });
   mkdirSync(TMP_DIR, { recursive: true });
-  console.log(`Compiling ${texFiles.length} résumé(s) with ${engine}...`);
+  console.log(`Compiling ${texFiles.length} résumé(s) with ${engine.type}...`);
 
   let failures = 0;
   for (const file of texFiles) {
