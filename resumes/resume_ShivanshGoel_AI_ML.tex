@@ -103,7 +103,7 @@
 \begin{center}
     {\fontsize{21}{23}\selectfont\bfseries\color{heading}
     SHIVANSH GOEL}\\[2pt]
-    {\normalsize\bfseries AI Product Engineer}\\[3pt]
+    {\normalsize\bfseries AI Developer \textbar{} Fourth-Year B.Tech Student}\\[3pt]
 
     {\small
     +91 9458569110
@@ -130,81 +130,53 @@
 % ==================== PROFESSIONAL SUMMARY ====================
 \resumeSection{PROFESSIONAL SUMMARY}
 
-AI Product Engineer with 17 months of professional full-stack experience and
-3 self-directed Gemini-backed products in production. Builds the complete
-product path around LLMs: document-grounded retrieval, structured-output
-validation, contextual recommendation flows, server-side model access, and
-caching and rate limits that control latency, spend, and key exposure.
+Fourth-year B.Tech Computer Science student and fresher with a 17-month
+full-stack internship. Built 3 Gemini-backed personal projects using
+retrieval-augmented generation, structured outputs, server-side model calls,
+and caching.
 
 % ==================== TECHNICAL SKILLS ====================
 \resumeSection{TECHNICAL SKILLS}
 
 \small
 
-\skillLine{LLM Integration}
-{Google Gemini API, Prompt Engineering, Schema-Constrained Output,
-Output Validation}
-
-\skillLine{Retrieval}
-{Retrieval-Augmented Generation (RAG), Embeddings, Document Chunking,
-Semantic Search}
-
-\skillLine{Serving and Cost Control}
-{Server-Side Model Proxying, API-Key Handling, Redis Response Caching,
-Rate Limiting}
+\skillLine{AI and Retrieval}
+{Google Gemini API, RAG, Embeddings, Document Chunking, Semantic Search,
+Prompt Engineering, Output Validation}
 
 \skillLine{Languages}
-{Python, TypeScript, JavaScript (ES6+), SQL}
+{Python, TypeScript, JavaScript, SQL}
 
 \skillLine{Backend and Data}
-{FastAPI, Node.js, Express.js, REST APIs, PostgreSQL, MySQL, MongoDB,
-Supabase, Redis}
+{FastAPI, Node.js, Express.js, REST APIs, PostgreSQL, Supabase, Redis,
+MySQL, MongoDB}
 
-\skillLine{Cloud and DevOps}
-{Cloudflare Workers, Vercel, Firebase, AWS, Git, GitHub Actions, CI/CD}
+\skillLine{Frontend}
+{React, Next.js, Angular, Tailwind CSS}
 
-\skillLine{Practices}
-{Agile/Scrum, Code Review, Root-Cause Analysis, Technical Documentation}
+\skillLine{Tools and Cloud}
+{Git, GitHub Actions, Cloudflare Workers, Vercel, Firebase, AWS}
 
 \normalsize
 
-% ==================== PROFESSIONAL EXPERIENCE ====================
-\resumeSection{PROFESSIONAL EXPERIENCE}
+% ==================== INTERNSHIP EXPERIENCE ====================
+\resumeSection{INTERNSHIP EXPERIENCE}
 
 \resumeSubheading
-{Independent AI Product Engineer}
-{May 2025 -- Present}
-{Self-directed product work -- 0xshiv.dev}
-{Remote}
-
-\begin{itemize}
-  \item Shipped 6 production products end to end, 3 of them Gemini-backed,
-  covering retrieval, structured generation, contextual recommendations,
-  server-side model access, and the interfaces around them.
-
-  \item Owned schema and API design, model-output validation, key handling,
-  caching and rate limits, GitHub Actions CI/CD, and production deployment.
-\end{itemize}
-
-\vspace{2pt}
-
-\resumeSubheading
-{Full Stack Developer, Intern}
+{Full Stack Developer Intern}
 {December 2023 -- May 2025}
 {Tedforge Solutions Private Limited}
 {India}
 
 \begin{itemize}
-  \item Built REST APIs in Node.js and Express.js and wired them to React and
-  Angular frontends across a 17-month internship, delivering data-driven
-  features against real client requirements.
+  \item Developed React and Angular features and connected them to Node.js and
+  Express.js REST APIs during a 17-month internship.
 
-  \item Reworked MySQL and MongoDB queries on data-heavy screens to cut round
-  trips and redundant reads, improving perceived responsiveness.
+  \item Improved MySQL and MongoDB queries by reducing redundant reads and
+  unnecessary round trips.
 
-  \item Took bug reports through reproduction, root-cause analysis, and
-  refactoring rather than surface patches, cutting recurring defects on owned
-  modules by 40\%.
+  \item Reproduced and fixed recurring defects, participated in code reviews,
+  and worked in an Agile development process.
 \end{itemize}
 
 % ==================== PROJECTS ====================
@@ -215,21 +187,11 @@ Supabase, Redis}
 {Google Gemini, RAG, Embeddings, FastAPI, Redis, Supabase (PostgreSQL)}
 
 \begin{itemize}
-  \item Built an assessment platform that ingests a user's own documentation
-  and generates topic-based quizzes from it on demand, cutting question
-  authoring from minutes to seconds.
+  \item Built a quiz platform that retrieves relevant passages from uploaded
+  documents and uses Gemini to generate grounded questions.
 
-  \item Implemented the retrieval pipeline end to end -- chunking source
-  documents, embedding them, and retrieving relevant passages to ground
-  Gemini's question generation so quizzes stay on-topic instead of
-  hallucinating.
-
-  \item Constrained output to a fixed 4-field schema (question, options,
-  answer, explanation) through prompt design, and passed learner profile data
-  into the prompt to vary difficulty.
-
-  \item Routed every Gemini call server-side so no key reaches the browser and
-  cached responses in Redis, cutting repeat-topic generation to 0 model calls.
+  \item Validated generated questions against a fixed schema, kept model calls
+  server-side, and cached repeat requests in Redis.
 \end{itemize}
 
 \projectHeading
@@ -237,13 +199,8 @@ Supabase, Redis}
 {Google Gemini, Python, Next.js, Supabase (PostgreSQL)}
 
 \begin{itemize}
-  \item Built a fitness platform that unifies 3 log streams -- workout,
-  nutrition, and recovery -- and adjusts recommended training intensity as
-  that history changes.
-
-  \item Passed each user's profile and recent performance into the Gemini
-  prompt to produce goal-aware guidance in plain language rather than raw
-  metrics, served through a server-side route.
+  \item Built a fitness platform that combines workout, nutrition, and recovery
+  data and uses server-side Gemini prompts for goal-aware guidance.
 \end{itemize}
 
 \projectHeading
@@ -251,12 +208,8 @@ Supabase, Redis}
 {Google Gemini, Next.js, TypeScript, YouTube Data API, Firebase}
 
 \begin{itemize}
-  \item Built a recommendation flow that converts free-form mood descriptions
-  into structured emotional context, then ranks candidate tracks against the
-  listener's YouTube library and recent plays.
-
-  \item Combined Gemini interpretation with deterministic scoring and history
-  signals so recommendations remain personal while avoiding repeated artists.
+  \item Built a music recommendation flow that interprets free-form mood text
+  with Gemini and ranks tracks using YouTube library and listening history.
 \end{itemize}
 
 % ==================== EDUCATION ====================
@@ -264,9 +217,9 @@ Supabase, Redis}
 
 \resumeSubheading
 {Bachelor of Technology in Computer Science and Engineering}
-{2023}
-{COER University}
-{Roorkee, India}
+{2023 -- Present}
+{COER University, Roorkee}
+{Fourth-Year Student}
 
 {\small Relevant Coursework: Data Structures and Algorithms,
 Object-Oriented Programming, Database Management Systems, Operating Systems,

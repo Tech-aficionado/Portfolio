@@ -103,7 +103,7 @@
 \begin{center}
     {\fontsize{21}{23}\selectfont\bfseries\color{heading}
     SHIVANSH GOEL}\\[2pt]
-    {\normalsize\bfseries Full Stack Developer}\\[3pt]
+    {\normalsize\bfseries Full Stack Developer \textbar{} Fourth-Year B.Tech Student}\\[3pt]
 
     {\small
     +91 9458569110
@@ -130,11 +130,10 @@
 % ==================== PROFESSIONAL SUMMARY ====================
 \resumeSection{PROFESSIONAL SUMMARY}
 
-Full Stack Developer with 17 months of professional experience building
-client-facing applications with React, Angular, Node.js, and Express.js,
-plus 6 self-directed products shipped to production. Owns features from
-requirements and data modeling through API design, responsive UI, CI/CD, and
-deployment on serverless and edge platforms.
+Fourth-year B.Tech Computer Science student and fresher with a 17-month
+full-stack internship. Built React and Angular interfaces, Node.js and Express.js
+APIs, and database-backed features, and shipped 6 personal projects using
+Next.js, Python, and cloud platforms.
 
 % ==================== TECHNICAL SKILLS ====================
 \resumeSection{TECHNICAL SKILLS}
@@ -142,68 +141,41 @@ deployment on serverless and edge platforms.
 \small
 
 \skillLine{Languages}
-{JavaScript (ES6+), TypeScript, Python, SQL, HTML5, CSS3}
+{JavaScript, TypeScript, Python, SQL, HTML5, CSS3}
 
 \skillLine{Frontend}
-{React, Next.js, Angular, Tailwind CSS, PrimeNG, Material UI (MUI)}
+{React, Next.js, Angular, Tailwind CSS, PrimeNG, Material UI}
 
-\skillLine{Backend and APIs}
-{Node.js, Express.js, FastAPI, REST APIs, Server-Side Rendering,
-Authentication}
+\skillLine{Backend and Databases}
+{Node.js, Express.js, FastAPI, REST APIs, MySQL, MongoDB, PostgreSQL,
+Supabase, Redis, Cloudflare D1}
 
-\skillLine{Databases}
-{MySQL, MongoDB, PostgreSQL, Supabase, Redis, Cloudflare D1,
-Query Optimization, Caching}
-
-\skillLine{Cloud and DevOps}
-{Cloudflare Workers, Vercel, Firebase, AWS, Git, GitHub Actions, CI/CD}
+\skillLine{Tools and Cloud}
+{Git, GitHub Actions, CI/CD, Cloudflare Workers, Vercel, Firebase, AWS}
 
 \skillLine{AI Integration}
 {Google Gemini API, Retrieval-Augmented Generation (RAG), Prompt Engineering}
 
-\skillLine{Practices}
-{Agile/Scrum, Code Review, Root-Cause Analysis, Technical Documentation}
-
 \normalsize
 
-% ==================== PROFESSIONAL EXPERIENCE ====================
-\resumeSection{PROFESSIONAL EXPERIENCE}
+% ==================== INTERNSHIP EXPERIENCE ====================
+\resumeSection{INTERNSHIP EXPERIENCE}
 
 \resumeSubheading
-{Independent Full Stack Developer}
-{May 2025 -- Present}
-{Self-directed product work -- 0xshiv.dev}
-{Remote}
-
-\begin{itemize}
-  \item Designed, built, and shipped 6 production products end to end across
-  Next.js and React interfaces, serverless and edge APIs, and SQL and NoSQL
-  data layers.
-
-  \item Owned architecture, authentication, schema design, REST APIs, testing,
-  GitHub Actions CI/CD, and production deployment across Cloudflare Workers,
-  Vercel, and Firebase.
-\end{itemize}
-
-\vspace{2pt}
-
-\resumeSubheading
-{Full Stack Developer, Intern}
+{Full Stack Developer Intern}
 {December 2023 -- May 2025}
 {Tedforge Solutions Private Limited}
 {India}
 
 \begin{itemize}
-  \item Delivered client-facing features across a 17-month internship,
-  building responsive React and Angular interfaces and the Node.js and
-  Express.js REST APIs behind them, owning both sides of each feature.
+  \item Developed responsive React and Angular features and connected them to
+  Node.js and Express.js REST APIs during a 17-month internship.
 
-  \item Reworked MySQL and MongoDB queries on data-heavy screens to cut round
-  trips and redundant reads, improving load times on the client's
-  highest-traffic views.
+  \item Improved MySQL and MongoDB queries on data-heavy screens by reducing
+  redundant reads and unnecessary round trips.
 
-  \item Took bug reports through reproduction and root-cause analysis rather
-  than surface patches, cutting recurring defects on owned modules by 40\%.
+  \item Reproduced and fixed recurring defects, participated in code reviews,
+  and worked in an Agile development process.
 \end{itemize}
 
 % ==================== PROJECTS ====================
@@ -214,12 +186,8 @@ Query Optimization, Caching}
 {Next.js, React 19, Cloudflare Workers, Cloudflare D1, Resend}
 
 \begin{itemize}
-  \item Built a privacy-first email aliasing platform across a Next.js
-  frontend, Cloudflare Workers API, D1 database, and Resend delivery pipeline.
-
-  \item Implemented one-click alias creation, per-alias lifecycle controls,
-  and a responsive dashboard that lets users contain unwanted mail without
-  exposing or changing their primary address.
+  \item Built a privacy-first email aliasing platform with a Next.js frontend,
+  Cloudflare Workers API, D1 database, Resend delivery, and per-alias controls.
 \end{itemize}
 
 \projectHeading
@@ -227,28 +195,8 @@ Query Optimization, Caching}
 {Next.js, React, Supabase (PostgreSQL), Redis, Google Gemini, RAG}
 
 \begin{itemize}
-  \item Built an AI assessment platform end to end -- quiz UI, Supabase data
-  layer, and server-side API routes that generate topic-based quizzes on
-  demand, cutting question authoring from minutes to seconds.
-
-  \item Implemented a RAG pipeline grounding questions in user-uploaded
-  documents, constrained model output to a fixed 4-field schema through prompt
-  design, and cached Gemini responses in Redis so repeat topics cost 0 extra
-  model calls.
-\end{itemize}
-
-\projectHeading
-{FiTrack AI -- Adaptive Fitness Platform \textbar{} fittrack.0xshiv.dev}
-{Next.js, Python, Supabase (PostgreSQL), Google Gemini}
-
-\begin{itemize}
-  \item Built a full stack fitness platform that unifies 3 log streams --
-  workout, nutrition, and recovery -- and adjusts recommended training
-  intensity as the user's history changes.
-
-  \item Called Gemini server-side with each user's profile and recent
-  performance as context, returning goal-aware guidance in plain language with
-  no API key exposed to the browser.
+  \item Built a quiz platform with a Next.js interface, Supabase data layer,
+  server-side Gemini generation, document-grounded RAG, and Redis caching.
 \end{itemize}
 
 \projectHeading
@@ -256,12 +204,9 @@ Query Optimization, Caching}
 {Next.js, TypeScript, Firestore, PWA, Vitest}
 
 \begin{itemize}
-  \item Built an installable accountability app with deadline-based challenges,
-  shared penalties, and timezone-consistent completion tracking.
-
-  \item Implemented transactional penalty claims so concurrent clients cannot
-  charge the same missed commitment twice, with Vitest coverage for the core
-  resolution rules.
+  \item Built an installable accountability PWA with deadline-based challenges,
+  timezone-safe tracking, and transactional Firestore penalty claims tested
+  with Vitest.
 \end{itemize}
 
 % ==================== EDUCATION ====================
@@ -269,9 +214,9 @@ Query Optimization, Caching}
 
 \resumeSubheading
 {Bachelor of Technology in Computer Science and Engineering}
-{2023}
-{COER University}
-{Roorkee, India}
+{2023 -- Present}
+{COER University, Roorkee}
+{Fourth-Year Student}
 
 {\small Relevant Coursework: Data Structures and Algorithms,
 Object-Oriented Programming, Database Management Systems, Operating Systems,
