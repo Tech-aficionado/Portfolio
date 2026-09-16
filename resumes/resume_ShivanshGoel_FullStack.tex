@@ -131,10 +131,10 @@
 \resumeSection{PROFESSIONAL SUMMARY}
 
 Full Stack Developer with 17 months of professional experience building
-client-facing web applications in React, Angular, Node.js, and Express.js,
-plus 4 self-directed products shipped to production. Takes features from
-requirement through deployment on serverless and edge platforms, including
-LLM-backed features integrated server-side.
+client-facing applications with React, Angular, Node.js, and Express.js,
+plus 6 self-directed products shipped to production. Owns features from
+requirements and data modeling through API design, responsive UI, CI/CD, and
+deployment on serverless and edge platforms.
 
 % ==================== TECHNICAL SKILLS ====================
 \resumeSection{TECHNICAL SKILLS}
@@ -176,12 +176,13 @@ Query Optimization, Caching}
 {Remote}
 
 \begin{itemize}
-  \item Designed, built, and shipped 4 production web products end to end:
-  Next.js and React frontends, serverless and edge APIs, and SQL data layers.
+  \item Designed, built, and shipped 6 production products end to end across
+  Next.js and React interfaces, serverless and edge APIs, and SQL and NoSQL
+  data layers.
 
-  \item Ran the full delivery loop solo -- schema design, REST API routes,
-  authentication, CI/CD through GitHub Actions, and deployment to Cloudflare
-  Workers and Vercel.
+  \item Owned architecture, authentication, schema design, REST APIs, testing,
+  GitHub Actions CI/CD, and production deployment across Cloudflare Workers,
+  Vercel, and Firebase.
 \end{itemize}
 
 \vspace{2pt}
@@ -213,13 +214,12 @@ Query Optimization, Caching}
 {Next.js, React 19, Cloudflare Workers, Cloudflare D1, Resend}
 
 \begin{itemize}
-  \item Built and deployed a full stack email aliasing platform across a
-  Next.js frontend, Cloudflare Workers edge API, and D1 database, served from
-  300+ edge locations at zero hosting cost.
+  \item Built a privacy-first email aliasing platform across a Next.js
+  frontend, Cloudflare Workers API, D1 database, and Resend delivery pipeline.
 
-  \item Implemented unlimited one-click aliases with per-alias enable and
-  disable controls, a responsive dashboard, and Resend forwarding that keeps
-  the user's real address hidden.
+  \item Implemented one-click alias creation, per-alias lifecycle controls,
+  and a responsive dashboard that lets users contain unwanted mail without
+  exposing or changing their primary address.
 \end{itemize}
 
 \projectHeading
@@ -252,13 +252,16 @@ Query Optimization, Caching}
 \end{itemize}
 
 \projectHeading
-{Ziplink -- URL Shortener SaaS \textbar{} ziplink.0xshiv.dev}
-{Next.js, Firebase, Edge Redirects}
+{DareStake -- Accountability PWA \textbar{} darestake.0xshiv.dev}
+{Next.js, TypeScript, Firestore, PWA, Vitest}
 
 \begin{itemize}
-  \item Built a URL shortener SaaS with QR-code downloads, edge redirects for
-  low-latency global resolution, and per-link click analytics in a responsive
-  Next.js dashboard backed by Firebase.
+  \item Built an installable accountability app with deadline-based challenges,
+  shared penalties, and timezone-consistent completion tracking.
+
+  \item Implemented transactional penalty claims so concurrent clients cannot
+  charge the same missed commitment twice, with Vitest coverage for the core
+  resolution rules.
 \end{itemize}
 
 % ==================== EDUCATION ====================

@@ -130,11 +130,11 @@
 % ==================== PROFESSIONAL SUMMARY ====================
 \resumeSection{PROFESSIONAL SUMMARY}
 
-Full stack developer who integrates LLMs into products people can actually
-use. 17 months of professional web development, plus 2 self-directed LLM
-products in production: document-grounded retrieval over user-uploaded
-material, prompt design for schema-consistent output, and server-side Gemini
-calls with Redis caching to hold latency and API spend down.
+AI Product Engineer with 17 months of professional full-stack experience and
+3 self-directed Gemini-backed products in production. Builds the complete
+product path around LLMs: document-grounded retrieval, structured-output
+validation, contextual recommendation flows, server-side model access, and
+caching and rate limits that control latency, spend, and key exposure.
 
 % ==================== TECHNICAL SKILLS ====================
 \resumeSection{TECHNICAL SKILLS}
@@ -142,7 +142,8 @@ calls with Redis caching to hold latency and API spend down.
 \small
 
 \skillLine{LLM Integration}
-{Google Gemini API, Prompt Engineering, Schema-Constrained Output}
+{Google Gemini API, Prompt Engineering, Schema-Constrained Output,
+Output Validation}
 
 \skillLine{Retrieval}
 {Retrieval-Augmented Generation (RAG), Embeddings, Document Chunking,
@@ -177,13 +178,12 @@ Supabase, Redis}
 {Remote}
 
 \begin{itemize}
-  \item Shipped 4 production web products end to end, 2 of them LLM-backed:
-  retrieval pipelines, prompt design, server-side model routing, and the
-  interfaces on top.
+  \item Shipped 6 production products end to end, 3 of them Gemini-backed,
+  covering retrieval, structured generation, contextual recommendations,
+  server-side model access, and the interfaces around them.
 
-  \item Owned the full delivery loop solo -- schema design, REST API routes,
-  API-key handling, CI/CD through GitHub Actions, and deployment to Cloudflare
-  Workers and Vercel.
+  \item Owned schema and API design, model-output validation, key handling,
+  caching and rate limits, GitHub Actions CI/CD, and production deployment.
 \end{itemize}
 
 \vspace{2pt}
@@ -247,14 +247,16 @@ Supabase, Redis}
 \end{itemize}
 
 \projectHeading
-{GhostRelay -- Email Aliasing Platform \textbar{} ghostrelay.me}
-{Next.js, React 19, Cloudflare Workers, Cloudflare D1, Resend}
+{MoodRadio -- Contextual Music Recommendation \textbar{} moodradio.0xshiv.dev}
+{Google Gemini, Next.js, TypeScript, YouTube Data API, Firebase}
 
 \begin{itemize}
-  \item Built a privacy-first email aliasing platform on Cloudflare's edge
-  network (300+ locations), with unlimited one-click aliases and per-alias
-  enable and disable controls that keep a user's real address hidden from spam,
-  breaches, and tracking.
+  \item Built a recommendation flow that converts free-form mood descriptions
+  into structured emotional context, then ranks candidate tracks against the
+  listener's YouTube library and recent plays.
+
+  \item Combined Gemini interpretation with deterministic scoring and history
+  signals so recommendations remain personal while avoiding repeated artists.
 \end{itemize}
 
 % ==================== EDUCATION ====================
