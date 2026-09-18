@@ -4,10 +4,14 @@ Put the role-tailored LaTeX résumés here. Use these **exact** base names so th
 generated PDFs match the paths referenced by the site
 (`app/portfolio-data.ts` → `ROLES[].resumeUrl`):
 
-| Role                 | Source file                         |
-| -------------------- | ----------------------------------- |
-| Full Stack Developer | `resume_ShivanshGoel_FullStack.tex` |
-| AI Product Engineer  | `resume_ShivanshGoel_AI_ML.tex`     |
+| Role                 | Source file                         | Format |
+| -------------------- | ----------------------------------- | ------ |
+| Full Stack Developer | `resume_ShivanshGoel_FullStack.tex` | ATS-first, single-column, no photo |
+| AI Developer         | `resume_ShivanshGoel_AI_ML.tex`     | Portfolio-facing, photo-led modern layout |
+
+The AI résumé uses `shivansh-goel-headshot.jpg`, cropped from the portfolio's
+existing `public/self-image.webp`. The Full Stack résumé deliberately omits a
+photo because software-engineering application pipelines are usually ATS-first.
 
 ### Why only two
 
