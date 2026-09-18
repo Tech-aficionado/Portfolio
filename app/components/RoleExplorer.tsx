@@ -31,7 +31,7 @@ export default function RoleExplorer(): React.JSX.Element {
   return (
     <section
       id="roles"
-      className="px-4 py-20 sm:px-6 sm:py-32"
+      className="px-4 pb-16 pt-6 sm:px-6 sm:py-32"
       aria-labelledby="roles-title"
     >
       <div className="container mx-auto max-w-6xl">
@@ -39,11 +39,11 @@ export default function RoleExplorer(): React.JSX.Element {
           <HexMarker index={2} label="Roles" />
           <h2
             id="roles-title"
-            className="mt-4 font-display text-4xl font-medium text-ink sm:text-6xl"
+            className="mt-4 font-display text-3xl font-medium text-ink sm:text-6xl"
           >
             Pick the role you&apos;re <span className="italic">hiring for.</span>
           </h2>
-          <p className="mt-5 text-base leading-relaxed text-muted sm:text-lg">
+          <p className="mt-4 text-base leading-relaxed text-muted sm:mt-5 sm:text-lg">
             Two tracks, one body of work. Same projects, same experience — each
             résumé just leads with the part that matters to you.
           </p>
@@ -53,7 +53,7 @@ export default function RoleExplorer(): React.JSX.Element {
         <div
           role="tablist"
           aria-label="Roles"
-          className="mt-10 flex flex-wrap gap-2.5"
+          className="mt-8 flex flex-wrap gap-2.5 sm:mt-10"
         >
           {ROLES.map((role) => {
             const isActive = role.id === active.id;
@@ -84,7 +84,7 @@ export default function RoleExplorer(): React.JSX.Element {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className="mt-8 grid gap-8 rounded-[1.75rem] border border-line bg-paper-2/40 p-6 sm:p-10 lg:grid-cols-12"
+            className="mt-8 grid gap-8 rounded-[1.75rem] border border-line bg-paper-2/40 p-5 sm:p-10 lg:grid-cols-12"
           >
             <div className="lg:col-span-7">
               <p className="font-display text-2xl font-medium text-ink sm:text-3xl">

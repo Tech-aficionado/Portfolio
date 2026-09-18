@@ -15,7 +15,7 @@ export default function Projects(): React.JSX.Element {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mb-16 sm:mb-20 max-w-2xl"
+          className="mb-12 sm:mb-20 max-w-2xl"
         >
           <HexMarker index={6} label="Lab" />
           <h2 className="mt-4 font-display text-4xl sm:text-6xl font-medium leading-tight text-ink">
@@ -23,7 +23,7 @@ export default function Projects(): React.JSX.Element {
           </h2>
         </motion.div>
 
-        <div className="space-y-16 sm:space-y-28">
+        <div className="space-y-14 sm:space-y-28">
           {featuredProjects.map((project, index) => {
             const flip = index % 2 === 1;
             return (
