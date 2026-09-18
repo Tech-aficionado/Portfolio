@@ -58,7 +58,7 @@ export default async function GitHubActivity(): Promise<React.JSX.Element> {
   const data = await getGitHubData();
 
   return (
-    <section id="open-source" className="px-4 py-20 sm:px-6 sm:py-32" aria-labelledby="open-source-title">
+    <section id="open-source" className="px-4 py-16 sm:px-6 sm:py-32" aria-labelledby="open-source-title">
       <div className="container mx-auto max-w-6xl">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">
