@@ -6,8 +6,8 @@ and committed so the deployed site can serve them.
 
 Expected generated files (referenced in `app/portfolio-data.ts`):
 
-- `resume_ShivanshGoel_FullStack.pdf` — also the canonical `PROFILE.resumeUrl`
-- `resume_ShivanshGoel_AI_ML.pdf`
+- `resume_ShivanshGoel_FullStack.pdf` — ATS-first, no-photo Full Stack résumé and the canonical `PROFILE.resumeUrl`
+- `resume_ShivanshGoel_AI_ML.pdf` — photo-led AI Developer portfolio résumé
 
 The Backend and Frontend variants were retired; their sources sit unused in
 `/resumes/archive/`.

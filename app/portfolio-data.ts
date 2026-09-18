@@ -38,11 +38,11 @@ export interface Project {
 
 export const PROFILE = {
   name: "Shivansh Goel",
-  headline: "Full Stack Developer & AI Product Engineer",
+  headline: "Full Stack Developer & AI Developer",
   tagline: "Building AI products for the real world.",
   summary:
     "Full Stack Developer building AI-enabled web products with Next.js, Python, and cloud infrastructure. Professional experience is 17 months of full-stack product work; the AI work is self-directed and shipped — adaptive fitness, document-grounded assessments, and privacy-first SaaS, all live and inspectable.",
-  roles: ["Full Stack Developer", "AI Product Engineer"],
+  roles: ["Full Stack Developer", "AI Developer"],
   location: {
     label: "India",
     country: "IN",
@@ -159,10 +159,10 @@ export const ROLES: Role[] = [
   },
   {
     id: "ai-ml",
-    title: "AI Product Engineer",
+    title: "AI Developer",
     blurb: "LLM features in shipped products: retrieval, prompting, cost.",
     summary:
-      "AI Product Engineer integrating LLMs into live web products — document-grounded retrieval, prompt design for structured output, and server-side model calls that keep API keys off the client. My AI work is self-directed rather than employed: three products in production, all Gemini-backed, with retrieval and caching decisions made under real latency and cost constraints.",
+      "AI Developer integrating LLMs into live web products — document-grounded retrieval, prompt design for structured output, and server-side model calls that keep API keys off the client. My AI work is self-directed rather than employed: three products in production, all Gemini-backed, with retrieval and caching decisions made under real latency and cost constraints.",
     focus: [
       "Retrieval-augmented generation over user documents",
       "Prompt design for schema-consistent output",
