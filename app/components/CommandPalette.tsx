@@ -74,7 +74,7 @@ export default function CommandPalette(): React.JSX.Element {
       { id: "about", label: "About", hint: "The mission", keywords: "bio intro", icon: <ArrowRight className="h-4 w-4" />, run: () => goto("about") },
       { id: "services", label: "Expertise", hint: "What I do", keywords: "skills services capabilities", icon: <ArrowRight className="h-4 w-4" />, run: () => goto("services") },
       { id: "experience", label: "Experience", hint: "Where I've worked", keywords: "work job career", icon: <ArrowRight className="h-4 w-4" />, run: () => goto("experience") },
-      { id: "lab", label: "Selected Work", hint: "Projects", keywords: "projects lab portfolio ghostrelay", icon: <ArrowRight className="h-4 w-4" />, run: () => goto("lab") },
+      { id: "lab", label: "Selected Work", hint: "Projects", keywords: "projects lab portfolio ghostrelay fittrack quizify ai agent empire game android google play apps", icon: <ArrowRight className="h-4 w-4" />, run: () => goto("lab") },
       { id: "contact", label: "Contact", hint: "Get in touch", keywords: "email hire connect", icon: <ArrowRight className="h-4 w-4" />, run: () => goto("contact") },
       { id: "arcade", label: "Play the arcade", hint: "Mini-games", keywords: "games fun play", icon: <Gamepad2 className="h-4 w-4" />, run: () => { close(); router.push("/play"); } },
       { id: "theme", label: "Toggle theme", hint: "Light / dark", keywords: "dark light mode appearance", icon: <span className="relative inline-flex h-4 w-4 shrink-0 items-center justify-center"><Sun className="absolute h-4 w-4 dark:hidden" /><Moon className="absolute hidden h-4 w-4 dark:block" /></span>, run: () => { toggleTheme(); } },

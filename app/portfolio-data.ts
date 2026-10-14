@@ -34,14 +34,21 @@ export interface Project {
   stack: string[];
   link?: string;
   sourceLink?: string;
+  /** Public Google Play listing, for products that ship an Android app. */
+  playStoreLink?: string;
+  /** Where the product runs; drives the structured-data operatingSystem. */
+  platforms: ("Web" | "Android")[];
 }
+
+const playStore = (packageId: string): string =>
+  `https://play.google.com/store/apps/details?id=${packageId}`;
 
 export const PROFILE = {
   name: "Shivansh Goel",
   headline: "Full Stack Developer & AI Developer",
   tagline: "Building AI products for the real world.",
   summary:
-    "Full Stack Developer building AI-enabled web products with Next.js, Python, and cloud infrastructure. Professional experience is 17 months of full-stack product work; the AI work is self-directed and shipped — adaptive fitness, document-grounded assessments, and privacy-first SaaS, all live and inspectable.",
+    "Full Stack Developer shipping AI-enabled products across web and Android with Next.js, Flutter, Python, and cloud infrastructure. Professional experience is 17 months of full-stack product work; the rest is self-directed and live — three apps on Google Play in production (FiTrack AI, Quizify, and the idle game AI Agent Empire) plus four web products, all inspectable.",
   roles: ["Full Stack Developer", "AI Developer"],
   location: {
     label: "India",
@@ -72,37 +79,39 @@ export const KNOWS_ABOUT: string[] = [
   "Next.js",
   "Node.js",
   "Python",
+  "Flutter",
+  "Android Development",
   "AWS",
 ];
 
 export const CAPABILITIES: Capability[] = [
   {
     iconKey: "frontend",
-    title: "Frontend Development",
+    title: "Web & Mobile Frontends",
     description:
-      "Accessible, responsive interfaces with clean component architecture and smooth, purposeful interactions.",
-    skills: ["React", "Next.js", "Angular", "Tailwind CSS"],
+      "Accessible, responsive interfaces for the browser and Android — clean component architecture, offline-first state, and interactions that feel deliberate on every screen size.",
+    skills: ["React", "Next.js", "Flutter", "Tailwind CSS"],
   },
   {
     iconKey: "backend",
-    title: "Backend Development",
+    title: "Backend & AI Services",
     description:
-      "Secure, well-structured RESTful APIs and services built for reliability and maintainable growth.",
-    skills: ["Node.js", "Python", "REST APIs"],
+      "Secure APIs and serverless functions that keep model calls and keys on the server — authenticated, rate-limited, and observable in production.",
+    skills: ["Node.js", "Python", "Supabase Edge Functions", "Google Gemini"],
   },
   {
     iconKey: "data",
     title: "Databases & Cloud",
     description:
-      "Efficient data modeling and query optimization, with cloud deployments that scale on demand.",
-    skills: ["MySQL", "MongoDB", "AWS"],
+      "Data models with constraints that hold under real traffic, plus deployments on edge and serverless platforms that scale without a babysitter.",
+    skills: ["PostgreSQL", "Firestore", "MySQL", "Cloudflare", "AWS"],
   },
   {
     iconKey: "fullstack",
-    title: "Full Stack Solutions",
+    title: "Shipping & Release",
     description:
-      "End-to-end product delivery — from architecture and implementation through to deployment and iteration.",
-    skills: ["TypeScript", "System Design", "CI/CD"],
+      "End-to-end delivery through to the store: CI-built signed releases, staged Google Play rollouts from testing to production, crash reporting, and iteration on real usage.",
+    skills: ["TypeScript", "GitHub Actions", "Google Play", "Firebase"],
   },
 ];
 
@@ -137,22 +146,22 @@ export const ROLES: Role[] = [
     title: "Full Stack Developer",
     blurb: "End-to-end product delivery, frontend to backend.",
     summary:
-      "Full Stack Developer building production web applications end to end with React, Next.js, and Node.js on serverless infrastructure. This is the track my paid experience sits in: 17 months building client-facing React and Angular interfaces, Node.js REST APIs, and MySQL/MongoDB data layers, plus six self-directed products shipped and running in the open.",
+      "Full Stack Developer building production web applications end to end with React, Next.js, and Node.js on serverless infrastructure. This is the track my paid experience sits in: 17 months building client-facing React and Angular interfaces, Node.js REST APIs, and MySQL/MongoDB data layers, plus seven self-directed products shipped and running in the open — four on the web and three released to production on Google Play.",
     focus: [
       "End-to-end feature delivery",
-      "Responsive UIs with React & Next.js",
+      "Responsive UIs with React, Next.js & Flutter",
       "REST APIs & database-backed services",
-      "Deployment on edge and serverless platforms",
+      "Signed CI releases to the web and Google Play",
     ],
     skills: [
       "React",
       "Next.js",
       "Node.js",
       "TypeScript",
-      "Angular",
+      "Flutter",
       "Python",
       "Supabase",
-      "MySQL",
+      "Firebase",
       "Cloudflare Workers",
     ],
     resumeUrl: "/resumes/resume_ShivanshGoel_FullStack.pdf",
@@ -162,7 +171,7 @@ export const ROLES: Role[] = [
     title: "AI Developer",
     blurb: "LLM features in shipped products: retrieval, prompting, cost.",
     summary:
-      "AI Developer integrating LLMs into live web products — document-grounded retrieval, prompt design for structured output, and server-side model calls that keep API keys off the client. My AI work is self-directed rather than employed: three products in production, all Gemini-backed, with retrieval and caching decisions made under real latency and cost constraints.",
+      "AI Developer integrating LLMs into live web products — document-grounded retrieval, prompt design for structured output, and server-side model calls that keep API keys off the client. My AI work is self-directed rather than employed: three products in production, all Gemini-backed — two of them also shipped as Android apps on Google Play — with retrieval and caching decisions made under real latency and cost constraints.",
     focus: [
       "Retrieval-augmented generation over user documents",
       "Prompt design for schema-consistent output",
@@ -184,20 +193,45 @@ export const ROLES: Role[] = [
   },
 ];
 
+// Ordered by weight: the three Google Play production releases lead, then web products.
 export const PROJECTS: Project[] = [
   {
     id: 1,
-    title: "Ziplink",
-    tag: "URL Shortener · SaaS",
+    title: "FiTrack AI",
+    tag: "AI · Fitness · Android & Web",
     outcome:
-      "Turns long URLs into trackable, brand-ready links that are easier to distribute across campaigns. QR downloads and edge redirects shorten the path from share to destination, while analytics make each link measurable.",
-    stack: ["Next.js", "Firebase", "Edge Redirects"],
-    link: "https://ziplink.0xshiv.dev",
-    sourceLink: "https://github.com/Tech-aficionado/ZipLink---Open-Source",
-    image: "/assets/ziplink.webp",
+      "Brings workouts, nutrition, hydration and recovery into one adaptive plan instead of four separate trackers. Gemini builds targets and training plans server-side, the exercise library ships preloaded so it opens instantly offline, and the Android app is live on Google Play in production — released through a signed CI pipeline after a staged open-testing rollout.",
+    stack: ["Flutter", "Next.js", "Supabase", "Google Gemini", "Firebase App Check"],
+    link: "https://fittrack.0xshiv.dev/",
+    playStoreLink: playStore("com.fittrackai.fit_track_ai_mobile"),
+    platforms: ["Android", "Web"],
+    image: "/assets/fittrack.webp",
   },
   {
     id: 2,
+    title: "Quizify",
+    tag: "AI · Education · Android & Web",
+    outcome:
+      "Turns a topic or an uploaded document into a ready-to-run quiz in seconds, so nobody writes questions by hand. Answers come with instant explanations, mastery tracking shows what to review next, and Quiz Arena adds live head-to-head rounds with per-arena leaderboards. Available on the web and as an Android app on Google Play.",
+    stack: ["Flutter", "Next.js", "Google Gemini", "RAG", "Supabase"],
+    link: "https://quizify.0xshiv.dev",
+    playStoreLink: playStore("com.quizify.mobile"),
+    platforms: ["Android", "Web"],
+    image: "/assets/quizify.webp",
+  },
+  {
+    id: 3,
+    title: "AI Agent Empire",
+    tag: "Game · Idle Tycoon · Android",
+    outcome:
+      "An idle tycoon where you grow a one-laptop AI startup into a datacenter empire: deploy agents, build out compute, research toward AGI, then prestige to go faster each run. The whole economy is pure, time-parameterised functions, so offline progress is exact and hundreds of simulation tests can replay weeks of play in milliseconds to keep the balance honest. Live on Google Play with Play Games sign-in and achievements.",
+    stack: ["Flutter", "Flame", "Riverpod", "Play Games Services", "Firebase"],
+    playStoreLink: playStore("com.aiagentempire.ai_agent_empire"),
+    platforms: ["Android"],
+    image: "/assets/ai-agent-empire.webp",
+  },
+  {
+    id: 4,
     title: "GhostRelay",
     tag: "Privacy · SaaS",
     outcome:
@@ -205,30 +239,23 @@ export const PROJECTS: Project[] = [
     stack: ["Cloudflare Workers", "D1", "Next.js", "React 19", "Resend"],
     link: "https://ghostrelay.me",
     sourceLink: "https://github.com/Tech-aficionado/GhostRelay---Open-Source",
+    platforms: ["Web"],
     image: "/assets/ghostrelay.webp",
   },
   {
-    id: 3,
-    title: "FiTrack AI",
-    tag: "AI · Fitness",
-    outcome:
-      "Brings workout, nutrition, and recovery signals into one adaptive flow. AI-guided intensity, macro breakdowns, and fatigue-aware recommendations reduce the manual work of reconciling separate fitness trackers.",
-    stack: ["Next.js", "Python", "Google Gemini"],
-    link: "https://fittrack.0xshiv.dev/",
-    image: "/assets/fittrack.webp",
-  },
-  {
-    id: 4,
-    title: "Quizify",
-    tag: "AI · Education",
-    outcome:
-      "Turns a topic into a ready-to-run assessment in seconds, reducing manual question writing. Instant explanations and mastery tracking show learners what to review next, while classroom codes make sharing straightforward.",
-    stack: ["Next.js", "Google Gemini", "RAG", "Redis"],
-    link: "https://quizify.0xshiv.dev",
-    image: "/assets/quizify.webp",
-  },
-  {
     id: 5,
+    title: "Ziplink",
+    tag: "URL Shortener · SaaS",
+    outcome:
+      "Turns long URLs into trackable, brand-ready links that are easier to distribute across campaigns. QR downloads and edge redirects shorten the path from share to destination, while analytics make each link measurable.",
+    stack: ["Next.js", "Firebase", "Edge Redirects"],
+    link: "https://ziplink.0xshiv.dev",
+    sourceLink: "https://github.com/Tech-aficionado/ZipLink---Open-Source",
+    platforms: ["Web"],
+    image: "/assets/ziplink.webp",
+  },
+  {
+    id: 6,
     title: "DareStake",
     tag: "Accountability · PWA",
     outcome:
@@ -236,10 +263,11 @@ export const PROJECTS: Project[] = [
     stack: ["Next.js", "TypeScript", "Firestore", "PWA", "Vitest"],
     link: "https://darestake.0xshiv.dev",
     sourceLink: "https://github.com/Tech-aficionado/darestake",
+    platforms: ["Web"],
     image: "/assets/darestake.webp",
   },
   {
-    id: 6,
+    id: 7,
     title: "MoodRadio",
     tag: "AI · Music",
     outcome:
@@ -247,6 +275,7 @@ export const PROJECTS: Project[] = [
     stack: ["Next.js", "TypeScript", "Google Gemini", "YouTube Data API", "Firebase"],
     link: "https://moodradio.0xshiv.dev",
     sourceLink: "https://github.com/Tech-aficionado/MoodRadio",
+    platforms: ["Web"],
     image: "/assets/moodradio.webp",
   },
 ];
