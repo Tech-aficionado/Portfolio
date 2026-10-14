@@ -3,7 +3,8 @@
 
 export const PORTFOLIO_STATS = {
   experienceYears: 1.5,
-  liveProducts: 6,
+  liveProducts: 7,
+  playStoreApps: 3,
   aiProducts: 3,
   openSourceProjects: 4,
 } as const;

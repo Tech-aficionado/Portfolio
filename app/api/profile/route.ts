@@ -48,6 +48,8 @@ export function GET(): NextResponse {
       stack: project.stack,
       liveUrl: project.link ?? null,
       sourceUrl: project.sourceLink ?? null,
+      playStoreUrl: project.playStoreLink ?? null,
+      platforms: project.platforms,
     })),
     social: PORTFOLIO.social,
   };

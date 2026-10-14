@@ -9,11 +9,12 @@ export function GET(): Response {
     .map((project) => {
       const links = [
         project.link ? `Live: ${project.link}` : null,
+        project.playStoreLink ? `Google Play: ${project.playStoreLink}` : null,
         project.sourceLink ? `Source: ${project.sourceLink}` : null,
       ]
         .filter(Boolean)
         .join(" · ");
-      return `- [${project.title}](${project.link ?? SITE_URL}): ${project.tag}. ${project.outcome}${
+      return `- [${project.title}](${project.link ?? project.playStoreLink ?? SITE_URL}): ${project.tag}. ${project.outcome}${
         links ? ` (${links})` : ""
       }`;
     })
@@ -58,6 +59,7 @@ ${PROFILE.roles.map((role) => `- ${role}`).join("\n")}
 ## At a glance
 - Years of professional experience: ${PORTFOLIO.stats.experienceYears}+ (Dec 2023 – May 2025, TedForge Solutions)
 - Products in production: ${PORTFOLIO.stats.liveProducts}
+- Apps on Google Play (production track): ${PORTFOLIO.stats.playStoreApps}
 - LLM-backed products: ${PORTFOLIO.stats.aiProducts} (self-directed, not employed work)
 - Open-source projects: ${PORTFOLIO.stats.openSourceProjects}
 

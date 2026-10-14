@@ -10,17 +10,17 @@ const stats = [
   {
     value: String(PORTFOLIO_STATS.liveProducts),
     label: "Products in production",
-    detail: "Each one deployed at a public URL you can open now",
+    detail: "Each one live at a public URL or store listing you can open now",
+  },
+  {
+    value: String(PORTFOLIO_STATS.playStoreApps),
+    label: "Apps on Google Play",
+    detail: "FiTrack AI, Quizify and AI Agent Empire, all on the production track",
   },
   {
     value: String(PORTFOLIO_STATS.aiProducts),
     label: "LLM-backed products",
     detail: "FiTrack AI, Quizify and MoodRadio, all running on Gemini",
-  },
-  {
-    value: String(PORTFOLIO_STATS.openSourceProjects),
-    label: "Open source",
-    detail: "Ziplink, GhostRelay, DareStake and MoodRadio, source on GitHub",
   },
 ];
 

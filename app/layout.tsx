@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://0xshiv.dev"),
   title: "Shivansh Goel — Full Stack Developer & AI Product Engineer",
   description:
-    "Full Stack Developer building AI-enabled web products with Next.js, Python, and cloud infrastructure. Six products live in production.",
+    "Full Stack Developer shipping AI-enabled products on the web and Android with Next.js, Flutter, and Python. Seven products in production, three on Google Play.",
   alternates: {
     canonical: "/",
   },
@@ -60,14 +60,14 @@ export const metadata: Metadata = {
     url: "https://0xshiv.dev",
     title: "Shivansh Goel — Full Stack Developer & AI Product Engineer",
     description:
-      "Full-stack engineering with LLM features that ship. Six products live in production.",
+      "Full-stack engineering with LLM features that ship. Seven products in production, three on Google Play.",
     siteName: "Shivansh Goel Portfolio",
   },
   twitter: {
     card: "summary_large_image",
     title: "Shivansh Goel — Full Stack Developer & AI Product Engineer",
     description:
-      "Full-stack engineering with LLM features that ship. Six products live in production.",
+      "Full-stack engineering with LLM features that ship. Seven products in production, three on Google Play.",
   },
   robots: {
     index: true,
@@ -121,9 +121,10 @@ const structuredData = {
       name: project.title,
       applicationCategory: project.tag,
       description: project.outcome,
-      url: project.link ?? SITE_URL,
+      url: project.link ?? project.playStoreLink ?? SITE_URL,
       ...(project.sourceLink ? { codeRepository: project.sourceLink } : {}),
-      operatingSystem: "Web",
+      ...(project.playStoreLink ? { installUrl: project.playStoreLink } : {}),
+      operatingSystem: project.platforms.join(", "),
       author: { "@id": `${SITE_URL}/#person` },
     })),
   ],
